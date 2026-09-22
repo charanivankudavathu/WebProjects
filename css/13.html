@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Experiment 13</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .registration-form {
+            max-width: 650px;
+            margin: auto;
+            padding: 30px;
+            border: 2px solid #111111;
+            border-radius: 12px;
+            background: #eeeeee;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #777777;
+            border-radius: 6px;
+            font: inherit;
+            box-sizing: border-box;
+            background: #ffffff;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border: 2px solid #111111;
+        }
+
+        .gender-options {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .gender-options label {
+            display: inline-flex;
+            gap: 6px;
+            align-items: center;
+            font-weight: normal;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            background: #111111;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background: #444444;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 13</span>
+
+            <h1>Styled Registration Form</h1>
+
+            <p>
+                A registration form designed using CSS form
+                controls, spacing, borders and focus effects.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <form class="registration-form">
+
+                <div class="form-group">
+
+                    <label for="name">Full Name</label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="email">Email</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="password">Password</label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="course">Course</label>
+
+                    <select id="course">
+
+                        <option>Select Course</option>
+                        <option>B.Tech</option>
+                        <option>BCA</option>
+                        <option>B.Sc</option>
+                        <option>MCA</option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Gender</label>
+
+                    <div class="gender-options">
+
+                        <label>
+                            <input type="radio" name="gender">
+                            Male
+                        </label>
+
+                        <label>
+                            <input type="radio" name="gender">
+                            Female
+                        </label>
+
+                        <label>
+                            <input type="radio" name="gender">
+                            Other
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="message">About You</label>
+
+                    <textarea
+                        id="message"
+                        rows="4"
+                        placeholder="Write something about yourself"
+                    ></textarea>
+
+                </div>
+
+                <button type="submit" class="submit-button">
+                    Register
+                </button>
+
+            </form>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+</script>
+
+</body>
+</html>

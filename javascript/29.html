@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JS-29 | Number Guessing Game</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .game {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .game-info {
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #555;
+            border-radius: 10px;
+            background: #eeeeee;
+            line-height: 1.7;
+        }
+
+        .game input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 13px;
+            border: 1px solid #555;
+            border-radius: 6px;
+            font-size: 17px;
+            margin-bottom: 12px;
+        }
+
+        .game button {
+            padding: 12px 22px;
+            background: #111;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+
+        .game button:hover {
+            background: #333;
+        }
+
+        #gameMessage {
+            margin-top: 20px;
+            padding: 18px;
+            background: #111;
+            color: #fff;
+            border-radius: 8px;
+            line-height: 1.7;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">J</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="../css/index.html">CSS</a>
+                <a href="index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="../css/index.html">CSS Programs</a>
+            <a href="index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">JavaScript • Experiment 29</span>
+
+            <h1>Number Guessing Game</h1>
+
+            <p>
+                Guess the randomly generated number between 1 and 100.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="game">
+
+                <div class="game-info">
+                    <strong>How to Play</strong>
+                    <br>
+                    A random number between 1 and 100 has been generated.
+                    Try to guess it.
+                </div>
+
+                <input
+                    type="number"
+                    id="guessInput"
+                    min="1"
+                    max="100"
+                    placeholder="Enter your guess"
+                >
+
+                <button onclick="checkGuess()">
+                    Check Guess
+                </button>
+
+                <button onclick="startGame()">
+                    New Game
+                </button>
+
+                <div id="gameMessage">
+                    Enter your first guess.
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+
+    let randomNumber;
+    let attempts;
+
+
+    function startGame() {
+
+        randomNumber =
+            Math.floor(Math.random() * 100) + 1;
+
+        attempts = 0;
+
+        document.getElementById("guessInput").value = "";
+
+        document.getElementById("gameMessage").innerHTML =
+            "New game started. Guess a number between 1 and 100.";
+
+    }
+
+
+    function checkGuess() {
+
+        const input =
+            document.getElementById("guessInput").value;
+
+        const message =
+            document.getElementById("gameMessage");
+
+        const guess = Number(input);
+
+        if (
+            input === "" ||
+            !Number.isInteger(guess) ||
+            guess < 1 ||
+            guess > 100
+        ) {
+            message.innerHTML =
+                "Please enter a whole number between 1 and 100.";
+            return;
+        }
+
+        attempts++;
+
+        if (guess === randomNumber) {
+
+            message.innerHTML =
+                "Correct! 🎉<br>" +
+                "You guessed the number in <strong>" +
+                attempts +
+                "</strong> attempt(s).";
+
+        } else if (guess < randomNumber) {
+
+            message.innerHTML =
+                "Too low! Try a higher number.<br>" +
+                "Attempts: <strong>" +
+                attempts +
+                "</strong>";
+
+        } else {
+
+            message.innerHTML =
+                "Too high! Try a lower number.<br>" +
+                "Attempts: <strong>" +
+                attempts +
+                "</strong>";
+
+        }
+
+    }
+
+
+    startGame();
+
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+
+        mobileNav.classList.toggle("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            mobileNav.classList.contains("active")
+        );
+
+    });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS 61 - Grid Template Areas</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .grid-layout {
+            display: grid;
+
+            grid-template-columns: 220px 1fr;
+            grid-template-rows: auto 1fr auto;
+
+            grid-template-areas:
+                "header header"
+                "sidebar main"
+                "footer footer";
+
+            min-height: 600px;
+            margin-top: 25px;
+
+            border: 2px solid #222222;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .grid-header {
+            grid-area: header;
+            padding: 25px;
+            background: #111111;
+            color: #ffffff;
+        }
+
+        .grid-sidebar {
+            grid-area: sidebar;
+            padding: 25px;
+            background: #cccccc;
+        }
+
+        .grid-main {
+            grid-area: main;
+            padding: 25px;
+            background: #eeeeee;
+        }
+
+        .grid-footer {
+            grid-area: footer;
+            padding: 20px;
+            background: #333333;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .grid-sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .grid-sidebar li {
+            padding: 10px 0;
+            border-bottom: 1px solid #999999;
+        }
+
+        .grid-main p {
+            line-height: 1.8;
+        }
+
+        @media (max-width: 650px) {
+            .grid-layout {
+                grid-template-columns: 1fr;
+
+                grid-template-rows: auto auto 1fr auto;
+
+                grid-template-areas:
+                    "header"
+                    "sidebar"
+                    "main"
+                    "footer";
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">
+                        HTML • CSS • JavaScript
+                    </span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                aria-expanded="false"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">
+                JavaScript Programs
+            </a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+
+            <span class="eyebrow">
+                CSS • Experiment 61
+            </span>
+
+            <h1>CSS Grid Template Areas</h1>
+
+            <p>
+                Demonstration of named grid areas for creating
+                a structured webpage layout.
+            </p>
+
+        </div>
+
+        <div class="output-box">
+
+            <div class="grid-layout">
+
+                <header class="grid-header">
+                    <h2>Website Header</h2>
+                    <p>Grid Area: header</p>
+                </header>
+
+                <aside class="grid-sidebar">
+
+                    <h3>Sidebar</h3>
+
+                    <ul>
+                        <li>Dashboard</li>
+                        <li>Profile</li>
+                        <li>Projects</li>
+                        <li>Settings</li>
+                    </ul>
+
+                </aside>
+
+                <main class="grid-main">
+
+                    <h2>Main Content</h2>
+
+                    <p>
+                        CSS Grid Template Areas allow developers
+                        to give names to different parts of a grid.
+                    </p>
+
+                    <p>
+                        The names can then be arranged using
+                        the <strong>grid-template-areas</strong>
+                        property.
+                    </p>
+
+                    <p>
+                        Resize the browser window to see the
+                        layout change on smaller screens.
+                    </p>
+
+                </main>
+
+                <footer class="grid-footer">
+                    Grid Area: footer
+                </footer>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab.
+                HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<script>
+const menuButton =
+    document.getElementById("menuButton");
+
+const mobileNav =
+    document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+
+});
+</script>
+
+</body>
+</html>

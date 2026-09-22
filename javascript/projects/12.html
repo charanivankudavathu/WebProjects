@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT-12 | Shopping Cart</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .shop-demo {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .product {
+            padding: 20px;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .product button,
+        .cart button {
+            padding: 9px 15px;
+            border: none;
+            border-radius: 5px;
+            background: #111111;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .cart {
+            margin-top: 25px;
+            padding: 20px;
+            background: #eeeeee;
+            border-radius: 10px;
+        }
+
+        .cart-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #cccccc;
+        }
+
+        #cartTotal {
+            margin-top: 15px;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        @media (max-width: 700px) {
+            .products {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">PROJECT-12</span>
+            <h1>Simple Shopping Cart</h1>
+            <p>Add products, change quantities, and calculate the total.</p>
+        </div>
+
+        <div class="shop-demo">
+
+            <div class="products">
+
+                <div class="product">
+                    <h3>Laptop</h3>
+                    <p>₹50000</p>
+                    <button onclick="addProduct('Laptop', 50000)">
+                        Add to Cart
+                    </button>
+                </div>
+
+                <div class="product">
+                    <h3>Headphones</h3>
+                    <p>₹2000</p>
+                    <button onclick="addProduct('Headphones', 2000)">
+                        Add to Cart
+                    </button>
+                </div>
+
+                <div class="product">
+                    <h3>Keyboard</h3>
+                    <p>₹1500</p>
+                    <button onclick="addProduct('Keyboard', 1500)">
+                        Add to Cart
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="cart">
+
+                <h2>Cart</h2>
+
+                <div id="cartItems">
+                    Cart is empty.
+                </div>
+
+                <div id="cartTotal">
+                    Total: ₹0
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+
+let cart = [];
+
+function addProduct(name, price) {
+
+    const existing = cart.find(function (item) {
+        return item.name === name;
+    });
+
+    if (existing) {
+        existing.quantity++;
+    } else {
+        cart.push({
+            name: name,
+            price: price,
+            quantity: 1
+        });
+    }
+
+    displayCart();
+}
+
+function removeProduct(index) {
+
+    cart.splice(index, 1);
+
+    displayCart();
+}
+
+function displayCart() {
+
+    const cartItems = document.getElementById("cartItems");
+
+    cartItems.innerHTML = "";
+
+    let total = 0;
+
+    if (cart.length === 0) {
+        cartItems.textContent = "Cart is empty.";
+        document.getElementById("cartTotal").textContent =
+            "Total: ₹0";
+        return;
+    }
+
+    cart.forEach(function (item, index) {
+
+        const itemTotal = item.price * item.quantity;
+
+        total += itemTotal;
+
+        const div = document.createElement("div");
+
+        div.className = "cart-item";
+
+        div.innerHTML = `
+            ${item.name} × ${item.quantity}
+            = ₹${itemTotal}
+            <button onclick="removeProduct(${index})">
+                Remove
+            </button>
+        `;
+
+        cartItems.appendChild(div);
+    });
+
+    document.getElementById("cartTotal").textContent =
+        `Total: ₹${total}`;
+}
+
+displayCart();
+</script>
+
+</body>
+</html>

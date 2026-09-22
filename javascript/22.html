@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JS-22 | Change Text</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .demo-box {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #message {
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #555;
+            border-radius: 10px;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .demo-box button {
+            padding: 12px 22px;
+            background: #111;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .demo-box button:hover {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">J</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="../css/index.html">CSS</a>
+                <a href="index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="../css/index.html">CSS Programs</a>
+            <a href="index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">JavaScript • Experiment 22</span>
+
+            <h1>Change Text Using JavaScript</h1>
+
+            <p>
+                Create a webpage that changes text using JavaScript.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="demo-box">
+
+                <div id="message">
+                    Welcome to JavaScript!
+                </div>
+
+                <button id="changeTextButton">
+                    Change Text
+                </button>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+    const changeTextButton =
+        document.getElementById("changeTextButton");
+
+    const message =
+        document.getElementById("message");
+
+    changeTextButton.addEventListener("click", function () {
+
+        message.textContent =
+            "The text has been changed using JavaScript!";
+
+    });
+
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+
+        mobileNav.classList.toggle("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            mobileNav.classList.contains("active")
+        );
+
+    });
+</script>
+
+</body>
+</html>

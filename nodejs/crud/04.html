@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>CRUD-04 | Product Management</title>
+
+    <link
+        rel="stylesheet"
+        href="../../styles/main.css"
+    >
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-content">
+
+        <h1>HTML-CSS-JS Practical</h1>
+
+        <button
+            class="menu-toggle"
+            onclick="toggleMenu()"
+        >
+            ☰
+        </button>
+
+        <nav id="mainNav">
+
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML</a>
+            <a href="../../css/index.html">CSS</a>
+            <a href="../../javascript/index.html">
+                JavaScript
+            </a>
+            <a href="../index.html">
+                Node.js
+            </a>
+            <a href="index.html">
+                CRUD
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="page-header">
+
+        <h1>CRUD Operations - Experiment 04</h1>
+
+        <p>
+            Create a Product Management CRUD application.
+        </p>
+
+    </section>
+
+
+    <section class="experiment-wrapper">
+
+        <div class="experiment-card">
+
+            <div class="experiment-header">
+
+                <h2>
+                    Product Management
+                </h2>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>Product Operations</h3>
+
+                <pre>
+Create Product
+Read Products
+Update Product
+Delete Product
+                </pre>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>API Routes</h3>
+
+                <pre>
+GET     /products
+POST    /products
+PUT     /products/:id
+DELETE  /products/:id
+                </pre>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>Run</h3>
+
+                <pre>
+node 04.js
+                </pre>
+
+                <p>
+                    Server:
+                </p>
+
+                <pre>
+http://localhost:3054
+                </pre>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        HTML-CSS-JS Practical |
+        Product Management CRUD
+    </p>
+
+</footer>
+
+
+<script>
+
+function toggleMenu() {
+
+    const nav =
+        document.getElementById("mainNav");
+
+    nav.classList.toggle("active");
+
+}
+
+</script>
+
+</body>
+
+</html>

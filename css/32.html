@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Experiment 32</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .shadow-demo {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .shadow-card {
+            min-height: 220px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 1px solid #cccccc;
+            border-radius: 12px;
+            background: #ffffff;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.20);
+        }
+
+        .shadow-card h2 {
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 4px #aaaaaa;
+        }
+
+        .strong-shadow {
+            box-shadow:
+                0 15px 30px rgba(0, 0, 0, 0.30);
+        }
+
+        .text-shadow-large {
+            font-size: 30px;
+            font-weight: bold;
+            text-shadow:
+                4px 4px 5px #999999;
+        }
+
+        .inner-shadow {
+            box-shadow:
+                inset 0 0 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .shadow-info {
+            grid-column: 1 / -1;
+            padding: 20px;
+            background: #eeeeee;
+            border-left: 4px solid #111111;
+        }
+
+        @media (max-width: 600px) {
+            .shadow-demo {
+                grid-template-columns: 1fr;
+            }
+
+            .shadow-info {
+                grid-column: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 32</span>
+
+            <h1>Box Shadow and Text Shadow</h1>
+
+            <p>
+                Demonstration of box-shadow and text-shadow
+                properties.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="shadow-demo">
+
+                <div class="shadow-card">
+
+                    <h2>Box Shadow</h2>
+
+                    <p>
+                        This card uses the box-shadow property.
+                    </p>
+
+                </div>
+
+                <div class="shadow-card strong-shadow">
+
+                    <h2>Strong Shadow</h2>
+
+                    <p>
+                        This example uses a larger shadow.
+                    </p>
+
+                </div>
+
+                <div class="shadow-card inner-shadow">
+
+                    <h2>Inner Shadow</h2>
+
+                    <p>
+                        This example uses inset shadow.
+                    </p>
+
+                </div>
+
+                <div class="shadow-card">
+
+                    <div class="text-shadow-large">
+                        Text Shadow
+                    </div>
+
+                    <p>
+                        The heading uses text-shadow.
+                    </p>
+
+                </div>
+
+                <div class="shadow-info">
+
+                    <h3>Shadow Properties</h3>
+
+                    <p>
+                        <strong>box-shadow</strong> adds a shadow
+                        around an element's box.
+                    </p>
+
+                    <p>
+                        <strong>text-shadow</strong> adds a shadow
+                        effect to text.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+</script>
+
+</body>
+</html>

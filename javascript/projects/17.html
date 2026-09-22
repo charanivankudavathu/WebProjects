@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PROJECT-17 | Interactive Portfolio</title>
+
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .portfolio {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .portfolio-hero {
+            padding: 45px 25px;
+            background: #111111;
+            color: #ffffff;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .portfolio-hero h2 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-hero p {
+            font-size: 18px;
+        }
+
+        .portfolio-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 22px;
+            border-radius: 6px;
+            background: #ffffff;
+            color: #111111;
+            border: none;
+            cursor: pointer;
+        }
+
+        .portfolio-section {
+            margin-top: 25px;
+            padding: 25px;
+            border: 1px solid #cccccc;
+            border-radius: 10px;
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .skill {
+            padding: 20px;
+            background: #eeeeee;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .portfolio-project {
+            padding: 20px;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 12px;
+            border: 1px solid #999999;
+            border-radius: 6px;
+        }
+
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            align-self: flex-start;
+            padding: 12px 22px;
+            border: none;
+            border-radius: 6px;
+            background: #111111;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        #contactMessage {
+            font-weight: 600;
+        }
+
+        @media (max-width: 700px) {
+
+            .skills {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-hero h2 {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 450px) {
+
+            .skills {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">
+                        HTML • CSS • JavaScript
+                    </span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                aria-expanded="false"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+
+            <span class="eyebrow">PROJECT-17</span>
+
+            <h1>Complete Interactive Portfolio</h1>
+
+            <p>
+                Create a complete interactive portfolio website
+                using HTML, CSS, and JavaScript.
+            </p>
+
+        </div>
+
+        <div class="portfolio">
+
+            <section class="portfolio-hero">
+
+                <h2>Charani Vankudavathu</h2>
+
+                <p>
+                    B.Tech Student | Web Developer | JavaScript Learner
+                </p>
+
+                <button
+                    class="portfolio-button"
+                    id="scrollButton"
+                >
+                    View My Work
+                </button>
+
+            </section>
+
+            <section class="portfolio-section">
+
+                <h2>About Me</h2>
+
+                <p>
+                    I am a B.Tech student interested in web development,
+                    programming, data structures, and interactive web
+                    applications.
+                </p>
+
+            </section>
+
+            <section class="portfolio-section">
+
+                <h2>Skills</h2>
+
+                <div class="skills">
+
+                    <div class="skill">HTML</div>
+                    <div class="skill">CSS</div>
+                    <div class="skill">JavaScript</div>
+                    <div class="skill">Python</div>
+                    <div class="skill">C</div>
+                    <div class="skill">Git</div>
+                    <div class="skill">Responsive Design</div>
+                    <div class="skill">Web Development</div>
+
+                </div>
+
+            </section>
+
+            <section
+                class="portfolio-section"
+                id="projectsSection"
+            >
+
+                <h2>Projects</h2>
+
+                <div class="project-grid">
+
+                    <div class="portfolio-project">
+                        <h3>Hotel Website</h3>
+                        <p>
+                            A responsive hotel website built using
+                            HTML, CSS, and JavaScript.
+                        </p>
+                    </div>
+
+                    <div class="portfolio-project">
+                        <h3>DSA Visualization</h3>
+                        <p>
+                            An interactive application for visualizing
+                            data structures and algorithms.
+                        </p>
+                    </div>
+
+                    <div class="portfolio-project">
+                        <h3>Travel Website</h3>
+                        <p>
+                            A responsive travel website with packages,
+                            gallery, and contact sections.
+                        </p>
+                    </div>
+
+                    <div class="portfolio-project">
+                        <h3>Practical Lab</h3>
+                        <p>
+                            A collection of HTML, CSS, and JavaScript
+                            practical programs.
+                        </p>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="portfolio-section">
+
+                <h2>Contact Me</h2>
+
+                <form class="contact-form" id="contactForm">
+
+                    <input
+                        type="text"
+                        id="contactName"
+                        placeholder="Your Name"
+                    >
+
+                    <input
+                        type="email"
+                        id="contactEmail"
+                        placeholder="Your Email"
+                    >
+
+                    <textarea
+                        id="contactText"
+                        placeholder="Your Message"
+                    ></textarea>
+
+                    <button type="submit">
+                        Send Message
+                    </button>
+
+                    <div id="contactMessage"></div>
+
+                </form>
+
+            </section>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<script>
+const menuButton =
+    document.getElementById("menuButton");
+
+const mobileNav =
+    document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+
+});
+
+document
+    .getElementById("scrollButton")
+    .addEventListener("click", function () {
+
+        document
+            .getElementById("projectsSection")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    });
+
+document
+    .getElementById("contactForm")
+    .addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        const name =
+            document.getElementById("contactName")
+                .value.trim();
+
+        const email =
+            document.getElementById("contactEmail")
+                .value.trim();
+
+        const message =
+            document.getElementById("contactText")
+                .value.trim();
+
+        const output =
+            document.getElementById("contactMessage");
+
+        if (name === "" || email === "" || message === "") {
+
+            output.textContent =
+                "Please fill in all fields.";
+
+            return;
+        }
+
+        if (
+            !/^[^\s@]+@[^\s@]+\.[^\s@]+$/
+                .test(email)
+        ) {
+
+            output.textContent =
+                "Please enter a valid email address.";
+
+            return;
+        }
+
+        output.textContent =
+            "Thank you! Your message has been submitted.";
+
+        document.getElementById("contactForm").reset();
+
+    });
+</script>
+
+</body>
+</html>

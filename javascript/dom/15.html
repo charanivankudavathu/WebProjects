@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DOM-15 | Image Slideshow</title>
+
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .dom-demo {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .slideshow {
+            position: relative;
+            text-align: center;
+        }
+
+        .slide-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid #aaa;
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .demo-button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            background: #111;
+            color: white;
+            cursor: pointer;
+        }
+
+        .demo-button:hover {
+            background: #333;
+        }
+
+        .slide-number {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">DOM Manipulation • Experiment 15</span>
+
+            <h1>Image Slideshow / Carousel</h1>
+
+            <p>
+                Create an image slideshow using JavaScript.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="dom-demo">
+
+                <div class="slideshow">
+
+                    <img
+                        id="slideImage"
+                        class="slide-image"
+                        src="https://picsum.photos/id/1015/800/400"
+                        alt="Slideshow Image"
+                    >
+
+                    <div class="slide-number">
+                        Image
+                        <span id="slideNumber">1</span>
+                        of 4
+                    </div>
+
+                    <div class="button-row">
+
+                        <button
+                            class="demo-button"
+                            id="previousButton"
+                        >
+                            Previous
+                        </button>
+
+                        <button
+                            class="demo-button"
+                            id="nextButton"
+                        >
+                            Next
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+    const images = [
+
+        "https://picsum.photos/id/1015/800/400",
+
+        "https://picsum.photos/id/1016/800/400",
+
+        "https://picsum.photos/id/1018/800/400",
+
+        "https://picsum.photos/id/1025/800/400"
+
+    ];
+
+    let currentSlide = 0;
+
+    const slideImage =
+        document.getElementById("slideImage");
+
+    const slideNumber =
+        document.getElementById("slideNumber");
+
+    const nextButton =
+        document.getElementById("nextButton");
+
+    const previousButton =
+        document.getElementById("previousButton");
+
+    function showSlide() {
+
+        slideImage.src =
+            images[currentSlide];
+
+        slideNumber.textContent =
+            currentSlide + 1;
+
+    }
+
+    nextButton.addEventListener("click", function () {
+
+        currentSlide++;
+
+        if (currentSlide >= images.length) {
+
+            currentSlide = 0;
+
+        }
+
+        showSlide();
+
+    });
+
+    previousButton.addEventListener("click", function () {
+
+        currentSlide--;
+
+        if (currentSlide < 0) {
+
+            currentSlide = images.length - 1;
+
+        }
+
+        showSlide();
+
+    });
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+
+        mobileNav.classList.toggle("active");
+
+    });
+</script>
+
+</body>
+</html>

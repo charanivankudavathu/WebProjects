@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Experiment 21</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .student-profile {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            padding: 30px;
+            background: #111111;
+            color: #ffffff;
+            border-radius: 12px;
+        }
+
+        .profile-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: #ffffff;
+            color: #111111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .profile-header h2 {
+            margin-bottom: 8px;
+        }
+
+        .profile-header p {
+            color: #dddddd;
+        }
+
+        .profile-section {
+            margin-top: 20px;
+            padding: 25px;
+            background: #eeeeee;
+            border: 2px solid #111111;
+            border-radius: 10px;
+        }
+
+        .profile-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .detail-item {
+            padding: 15px;
+            background: #ffffff;
+            border: 1px solid #999999;
+            border-radius: 8px;
+        }
+
+        .detail-item strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .subject-list {
+            padding-left: 20px;
+            line-height: 1.9;
+        }
+
+        @media (max-width: 600px) {
+
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-details {
+                grid-template-columns: 1fr;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+
+            <span class="eyebrow">CSS • Experiment 21</span>
+
+            <h1>College / Student Profile</h1>
+
+            <p>
+                A professional student profile page created
+                using HTML and CSS.
+            </p>
+
+        </div>
+
+        <div class="output-box">
+
+            <div class="student-profile">
+
+                <section class="profile-header">
+
+                    <div class="profile-avatar">
+                        CV
+                    </div>
+
+                    <div>
+                        <h2>Charani Vankudavathu</h2>
+
+                        <p>
+                            B.Tech Computer Science Student
+                        </p>
+
+                        <p>
+                            Sai University
+                        </p>
+                    </div>
+
+                </section>
+
+                <section class="profile-section">
+
+                    <h3>Student Information</h3>
+
+                    <div class="profile-details">
+
+                        <div class="detail-item">
+                            <strong>Roll Number</strong>
+                            59
+                        </div>
+
+                        <div class="detail-item">
+                            <strong>Program</strong>
+                            B.Tech
+                        </div>
+
+                        <div class="detail-item">
+                            <strong>Department</strong>
+                            Computer Science
+                        </div>
+
+                        <div class="detail-item">
+                            <strong>Year</strong>
+                            Second Year
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <section class="profile-section">
+
+                    <h3>Subjects</h3>
+
+                    <ul class="subject-list">
+                        <li>Data Structures</li>
+                        <li>Design and Analysis of Algorithms</li>
+                        <li>Web Development</li>
+                        <li>Programming</li>
+                    </ul>
+
+                </section>
+
+                <section class="profile-section">
+
+                    <h3>About Student</h3>
+
+                    <p>
+                        This profile demonstrates how CSS can be used
+                        to create a clean and responsive college
+                        student profile page.
+                    </p>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+
+});
+</script>
+
+</body>
+</html>

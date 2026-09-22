@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DOM-14 | Dependent Dropdown</title>
+
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .dom-demo {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .dropdown-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .dropdown-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .dropdown-group label {
+            font-weight: bold;
+        }
+
+        .dropdown-group select {
+            padding: 12px;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+        }
+
+        .result {
+            padding: 15px;
+            background: #eeeeee;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            .dropdown-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">DOM Manipulation • Experiment 14</span>
+
+            <h1>Country → State → City Dependent Dropdown</h1>
+
+            <p>
+                Create dependent dropdown lists using JavaScript.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="dom-demo">
+
+                <div class="dropdown-row">
+
+                    <div class="dropdown-group">
+
+                        <label for="country">
+                            Country
+                        </label>
+
+                        <select id="country">
+
+                            <option value="">
+                                Select Country
+                            </option>
+
+                            <option value="india">
+                                India
+                            </option>
+
+                            <option value="usa">
+                                USA
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="dropdown-group">
+
+                        <label for="state">
+                            State
+                        </label>
+
+                        <select id="state" disabled>
+
+                            <option value="">
+                                Select State
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="dropdown-group">
+
+                        <label for="city">
+                            City
+                        </label>
+
+                        <select id="city" disabled>
+
+                            <option value="">
+                                Select City
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="result" id="result">
+                    Select your location.
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+    const data = {
+
+        india: {
+
+            TamilNadu: ["Chennai", "Coimbatore", "Madurai"],
+
+            Karnataka: ["Bengaluru", "Mysuru", "Mangaluru"],
+
+            Maharashtra: ["Mumbai", "Pune", "Nagpur"]
+
+        },
+
+        usa: {
+
+            California: ["Los Angeles", "San Francisco", "San Diego"],
+
+            Texas: ["Houston", "Dallas", "Austin"],
+
+            NewYork: ["New York City", "Buffalo", "Rochester"]
+
+        }
+
+    };
+
+    const country =
+        document.getElementById("country");
+
+    const state =
+        document.getElementById("state");
+
+    const city =
+        document.getElementById("city");
+
+    const result =
+        document.getElementById("result");
+
+    country.addEventListener("change", function () {
+
+        state.innerHTML =
+            '<option value="">Select State</option>';
+
+        city.innerHTML =
+            '<option value="">Select City</option>';
+
+        city.disabled = true;
+
+        const selectedCountry =
+            country.value;
+
+        if (selectedCountry === "") {
+
+            state.disabled = true;
+
+            result.textContent =
+                "Select your location.";
+
+            return;
+        }
+
+        state.disabled = false;
+
+        Object.keys(data[selectedCountry])
+            .forEach(function (stateName) {
+
+                const option =
+                    document.createElement("option");
+
+                option.value = stateName;
+                option.textContent =
+                    stateName.replace(/([A-Z])/g, " $1").trim();
+
+                state.appendChild(option);
+
+            });
+
+    });
+
+    state.addEventListener("change", function () {
+
+        city.innerHTML =
+            '<option value="">Select City</option>';
+
+        const selectedCountry =
+            country.value;
+
+        const selectedState =
+            state.value;
+
+        if (selectedState === "") {
+
+            city.disabled = true;
+
+            return;
+        }
+
+        city.disabled = false;
+
+        data[selectedCountry][selectedState]
+            .forEach(function (cityName) {
+
+                const option =
+                    document.createElement("option");
+
+                option.value = cityName;
+                option.textContent = cityName;
+
+                city.appendChild(option);
+
+            });
+
+    });
+
+    city.addEventListener("change", function () {
+
+        if (city.value !== "") {
+
+            result.textContent =
+                "Selected Location: " +
+                country.options[country.selectedIndex].text +
+                " → " +
+                state.options[state.selectedIndex].text +
+                " → " +
+                city.value;
+
+        }
+
+    });
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+
+        mobileNav.classList.toggle("active");
+
+    });
+</script>
+
+</body>
+</html>

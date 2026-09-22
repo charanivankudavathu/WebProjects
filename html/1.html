@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Experiment 01</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+
+        <a href="../index.html" class="logo">
+            <div class="logo-mark">C</div>
+            <div class="logo-text">
+                <span class="logo-title">PRACTICAL LAB</span>
+                <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+            </div>
+        </a>
+
+        <nav class="desktop-nav">
+            <a href="../index.html">Home</a>
+            <a href="index.html" class="active">HTML</a>
+            <a href="../css/index.html">CSS</a>
+            <a href="../javascript/index.html">JavaScript</a>
+        </nav>
+
+        <button class="menu-button" id="menuButton"
+            aria-label="Open navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </div>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">HTML Programs</a>
+        <a href="../css/index.html">CSS Programs</a>
+        <a href="../javascript/index.html">JavaScript Programs</a>
+    </nav>
+</div>
+
+
+</header>
+
+<main class="experiment-wrapper">
+
+
+<article class="experiment-card">
+
+    <div class="experiment-header">
+        <span class="eyebrow">HTML • Experiment 01</span>
+        <h1>Basic HTML Webpage</h1>
+        <p>Demonstration of headings, paragraphs and line breaks using HTML.</p>
+    </div>
+
+    <div class="output-box">
+
+        <h1>Main Heading</h1>
+        <h2>Second Level Heading</h2>
+        <h3>Third Level Heading</h3>
+
+        <p>
+            This is a paragraph created using HTML.
+        </p>
+
+        <p>
+            HTML is used to structure content on a webpage.
+            <br>
+            This sentence appears on a new line.
+            <br>
+            The line break is created using the br element.
+        </p>
+
+    </div>
+
+</article>
+
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+        <div class="footer-links">
+            <a href="../index.html">Home</a>
+            <a href="index.html">HTML Programs</a>
+        </div>
+    </div>
+</div>
+
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    const isOpen = mobileNav.classList.contains("active");
+    menuButton.setAttribute("aria-expanded", isOpen);
+});
+</script>
+
+</body>
+</html>

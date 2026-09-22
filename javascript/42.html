@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JS-42 | Callbacks, Promises & Async Await</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .demo-section {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #444;
+            border-radius: 10px;
+            background: #111;
+            color: #fff;
+        }
+
+        .demo-section h3 {
+            margin-top: 0;
+        }
+
+        button {
+            padding: 10px 18px;
+            margin: 5px;
+            border: none;
+            border-radius: 6px;
+            background: #fff;
+            color: #111;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background: #ddd;
+        }
+
+        .output {
+            margin-top: 15px;
+            padding: 15px;
+            background: #222;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="../css/index.html">CSS</a>
+                <a href="index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="../css/index.html">CSS Programs</a>
+            <a href="index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">JavaScript • Experiment 42</span>
+
+            <h1>Callbacks, Promises & Async/Await</h1>
+
+            <p>
+                Demonstration of three common techniques for handling
+                asynchronous JavaScript operations.
+            </p>
+        </div>
+
+
+        <div class="demo-section">
+
+            <h3>1. Callback</h3>
+
+            <button onclick="runCallback()">
+                Run Callback
+            </button>
+
+            <div class="output" id="callbackOutput">
+                Click the button.
+            </div>
+
+        </div>
+
+
+        <div class="demo-section">
+
+            <h3>2. Promise</h3>
+
+            <button onclick="runPromise()">
+                Run Promise
+            </button>
+
+            <div class="output" id="promiseOutput">
+                Click the button.
+            </div>
+
+        </div>
+
+
+        <div class="demo-section">
+
+            <h3>3. Async/Await</h3>
+
+            <button onclick="runAsync()">
+                Run Async/Await
+            </button>
+
+            <div class="output" id="asyncOutput">
+                Click the button.
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+
+<script>
+
+    function callbackExample(callback) {
+
+        setTimeout(function () {
+            callback("Callback executed successfully.");
+        }, 1000);
+
+    }
+
+
+    function runCallback() {
+
+        document.getElementById("callbackOutput").textContent =
+            "Waiting for callback...";
+
+        callbackExample(function (message) {
+
+            document.getElementById("callbackOutput").textContent =
+                message;
+
+        });
+
+    }
+
+
+    function promiseExample() {
+
+        return new Promise(function (resolve) {
+
+            setTimeout(function () {
+
+                resolve("Promise resolved successfully.");
+
+            }, 1000);
+
+        });
+
+    }
+
+
+    function runPromise() {
+
+        document.getElementById("promiseOutput").textContent =
+            "Waiting for promise...";
+
+        promiseExample().then(function (message) {
+
+            document.getElementById("promiseOutput").textContent =
+                message;
+
+        });
+
+    }
+
+
+    async function runAsync() {
+
+        document.getElementById("asyncOutput").textContent =
+            "Waiting for async operation...";
+
+        const message = await promiseExample();
+
+        document.getElementById("asyncOutput").textContent =
+            "Async/Await: " + message;
+
+    }
+
+
+    const menuButton = document.getElementById("menuButton");
+    const mobileNav = document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+
+        mobileNav.classList.toggle("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            mobileNav.classList.contains("active")
+        );
+
+    });
+
+</script>
+
+</body>
+</html>

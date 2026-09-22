@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT-10 | Expense Tracker</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .expense-demo {
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .expense-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 10px;
+        }
+
+        .expense-form input {
+            padding: 12px;
+            border: 1px solid #999999;
+            border-radius: 6px;
+        }
+
+        .expense-form button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            background: #111111;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .expense-list {
+            margin-top: 25px;
+        }
+
+        .expense-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px;
+            margin-bottom: 8px;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+        }
+
+        #total {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 650px) {
+            .expense-form {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">PROJECT-10</span>
+            <h1>Expense Tracker</h1>
+            <p>Add expenses and calculate the total amount.</p>
+        </div>
+
+        <div class="expense-demo">
+
+            <div class="expense-form">
+
+                <input
+                    type="text"
+                    id="description"
+                    placeholder="Expense description"
+                >
+
+                <input
+                    type="number"
+                    id="amount"
+                    placeholder="Amount"
+                    min="0"
+                    step="0.01"
+                >
+
+                <button id="addButton">
+                    Add Expense
+                </button>
+
+            </div>
+
+            <div class="expense-list" id="expenseList"></div>
+
+            <div id="total">
+                Total: ₹0.00
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+
+let expenses = [];
+
+function displayExpenses() {
+
+    const list = document.getElementById("expenseList");
+
+    list.innerHTML = "";
+
+    let total = 0;
+
+    expenses.forEach(function (expense, index) {
+
+        total += expense.amount;
+
+        const div = document.createElement("div");
+        div.className = "expense-item";
+
+        div.innerHTML = `
+            <span>${expense.description}</span>
+            <span>
+                ₹${expense.amount.toFixed(2)}
+                <button onclick="deleteExpense(${index})">Delete</button>
+            </span>
+        `;
+
+        list.appendChild(div);
+
+    });
+
+    document.getElementById("total").textContent =
+        `Total: ₹${total.toFixed(2)}`;
+}
+
+function deleteExpense(index) {
+
+    expenses.splice(index, 1);
+
+    displayExpenses();
+}
+
+document.getElementById("addButton").addEventListener("click", function () {
+
+    const description =
+        document.getElementById("description").value.trim();
+
+    const amount =
+        Number(document.getElementById("amount").value);
+
+    if (description === "" || amount <= 0) {
+        alert("Enter a valid description and amount.");
+        return;
+    }
+
+    expenses.push({
+        description: description,
+        amount: amount
+    });
+
+    document.getElementById("description").value = "";
+    document.getElementById("amount").value = "";
+
+    displayExpenses();
+
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DOM-08 | Dynamic Table</title>
+
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .dom-demo {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr auto;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .input-row input {
+            padding: 12px;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+        }
+
+        .demo-button {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 6px;
+            background: #111;
+            color: white;
+            cursor: pointer;
+        }
+
+        .demo-button:hover {
+            background: #333;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        @media (max-width: 700px) {
+            .input-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">DOM Manipulation • Experiment 08</span>
+
+            <h1>Create a Dynamic Table Using JavaScript</h1>
+
+            <p>
+                Create table rows and cells dynamically using JavaScript.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="dom-demo">
+
+                <div class="input-row">
+
+                    <input
+                        type="text"
+                        id="rollInput"
+                        placeholder="Roll Number"
+                    >
+
+                    <input
+                        type="text"
+                        id="nameInput"
+                        placeholder="Student Name"
+                    >
+
+                    <input
+                        type="number"
+                        id="marksInput"
+                        placeholder="Marks"
+                    >
+
+                    <button class="demo-button" id="addButton">
+                        Add
+                    </button>
+
+                </div>
+
+                <div class="table-wrapper">
+
+                    <table id="studentTable">
+
+                        <thead>
+                            <tr>
+                                <th>Roll No</th>
+                                <th>Name</th>
+                                <th>Marks</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tableBody"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+    const rollInput =
+        document.getElementById("rollInput");
+
+    const nameInput =
+        document.getElementById("nameInput");
+
+    const marksInput =
+        document.getElementById("marksInput");
+
+    const addButton =
+        document.getElementById("addButton");
+
+    const tableBody =
+        document.getElementById("tableBody");
+
+    addButton.addEventListener("click", function () {
+
+        const roll = rollInput.value.trim();
+        const name = nameInput.value.trim();
+        const marks = marksInput.value.trim();
+
+        if (roll === "" || name === "" || marks === "") {
+
+            alert("Please fill all fields.");
+
+            return;
+        }
+
+        const row = document.createElement("tr");
+
+        const rollCell = document.createElement("td");
+        rollCell.textContent = roll;
+
+        const nameCell = document.createElement("td");
+        nameCell.textContent = name;
+
+        const marksCell = document.createElement("td");
+        marksCell.textContent = marks;
+
+        row.appendChild(rollCell);
+        row.appendChild(nameCell);
+        row.appendChild(marksCell);
+
+        tableBody.appendChild(row);
+
+        rollInput.value = "";
+        nameInput.value = "";
+        marksInput.value = "";
+
+        rollInput.focus();
+
+    });
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+
+        mobileNav.classList.toggle("active");
+
+    });
+</script>
+
+</body>
+</html>

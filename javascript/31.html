@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JS-31 | Form Validation</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .validation-form {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            border: 1px solid #555;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .error {
+            display: block;
+            min-height: 20px;
+            margin-top: 6px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .validation-form button {
+            padding: 12px 24px;
+            background: #111;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .validation-form button:hover {
+            background: #333;
+        }
+
+        #success {
+            display: none;
+            margin-top: 20px;
+            padding: 18px;
+            background: #111;
+            color: #fff;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">J</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="../css/index.html">CSS</a>
+                <a href="index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="../css/index.html">CSS Programs</a>
+            <a href="index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">JavaScript • Experiment 31</span>
+
+            <h1>Validate Name, Email, Phone & Password</h1>
+
+            <p>
+                Validate user information using JavaScript.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <form class="validation-form" id="validationForm" novalidate>
+
+                <div class="form-group">
+
+                    <label for="name">Name</label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                    >
+
+                    <span class="error" id="nameError"></span>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">Email</label>
+
+                    <input
+                        type="text"
+                        id="email"
+                        placeholder="example@email.com"
+                    >
+
+                    <span class="error" id="emailError"></span>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="phone">Phone Number</label>
+
+                    <input
+                        type="text"
+                        id="phone"
+                        placeholder="10 digit phone number"
+                    >
+
+                    <span class="error" id="phoneError"></span>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">Password</label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Minimum 8 characters"
+                    >
+
+                    <span class="error" id="passwordError"></span>
+
+                </div>
+
+
+                <button type="submit">
+                    Validate
+                </button>
+
+                <div id="success">
+                    All details are valid. Form submitted successfully!
+                </div>
+
+            </form>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+
+    const form =
+        document.getElementById("validationForm");
+
+    form.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        let valid = true;
+
+        const name =
+            document.getElementById("name").value.trim();
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const phone =
+            document.getElementById("phone").value.trim();
+
+        const password =
+            document.getElementById("password").value;
+
+
+        const nameError =
+            document.getElementById("nameError");
+
+        const emailError =
+            document.getElementById("emailError");
+
+        const phoneError =
+            document.getElementById("phoneError");
+
+        const passwordError =
+            document.getElementById("passwordError");
+
+        const success =
+            document.getElementById("success");
+
+
+        nameError.textContent = "";
+        emailError.textContent = "";
+        phoneError.textContent = "";
+        passwordError.textContent = "";
+
+        success.style.display = "none";
+
+
+        if (!/^[A-Za-z ]{3,}$/.test(name)) {
+
+            nameError.textContent =
+                "Enter a valid name with at least 3 letters.";
+
+            valid = false;
+
+        }
+
+
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+
+            emailError.textContent =
+                "Enter a valid email address.";
+
+            valid = false;
+
+        }
+
+
+        if (!/^[0-9]{10}$/.test(phone)) {
+
+            phoneError.textContent =
+                "Phone number must contain exactly 10 digits.";
+
+            valid = false;
+
+        }
+
+
+        if (password.length < 8) {
+
+            passwordError.textContent =
+                "Password must contain at least 8 characters.";
+
+            valid = false;
+
+        }
+
+
+        if (valid) {
+
+            success.style.display = "block";
+
+            form.reset();
+
+        }
+
+    });
+
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function() {
+
+        mobileNav.classList.toggle("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            mobileNav.classList.contains("active")
+        );
+
+    });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EVENT-06 | Event Delegation</title>
+
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .event-demo {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .item-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .item {
+            padding: 16px;
+            margin: 10px 0;
+            background: #eeeeee;
+            border-radius: 8px;
+            cursor: pointer;
+            border-left: 4px solid #111;
+        }
+
+        .item:hover {
+            background: #ddd;
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            background: #111;
+            color: white;
+            border-radius: 8px;
+        }
+
+        .demo-button {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 6px;
+            background: #111;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">Events • Experiment 06</span>
+
+            <h1>Event Delegation</h1>
+
+            <p>
+                Handle events for multiple child elements using one parent listener.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="event-demo">
+
+                <ul id="itemList" class="item-list">
+
+                    <li class="item">HTML</li>
+                    <li class="item">CSS</li>
+                    <li class="item">JavaScript</li>
+                    <li class="item">DOM</li>
+                    <li class="item">Events</li>
+
+                </ul>
+
+                <button id="addButton" class="demo-button">
+                    Add New Item
+                </button>
+
+                <div id="status" class="status">
+                    Click any item.
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+    const itemList =
+        document.getElementById("itemList");
+
+    const status =
+        document.getElementById("status");
+
+    itemList.addEventListener("click", function (event) {
+
+        if (event.target.classList.contains("item")) {
+
+            status.textContent =
+                "You selected: " +
+                event.target.textContent;
+
+        }
+
+    });
+
+    document
+        .getElementById("addButton")
+        .addEventListener("click", function () {
+
+            const newItem =
+                document.createElement("li");
+
+            newItem.className = "item";
+
+            newItem.textContent =
+                "New Dynamic Item";
+
+            itemList.appendChild(newItem);
+
+        });
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+
+        mobileNav.classList.toggle("active");
+
+    });
+</script>
+
+</body>
+</html>

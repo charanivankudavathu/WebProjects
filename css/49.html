@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS 49 - Three Column Flexbox</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .three-column {
+            display: flex;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .column-box {
+            flex: 1;
+            padding: 25px;
+            background: #eeeeee;
+            border: 2px solid #222222;
+            border-radius: 12px;
+        }
+
+        .column-box:nth-child(2) {
+            background: #cccccc;
+        }
+
+        .column-box:nth-child(3) {
+            background: #888888;
+            color: #ffffff;
+        }
+
+        .column-box h2 {
+            margin-bottom: 12px;
+        }
+
+        .column-box p {
+            line-height: 1.7;
+        }
+
+        @media (max-width: 750px) {
+            .three-column {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 49</span>
+
+            <h1>Three-Column Layout Using Flexbox</h1>
+
+            <p>
+                A responsive three-column webpage layout
+                created using CSS Flexbox.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="three-column">
+
+                <section class="column-box">
+                    <h2>Column One</h2>
+
+                    <p>
+                        Flexbox provides an easy way to arrange
+                        elements horizontally.
+                    </p>
+                </section>
+
+                <section class="column-box">
+                    <h2>Column Two</h2>
+
+                    <p>
+                        The flex property allows each column
+                        to share the available space.
+                    </p>
+                </section>
+
+                <section class="column-box">
+                    <h2>Column Three</h2>
+
+                    <p>
+                        Media queries can change the layout
+                        for smaller screens.
+                    </p>
+                </section>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+</script>
+
+</body>
+</html>

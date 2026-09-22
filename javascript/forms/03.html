@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM-03 | Password Strength Checker</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .password-demo {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .password-demo label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .password-demo input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #999999;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .strength {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            background: #eeeeee;
+            font-weight: 600;
+        }
+
+        .requirements {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+        }
+
+        .requirements p {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">FORM-03</span>
+            <h1>Password Strength Checker</h1>
+            <p>Create a password strength checker using JavaScript.</p>
+        </div>
+
+        <div class="password-demo">
+
+            <label for="password">Enter Password</label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+            >
+
+            <div class="strength" id="strength">
+                Password strength will appear here.
+            </div>
+
+            <div class="requirements">
+
+                <strong>Password Requirements</strong>
+
+                <p id="length">✗ At least 8 characters</p>
+                <p id="uppercase">✗ At least one uppercase letter</p>
+                <p id="lowercase">✗ At least one lowercase letter</p>
+                <p id="number">✗ At least one number</p>
+                <p id="special">✗ At least one special character</p>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+
+const password = document.getElementById("password");
+const strength = document.getElementById("strength");
+
+password.addEventListener("input", function () {
+
+    const value = password.value;
+
+    const hasLength = value.length >= 8;
+    const hasUppercase = /[A-Z]/.test(value);
+    const hasLowercase = /[a-z]/.test(value);
+    const hasNumber = /[0-9]/.test(value);
+    const hasSpecial = /[^A-Za-z0-9]/.test(value);
+
+    document.getElementById("length").textContent =
+        (hasLength ? "✓ " : "✗ ") + "At least 8 characters";
+
+    document.getElementById("uppercase").textContent =
+        (hasUppercase ? "✓ " : "✗ ") + "At least one uppercase letter";
+
+    document.getElementById("lowercase").textContent =
+        (hasLowercase ? "✓ " : "✗ ") + "At least one lowercase letter";
+
+    document.getElementById("number").textContent =
+        (hasNumber ? "✓ " : "✗ ") + "At least one number";
+
+    document.getElementById("special").textContent =
+        (hasSpecial ? "✓ " : "✗ ") + "At least one special character";
+
+    let score = 0;
+
+    if (hasLength) score++;
+    if (hasUppercase) score++;
+    if (hasLowercase) score++;
+    if (hasNumber) score++;
+    if (hasSpecial) score++;
+
+    if (value === "") {
+        strength.textContent = "Password strength will appear here.";
+    } else if (score <= 2) {
+        strength.textContent = "Password Strength: Weak";
+    } else if (score <= 4) {
+        strength.textContent = "Password Strength: Medium";
+    } else {
+        strength.textContent = "Password Strength: Strong";
+    }
+});
+</script>
+
+</body>
+</html>

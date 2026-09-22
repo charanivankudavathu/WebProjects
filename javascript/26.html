@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JS-26 | Change Image</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .image-demo {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #demoImage {
+            width: 100%;
+            max-width: 400px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid #555;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .image-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .image-buttons button {
+            padding: 12px 20px;
+            background: #111;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .image-buttons button:hover {
+            background: #333;
+        }
+
+        .image-name {
+            margin-top: 15px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">J</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="../css/index.html">CSS</a>
+                <a href="index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="../css/index.html">CSS Programs</a>
+            <a href="index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">JavaScript • Experiment 26</span>
+
+            <h1>Change Image on Button Click</h1>
+
+            <p>
+                Change an image when a button is clicked using JavaScript.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="image-demo">
+
+                <img
+                    id="demoImage"
+                    src="https://picsum.photos/600/400?random=1"
+                    alt="Demo Image"
+                >
+
+                <div class="image-buttons">
+
+                    <button onclick="changeImage(1)">
+                        Image 1
+                    </button>
+
+                    <button onclick="changeImage(2)">
+                        Image 2
+                    </button>
+
+                    <button onclick="changeImage(3)">
+                        Image 3
+                    </button>
+
+                </div>
+
+                <div class="image-name" id="imageName">
+                    Current Image: 1
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+
+    function changeImage(number) {
+
+        const image =
+            document.getElementById("demoImage");
+
+        const imageName =
+            document.getElementById("imageName");
+
+        image.src =
+            "https://picsum.photos/600/400?random=" + number;
+
+        imageName.textContent =
+            "Current Image: " + number;
+    }
+
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+
+        mobileNav.classList.toggle("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            mobileNav.classList.contains("active")
+        );
+
+    });
+
+</script>
+
+</body>
+</html>

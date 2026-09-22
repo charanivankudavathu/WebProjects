@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT-15 | BMI Calculator</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .bmi-demo {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .bmi-group {
+            margin-bottom: 18px;
+        }
+
+        .bmi-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        .bmi-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #999999;
+            border-radius: 6px;
+        }
+
+        .bmi-demo button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            background: #111111;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 25px;
+            padding: 20px;
+            background: #eeeeee;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">PROJECT-15</span>
+            <h1>BMI Calculator</h1>
+            <p>Calculate BMI using height and weight.</p>
+        </div>
+
+        <div class="bmi-demo">
+
+            <div class="bmi-group">
+                <label for="weight">
+                    Weight (kg)
+                </label>
+
+                <input
+                    type="number"
+                    id="weight"
+                    min="1"
+                    placeholder="Enter weight"
+                >
+            </div>
+
+            <div class="bmi-group">
+                <label for="height">
+                    Height (cm)
+                </label>
+
+                <input
+                    type="number"
+                    id="height"
+                    min="1"
+                    placeholder="Enter height"
+                >
+            </div>
+
+            <button id="calculateButton">
+                Calculate BMI
+            </button>
+
+            <div id="result">
+                Enter your height and weight.
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+
+document.getElementById("calculateButton").addEventListener("click", function () {
+
+    const weight =
+        Number(document.getElementById("weight").value);
+
+    const height =
+        Number(document.getElementById("height").value);
+
+    const result = document.getElementById("result");
+
+    if (weight <= 0 || height <= 0) {
+
+        result.textContent =
+            "Enter valid height and weight.";
+
+        return;
+    }
+
+    const heightInMeters = height / 100;
+
+    const bmi =
+        weight / (heightInMeters * heightInMeters);
+
+    let category;
+
+    if (bmi < 18.5) {
+        category = "Underweight";
+    } else if (bmi < 25) {
+        category = "Normal range";
+    } else if (bmi < 30) {
+        category = "Overweight";
+    } else {
+        category = "Obesity range";
+    }
+
+    result.innerHTML = `
+        <strong>BMI Result</strong><br>
+        BMI: ${bmi.toFixed(2)}<br>
+        Category: ${category}
+    `;
+
+});
+</script>
+
+</body>
+</html>

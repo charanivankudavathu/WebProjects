@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS 38 - Visibility</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .visibility-demo {
+            margin-top: 25px;
+        }
+
+        .visibility-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .visibility-card {
+            flex: 1 1 200px;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #222222;
+        }
+
+        .visible {
+            visibility: visible;
+            background: #ffffff;
+        }
+
+        .hidden {
+            visibility: hidden;
+            background: #cccccc;
+        }
+
+        .display-none {
+            display: none;
+            background: #888888;
+            color: #ffffff;
+        }
+
+        .note {
+            margin-top: 20px;
+            padding: 15px;
+            background: #111111;
+            color: #ffffff;
+            border-radius: 8px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 38</span>
+
+            <h1>Visibility and Hiding Elements</h1>
+
+            <p>
+                Demonstration of the difference between
+                visibility: hidden and display: none.
+            </p>
+        </div>
+
+        <div class="output-box visibility-demo">
+
+            <div class="visibility-box">
+
+                <div class="visibility-card visible">
+                    Visible Element
+                </div>
+
+                <div class="visibility-card hidden">
+                    Hidden Element
+                </div>
+
+                <div class="visibility-card">
+                    Normal Element
+                </div>
+
+            </div>
+
+            <div class="note">
+                <strong>visibility: hidden</strong> hides the element
+                but keeps its original space.
+                <br><br>
+                <strong>display: none</strong> removes the element
+                from the page layout completely.
+            </div>
+
+            <div class="visibility-card display-none">
+                This element is completely removed from the layout.
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+</script>
+
+</body>
+</html>

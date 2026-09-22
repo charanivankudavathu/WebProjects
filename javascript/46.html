@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JS-46 | Responsive Login Form</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .login-container {
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 30px;
+            background: #111;
+            color: #fff;
+            border: 1px solid #444;
+            border-radius: 12px;
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            border: 1px solid #555;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .error {
+            display: block;
+            margin-top: 6px;
+            color: #ff7777;
+            font-size: 14px;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            background: #fff;
+            color: #111;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background: #ddd;
+        }
+
+        .success {
+            margin-top: 20px;
+            padding: 15px;
+            background: #222;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .login-container {
+                margin: 20px 10px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">J</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="../css/index.html">CSS</a>
+                <a href="index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="../css/index.html">CSS Programs</a>
+            <a href="index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">JavaScript • Experiment 46</span>
+
+            <h1>Responsive Login Form</h1>
+
+            <p>
+                A responsive login form with JavaScript validation
+                for email and password.
+            </p>
+        </div>
+
+
+        <div class="login-container">
+
+            <h2>Login</h2>
+
+            <form id="loginForm" novalidate>
+
+                <div class="form-group">
+
+                    <label for="email">Email</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                    >
+
+                    <span class="error" id="emailError"></span>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">Password</label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                    >
+
+                    <span class="error" id="passwordError"></span>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="login-button"
+                >
+                    Login
+                </button>
+
+            </form>
+
+
+            <div
+                class="success"
+                id="successMessage"
+                style="display: none;"
+            ></div>
+
+        </div>
+
+    </article>
+
+</main>
+
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+
+<script>
+
+    const loginForm = document.getElementById("loginForm");
+
+    loginForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const password =
+            document.getElementById("password").value;
+
+        const emailError =
+            document.getElementById("emailError");
+
+        const passwordError =
+            document.getElementById("passwordError");
+
+        const successMessage =
+            document.getElementById("successMessage");
+
+
+        emailError.textContent = "";
+        passwordError.textContent = "";
+
+        successMessage.style.display = "none";
+
+
+        let valid = true;
+
+
+        const emailPattern =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+        if (email === "") {
+
+            emailError.textContent =
+                "Email is required.";
+
+            valid = false;
+
+        } else if (!emailPattern.test(email)) {
+
+            emailError.textContent =
+                "Enter a valid email address.";
+
+            valid = false;
+
+        }
+
+
+        if (password === "") {
+
+            passwordError.textContent =
+                "Password is required.";
+
+            valid = false;
+
+        } else if (password.length < 6) {
+
+            passwordError.textContent =
+                "Password must contain at least 6 characters.";
+
+            valid = false;
+
+        }
+
+
+        if (valid) {
+
+            successMessage.textContent =
+                "Login validation successful!";
+
+            successMessage.style.display = "block";
+
+        }
+
+    });
+
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+
+    menuButton.addEventListener("click", function() {
+
+        mobileNav.classList.toggle("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            mobileNav.classList.contains("active")
+        );
+
+    });
+
+</script>
+
+</body>
+</html>

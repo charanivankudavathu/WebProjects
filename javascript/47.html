@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JS-47 | Interactive Webpage</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .interactive-hero {
+            padding: 50px 25px;
+            margin-top: 20px;
+            border-radius: 12px;
+            background: #111;
+            color: #fff;
+            text-align: center;
+        }
+
+        .interactive-hero h2 {
+            font-size: 32px;
+            margin-top: 0;
+        }
+
+        .interactive-hero p {
+            line-height: 1.7;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 11px 18px;
+            border: none;
+            border-radius: 6px;
+            background: #fff;
+            color: #111;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background: #ddd;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .feature-card {
+            padding: 25px;
+            border: 1px solid #444;
+            border-radius: 10px;
+            background: #111;
+            color: #fff;
+        }
+
+        .feature-card h3 {
+            margin-top: 0;
+        }
+
+        .counter {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 15px 0;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 800px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .interactive-hero h2 {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">J</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="../css/index.html">CSS</a>
+                <a href="index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="../css/index.html">CSS Programs</a>
+            <a href="index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">JavaScript • Experiment 47</span>
+
+            <h1>Complete Interactive Webpage</h1>
+
+            <p>
+                A webpage demonstrating DOM manipulation, events,
+                counters and dynamic content using JavaScript.
+            </p>
+        </div>
+
+
+        <section class="interactive-hero">
+
+            <h2 id="heroTitle">
+                Welcome to Interactive Webpage
+            </h2>
+
+            <p id="heroText">
+                Click the buttons below to interact with this webpage.
+            </p>
+
+
+            <div class="button-group">
+
+                <button onclick="changeText()">
+                    Change Text
+                </button>
+
+                <button onclick="toggleMessage()">
+                    Show / Hide
+                </button>
+
+                <button onclick="resetPage()">
+                    Reset
+                </button>
+
+            </div>
+
+
+            <div id="message">
+                JavaScript makes webpages interactive.
+            </div>
+
+        </section>
+
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+
+                <h3>Counter</h3>
+
+                <div class="counter" id="counter">
+                    0
+                </div>
+
+                <div class="button-group">
+
+                    <button onclick="decreaseCounter()">
+                        −
+                    </button>
+
+                    <button onclick="increaseCounter()">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <h3>Current Time</h3>
+
+                <p id="time">
+                    Click the button.
+                </p>
+
+                <button onclick="showTime()">
+                    Show Time
+                </button>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <h3>Dynamic Content</h3>
+
+                <p id="dynamicContent">
+                    Original content
+                </p>
+
+                <button onclick="changeContent()">
+                    Update Content
+                </button>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+
+<script>
+
+    let counter = 0;
+
+
+    function changeText() {
+
+        document.getElementById("heroTitle").textContent =
+            "JavaScript Interaction Activated!";
+
+        document.getElementById("heroText").textContent =
+            "The webpage content has been changed dynamically.";
+
+    }
+
+
+    function toggleMessage() {
+
+        const message =
+            document.getElementById("message");
+
+        if (message.style.display === "none") {
+
+            message.style.display = "block";
+
+        } else {
+
+            message.style.display = "none";
+
+        }
+
+    }
+
+
+    function increaseCounter() {
+
+        counter++;
+
+        document.getElementById("counter").textContent =
+            counter;
+
+    }
+
+
+    function decreaseCounter() {
+
+        counter--;
+
+        document.getElementById("counter").textContent =
+            counter;
+
+    }
+
+
+    function showTime() {
+
+        const now = new Date();
+
+        document.getElementById("time").textContent =
+            now.toLocaleTimeString();
+
+    }
+
+
+    function changeContent() {
+
+        document.getElementById("dynamicContent").textContent =
+            "This content was created dynamically using JavaScript.";
+
+    }
+
+
+    function resetPage() {
+
+        counter = 0;
+
+        document.getElementById("counter").textContent = "0";
+
+        document.getElementById("heroTitle").textContent =
+            "Welcome to Interactive Webpage";
+
+        document.getElementById("heroText").textContent =
+            "Click the buttons below to interact with this webpage.";
+
+        document.getElementById("message").style.display =
+            "block";
+
+        document.getElementById("dynamicContent").textContent =
+            "Original content";
+
+        document.getElementById("time").textContent =
+            "Click the button.";
+
+    }
+
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+
+    menuButton.addEventListener("click", function() {
+
+        mobileNav.classList.toggle("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            mobileNav.classList.contains("active")
+        );
+
+    });
+
+</script>
+
+</body>
+</html>

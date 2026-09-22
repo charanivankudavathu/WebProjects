@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS 55 - Responsive College Website</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .college-page {
+            margin-top: 25px;
+        }
+
+        .college-hero {
+            padding: 70px 30px;
+            background: #111111;
+            color: #ffffff;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .college-hero h2 {
+            font-size: clamp(30px, 5vw, 52px);
+            margin-bottom: 15px;
+        }
+
+        .college-hero p {
+            max-width: 700px;
+            margin: 0 auto 25px;
+            line-height: 1.7;
+        }
+
+        .hero-button {
+            display: inline-block;
+            padding: 12px 24px;
+
+            background: #ffffff;
+            color: #111111;
+
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 700;
+        }
+
+        .hero-button:hover {
+            background: #dddddd;
+        }
+
+        .college-section {
+            margin-top: 25px;
+        }
+
+        .college-section h2 {
+            margin-bottom: 18px;
+        }
+
+        .college-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .college-card {
+            padding: 25px;
+            background: #eeeeee;
+            border: 2px solid #222222;
+            border-radius: 10px;
+        }
+
+        .college-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .college-card p {
+            line-height: 1.7;
+        }
+
+        .college-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .stat {
+            padding: 25px 15px;
+            background: #cccccc;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 850px) {
+            .college-cards {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .college-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .college-cards,
+            .college-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .college-hero {
+                padding: 50px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 55</span>
+
+            <h1>Responsive College Website Homepage</h1>
+
+            <p>
+                A responsive college homepage using CSS Grid,
+                Flexbox, media queries, and responsive typography.
+            </p>
+        </div>
+
+        <div class="output-box college-page">
+
+            <section class="college-hero">
+
+                <h2>ABC Institute of Technology</h2>
+
+                <p>
+                    Empowering students through quality education,
+                    innovation, research, and practical learning.
+                </p>
+
+                <a href="#" class="hero-button">
+                    Explore Programs
+                </a>
+
+            </section>
+
+            <section class="college-section">
+
+                <h2>Our Programs</h2>
+
+                <div class="college-cards">
+
+                    <div class="college-card">
+                        <h3>Computer Science</h3>
+
+                        <p>
+                            Learn programming, data structures,
+                            web development, and software engineering.
+                        </p>
+                    </div>
+
+                    <div class="college-card">
+                        <h3>Electronics</h3>
+
+                        <p>
+                            Study electronics, communication systems,
+                            embedded systems, and digital technology.
+                        </p>
+                    </div>
+
+                    <div class="college-card">
+                        <h3>Mechanical Engineering</h3>
+
+                        <p>
+                            Explore engineering design, manufacturing,
+                            automation, and mechanical systems.
+                        </p>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="college-section">
+
+                <h2>College at a Glance</h2>
+
+                <div class="college-stats">
+
+                    <div class="stat">
+                        <strong>25+</strong>
+                        Departments
+                    </div>
+
+                    <div class="stat">
+                        <strong>5000+</strong>
+                        Students
+                    </div>
+
+                    <div class="stat">
+                        <strong>250+</strong>
+                        Faculty
+                    </div>
+
+                    <div class="stat">
+                        <strong>50+</strong>
+                        Labs
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT-06 | Weather Application</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .weather-demo {
+            max-width: 650px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .weather-demo input {
+            width: 70%;
+            padding: 12px;
+            border: 1px solid #999999;
+            border-radius: 6px;
+        }
+
+        .weather-demo button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            background: #111111;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        #weatherResult {
+            margin-top: 25px;
+            padding: 25px;
+            background: #eeeeee;
+            border-radius: 10px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 600px) {
+            .weather-demo input {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">PROJECT-06</span>
+            <h1>Weather Application</h1>
+            <p>Get current weather information using an API.</p>
+        </div>
+
+        <div class="weather-demo">
+
+            <input
+                type="text"
+                id="cityInput"
+                placeholder="Enter city"
+            >
+
+            <button id="searchButton">
+                Search
+            </button>
+
+            <div id="weatherResult">
+                Enter a city to get weather information.
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+
+document.getElementById("searchButton").addEventListener("click", async function () {
+
+    const city = document.getElementById("cityInput").value.trim();
+    const result = document.getElementById("weatherResult");
+
+    if (city === "") {
+        result.textContent = "Please enter a city.";
+        return;
+    }
+
+    result.textContent = "Loading weather information...";
+
+    try {
+
+        const geoResponse = await fetch(
+            `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1&language=en&format=json`
+        );
+
+        const geoData = await geoResponse.json();
+
+        if (!geoData.results || geoData.results.length === 0) {
+            result.textContent = "City not found.";
+            return;
+        }
+
+        const place = geoData.results[0];
+
+        const weatherResponse = await fetch(
+            `https://api.open-meteo.com/v1/forecast?latitude=${place.latitude}&longitude=${place.longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m`
+        );
+
+        const weatherData = await weatherResponse.json();
+        const current = weatherData.current;
+
+        result.innerHTML = `
+            <h2>${place.name}</h2>
+            <p>Temperature: ${current.temperature_2m} °C</p>
+            <p>Humidity: ${current.relative_humidity_2m}%</p>
+            <p>Wind Speed: ${current.wind_speed_10m} km/h</p>
+        `;
+
+    } catch (error) {
+
+        result.textContent =
+            "Unable to retrieve weather information.";
+
+    }
+
+});
+</script>
+
+</body>
+</html>

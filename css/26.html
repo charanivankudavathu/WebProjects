@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Experiment 26</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .specificity-demo {
+            display: grid;
+            gap: 20px;
+        }
+
+        .specificity-card {
+            padding: 25px;
+            border: 2px solid #111111;
+            border-radius: 10px;
+            background: #eeeeee;
+        }
+
+        .specificity-card p {
+            color: #555555;
+        }
+
+        .special-text {
+            color: #222222;
+            font-weight: bold;
+        }
+
+        #unique-text {
+            color: #111111;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .inherit-parent {
+            color: #333333;
+            padding: 20px;
+            border: 1px solid #777777;
+            background: #ffffff;
+        }
+
+        .inherit-child {
+            margin-top: 15px;
+            padding: 15px;
+            border: 1px dashed #555555;
+        }
+
+        .important-text {
+            color: #777777 !important;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+
+            <span class="eyebrow">CSS • Experiment 26</span>
+
+            <h1>CSS Inheritance and Specificity</h1>
+
+            <p>
+                Demonstration of inherited styles and the priority
+                of different CSS selectors.
+            </p>
+
+        </div>
+
+        <div class="output-box">
+
+            <div class="specificity-demo">
+
+                <div class="specificity-card">
+
+                    <h3>Specificity</h3>
+
+                    <p>
+                        This paragraph is styled using an
+                        element selector.
+                    </p>
+
+                    <p class="special-text">
+                        This paragraph uses a class selector,
+                        which has higher specificity.
+                    </p>
+
+                    <p id="unique-text">
+                        This paragraph uses an ID selector,
+                        which has higher specificity than a class.
+                    </p>
+
+                    <p class="important-text">
+                        This paragraph demonstrates !important.
+                    </p>
+
+                </div>
+
+                <div class="specificity-card">
+
+                    <h3>Inheritance</h3>
+
+                    <div class="inherit-parent">
+
+                        Parent element text color is inherited
+                        by the child.
+
+                        <div class="inherit-child">
+                            This child inherits the parent's
+                            text color.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+
+});
+</script>
+
+</body>
+</html>

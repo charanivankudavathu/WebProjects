@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Charani Vankudavath - HTML, CSS, JavaScript and Node.js Practical Programs"
+    >
+
+    <meta
+        name="author"
+        content="Charani Vankudavath"
+    >
+
+    <title>Charani Vankudavath | Practical Programs</title>
+
+    <style>
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f4f4;
+            color: #0a0a0a;
+            line-height: 1.6;
+        }
+
+        /* =========================================================
+           VARIABLES
+        ========================================================= */
+
+        :root {
+            --black: #080808;
+            --dark: #111111;
+            --charcoal: #1d1d1d;
+            --dark-grey: #2d2d2d;
+            --grey: #555555;
+            --medium-grey: #777777;
+            --silver: #999999;
+            --border: #d6d6d6;
+            --light-grey: #eeeeee;
+            --soft: #f4f4f4;
+            --white: #ffffff;
+        }
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        header {
+            width: 100%;
+            background: var(--black);
+            color: var(--white);
+            padding: 0 7%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #292929;
+        }
+
+        .header-inner {
+            min-height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .brand h1 {
+            font-size: 21px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            line-height: 1.2;
+        }
+
+        .brand span {
+            color: var(--silver);
+            font-size: 10px;
+            letter-spacing: 3px;
+            margin-top: 4px;
+        }
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        nav a {
+            color: var(--light-grey);
+            text-decoration: none;
+            font-size: 13px;
+            padding: 10px 13px;
+            border-bottom: 2px solid transparent;
+            transition: 0.3s ease;
+            white-space: nowrap;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--white);
+            border-bottom-color: var(--white);
+        }
+
+        .menu-btn {
+            display: none;
+            background: transparent;
+            color: var(--white);
+            border: 1px solid #555;
+            padding: 8px 12px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            background: var(--white);
+            padding: 95px 7% 90px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-container {
+            width: min(1180px, 86%);
+            margin: auto;
+            text-align: center;
+        }
+
+        .hero-label {
+            display: inline-block;
+            color: var(--grey);
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+        }
+
+        .hero h2 {
+            font-size: clamp(38px, 6vw, 68px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 22px;
+        }
+
+        .hero h2 span {
+            color: var(--grey);
+        }
+
+        .hero-description {
+            max-width: 720px;
+            margin: auto;
+            color: var(--grey);
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            margin-top: 32px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 13px 24px;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            transition: 0.3s ease;
+        }
+
+        .hero-btn.primary {
+            background: var(--black);
+            color: var(--white);
+            border: 1px solid var(--black);
+        }
+
+        .hero-btn.primary:hover {
+            background: var(--grey);
+            border-color: var(--grey);
+        }
+
+        .hero-btn.secondary {
+            background: var(--white);
+            color: var(--black);
+            border: 1px solid var(--black);
+        }
+
+        .hero-btn.secondary:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        /* =========================================================
+           MAIN SECTION
+        ========================================================= */
+
+        .section {
+            padding: 70px 0;
+        }
+
+        .container {
+            width: min(1180px, 86%);
+            margin: auto;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 30px;
+            margin-bottom: 32px;
+        }
+
+        .section-heading h2 {
+            font-size: 28px;
+            letter-spacing: 0.5px;
+        }
+
+        .section-heading p {
+            max-width: 520px;
+            color: var(--grey);
+            font-size: 14px;
+        }
+
+        .section-label {
+            display: block;
+            color: var(--silver);
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+        }
+
+        /* =========================================================
+           SEARCH
+        ========================================================= */
+
+        .search-section {
+            background: var(--white);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 45px 0;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            height: 55px;
+            padding: 0 20px;
+            border: 1px solid #cfcfcf;
+            background: var(--soft);
+            color: var(--black);
+            outline: none;
+            font-size: 14px;
+            transition: 0.3s ease;
+        }
+
+        .search-box input:focus {
+            background: var(--white);
+            border-color: var(--black);
+        }
+
+        .search-result {
+            margin-top: 10px;
+            color: var(--grey);
+            font-size: 12px;
+        }
+
+        /* =========================================================
+           EXPERIMENT GRID
+        ========================================================= */
+
+        .experiments {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            position: relative;
+            background: var(--white);
+            border: 1px solid var(--border);
+            min-height: 285px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            transition: 0.3s ease;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 0;
+            background: var(--black);
+            transition: 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--black);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.09);
+        }
+
+        .card:hover::before {
+            height: 100%;
+        }
+
+        .card-number {
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: var(--silver);
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            line-height: 1.25;
+        }
+
+        .card p {
+            color: var(--grey);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .card-count {
+            display: inline-block;
+            margin-top: 18px;
+            color: var(--grey);
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .card-bottom {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 25px;
+        }
+
+        .card-link {
+            color: var(--black);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            border-bottom: 1px solid var(--black);
+            padding-bottom: 3px;
+            transition: 0.3s ease;
+        }
+
+        .card-link:hover {
+            color: var(--grey);
+            border-color: var(--grey);
+        }
+
+        /* =========================================================
+           FEATURED NODE.JS SECTION
+        ========================================================= */
+
+        .node-section {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .node-section .section-label {
+            color: var(--silver);
+        }
+
+        .node-section .section-heading h2 {
+            color: var(--white);
+        }
+
+        .node-section .section-heading p {
+            color: var(--silver);
+        }
+
+        .node-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .node-item {
+            display: block;
+            text-decoration: none;
+            color: var(--white);
+            background: var(--charcoal);
+            border: 1px solid #333;
+            padding: 22px;
+            transition: 0.3s ease;
+        }
+
+        .node-item:hover {
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .node-item span {
+            display: block;
+            color: var(--silver);
+            font-size: 10px;
+            letter-spacing: 2px;
+            margin-bottom: 7px;
+        }
+
+        .node-item h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .node-item p {
+            color: var(--silver);
+            font-size: 12px;
+        }
+
+        .node-item:hover p {
+            color: var(--grey);
+        }
+
+        /* =========================================================
+           QUICK NAVIGATION
+        ========================================================= */
+
+        .quick-nav {
+            background: var(--white);
+            padding: 55px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .quick-nav-content {
+            text-align: center;
+        }
+
+        .quick-nav h2 {
+            font-size: 15px;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+        }
+
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .quick-links a {
+            text-decoration: none;
+            color: var(--black);
+            border: 1px solid var(--black);
+            padding: 11px 20px;
+            font-size: 12px;
+            font-weight: bold;
+            transition: 0.3s ease;
+        }
+
+        .quick-links a:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            background: #111111;
+            color: var(--white);
+            padding: 40px 0;
+        }
+
+        .footer-inner {
+            width: min(1180px, 86%);
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .footer-name {
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .footer-description {
+            color: var(--silver);
+            font-size: 12px;
+            margin-top: 6px;
+        }
+
+        .footer-description a {
+            color: var(--light-grey);
+            text-decoration: none;
+        }
+
+        .footer-description a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-right {
+            color: var(--silver);
+            font-size: 11px;
+            text-align: right;
+            line-height: 1.8;
+        }
+
+        /* =========================================================
+           HIDDEN SEARCH CARD
+        ========================================================= */
+
+        .card.hidden {
+            display: none;
+        }
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 1050px) {
+
+            .experiments {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .node-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            nav a {
+                padding: 9px 9px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            header {
+                padding: 0 5%;
+            }
+
+            .header-inner {
+                min-height: 72px;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                width: 100%;
+                background: var(--black);
+                flex-direction: column;
+                align-items: stretch;
+                padding: 12px 5%;
+                border-top: 1px solid #292929;
+            }
+
+            nav.show {
+                display: flex;
+            }
+
+            nav a {
+                padding: 14px 10px;
+                border-bottom: 1px solid #292929;
+            }
+
+            .hero {
+                padding: 65px 5%;
+            }
+
+            .container,
+            .footer-inner {
+                width: 90%;
+            }
+
+            .section {
+                padding: 50px 0;
+            }
+
+            .section-heading {
+                display: block;
+            }
+
+            .section-heading p {
+                margin-top: 10px;
+            }
+
+            .experiments {
+                grid-template-columns: 1fr;
+            }
+
+            .node-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-right {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .brand h1 {
+                font-size: 17px;
+            }
+
+            .brand span {
+                font-size: 8px;
+                letter-spacing: 2px;
+            }
+
+            .hero h2 {
+                font-size: 38px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .card {
+                padding: 23px;
+            }
+
+            .card h3 {
+                font-size: 20px;
+            }
+
+            .quick-links {
+                flex-direction: column;
+            }
+
+            .quick-links a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
+
+    <header>
+
+        <div class="header-inner">
+
+            <a href="index.html" class="brand">
+                <h1>CHARANI VANKUDAVATH</h1>
+                <span>PRACTICAL LAB</span>
+            </a>
+
+            <button
+                class="menu-btn"
+                id="menuBtn"
+                onclick="toggleMenu()"
+                aria-label="Open navigation"
+            >
+                ☰
+            </button>
+
+            <nav id="mainNav">
+
+                <a href="index.html" class="active">
+                    Home
+                </a>
+
+                <a href="html/index.html">
+                    HTML
+                </a>
+
+                <a href="css/index.html">
+                    CSS
+                </a>
+
+                <a href="javascript/index.html">
+                    JavaScript
+                </a>
+
+                <a href="nodejs/index.html">
+                    Node.js
+                </a>
+
+                <a
+                    href="https://charanivankudavathu.github.io"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Portfolio
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         HERO
+    ========================================================== -->
+
+    <section class="hero">
+
+        <div class="hero-container">
+
+            <span class="hero-label">
+                SAI UNIVERSITY • PRACTICAL PROGRAMS
+            </span>
+
+            <h2>
+                Practical <span>Programs</span>
+            </h2>
+
+            <p class="hero-description">
+                Complete collection of HTML, CSS, JavaScript and Node.js
+                practical experiments with organized sections, easy
+                navigation and direct access to every experiment.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#experiments"
+                    class="hero-btn primary"
+                >
+                    EXPLORE EXPERIMENTS
+                </a>
+
+                <a
+                    href="https://charanivankudavathu.github.io"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hero-btn secondary"
+                >
+                    VIEW PORTFOLIO
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         SEARCH
+    ========================================================== -->
+
+    <section class="search-section">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-label">
+                        FIND YOUR PROGRAM
+                    </span>
+
+                    <h2>
+                        Search Experiments
+                    </h2>
+                </div>
+
+                <p>
+                    Search by section name or topic such as HTML,
+                    CSS, JavaScript, DOM, Events, Forms, Browser,
+                    Projects or Node.js.
+                </p>
+
+            </div>
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search experiments..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+            <div
+                class="search-result"
+                id="searchResult"
+            >
+                Showing all practical sections.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         PRACTICAL SECTIONS
+    ========================================================== -->
+
+    <main
+        class="section"
+        id="experiments"
+    >
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-label">
+                        COMPLETE COLLECTION
+                    </span>
+
+                    <h2>
+                        Practical Sections
+                    </h2>
+                </div>
+
+                <p>
+                    Select a section to open its dedicated practical
+                    programs page.
+                </p>
+
+            </div>
+
+
+            <div class="experiments" id="experimentGrid">
+
+
+                <!-- =================================================
+                     HTML
+                ================================================== -->
+
+                <article
+                    class="card"
+                    data-search="html html experiments markup webpage elements forms tables links lists"
+                >
+
+                    <div>
+
+                        <div class="card-number">
+                            01 / HTML
+                        </div>
+
+                        <h3>
+                            HTML Experiments
+                        </h3>
+
+                        <p>
+                            Practical HTML programs covering webpage
+                            structure, elements, links, lists, tables,
+                            forms and fundamental HTML concepts.
+                        </p>
+
+                        <span class="card-count">
+                            15 Experiments
+                        </span>
+
+                    </div>
+
+                    <div class="card-bottom">
+
+                        <a
+                            href="html/index.html"
+                            class="card-link"
+                        >
+                            VIEW HTML →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     CSS
+                ================================================== -->
+
+                <article
+                    class="card"
+                    data-search="css css experiments selectors flexbox grid position animation responsive design styling"
+                >
+
+                    <div>
+
+                        <div class="card-number">
+                            02 / CSS
+                        </div>
+
+                        <h3>
+                            CSS Experiments
+                        </h3>
+
+                        <p>
+                            A complete collection of CSS practical
+                            programs covering selectors, layouts,
+                            positioning, Flexbox, Grid, animations
+                            and responsive design.
+                        </p>
+
+                        <span class="card-count">
+                            75 Experiments
+                        </span>
+
+                    </div>
+
+                    <div class="card-bottom">
+
+                        <a
+                            href="css/index.html"
+                            class="card-link"
+                        >
+                            VIEW CSS →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     JAVASCRIPT
+                ================================================== -->
+
+                <article
+                    class="card"
+                    data-search="javascript js javascript experiments variables functions arrays objects loops conditions programming"
+                >
+
+                    <div>
+
+                        <div class="card-number">
+                            03 / JAVASCRIPT
+                        </div>
+
+                        <h3>
+                            JavaScript Experiments
+                        </h3>
+
+                        <p>
+                            Core JavaScript practical programs covering
+                            variables, operators, conditions, loops,
+                            functions, arrays, objects and programming
+                            concepts.
+                        </p>
+
+                        <span class="card-count">
+                            67 Experiments
+                        </span>
+
+                    </div>
+
+                    <div class="card-bottom">
+
+                        <a
+                            href="javascript/index.html"
+                            class="card-link"
+                        >
+                            VIEW JAVASCRIPT →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     DOM
+                ================================================== -->
+
+                <article
+                    class="card"
+                    data-search="dom dom manipulation javascript dynamic elements selectors attributes content document object model"
+                >
+
+                    <div>
+
+                        <div class="card-number">
+                            04 / DOM
+                        </div>
+
+                        <h3>
+                            DOM Manipulation
+                        </h3>
+
+                        <p>
+                            JavaScript DOM practical programs covering
+                            element creation, selectors, attributes,
+                            content modification and dynamic webpage
+                            manipulation.
+                        </p>
+
+                        <span class="card-count">
+                            15 Experiments
+                        </span>
+
+                    </div>
+
+                    <div class="card-bottom">
+
+                        <a
+                            href="javascript/dom/index.html"
+                            class="card-link"
+                        >
+                            VIEW DOM →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     EVENTS
+                ================================================== -->
+
+                <article
+                    class="card"
+                    data-search="events javascript events click mouse keyboard input form event handling"
+                >
+
+                    <div>
+
+                        <div class="card-number">
+                            05 / EVENTS
+                        </div>
+
+                        <h3>
+                            JavaScript Events
+                        </h3>
+
+                        <p>
+                            Practical JavaScript event programs covering
+                            click, mouse, keyboard, input and form events
+                            for interactive webpages.
+                        </p>
+
+                        <span class="card-count">
+                            8 Experiments
+                        </span>
+
+                    </div>
+
+                    <div class="card-bottom">
+
+                        <a
+                            href="javascript/events/index.html"
+                            class="card-link"
+                        >
+                            VIEW EVENTS →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     FORMS
+                ================================================== -->
+
+                <article
+                    class="card"
+                    data-search="forms form validation javascript input validation user input submit registration"
+                >
+
+                    <div>
+
+                        <div class="card-number">
+                            06 / FORMS
+                        </div>
+
+                        <h3>
+                            Forms & Validation
+                        </h3>
+
+                        <p>
+                            Practical form programs covering input
+                            handling, validation, submission,
+                            user interaction and form-related
+                            JavaScript functionality.
+                        </p>
+
+                        <span class="card-count">
+                            7 Experiments
+                        </span>
+
+                    </div>
+
+                    <div class="card-bottom">
+
+                        <a
+                            href="javascript/forms/index.html"
+                            class="card-link"
+                        >
+                            VIEW FORMS →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     BROWSER
+                ================================================== -->
+
+                <article
+                    class="card"
+                    data-search="browser browser storage localstorage sessionstorage javascript api cookies web storage"
+                >
+
+                    <div>
+
+                        <div class="card-number">
+                            07 / BROWSER
+                        </div>
+
+                        <h3>
+                            Browser & Storage
+                        </h3>
+
+                        <p>
+                            Browser-based JavaScript practical programs
+                            covering browser APIs, localStorage,
+                            sessionStorage and web storage functionality.
+                        </p>
+
+                        <span class="card-count">
+                            8 Experiments
+                        </span>
+
+                    </div>
+
+                    <div class="card-bottom">
+
+                        <a
+                            href="javascript/browser/index.html"
+                            class="card-link"
+                        >
+                            VIEW BROWSER →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     PROJECTS
+                ================================================== -->
+
+                <article
+                    class="card"
+                    data-search="projects javascript mini projects applications calculator todo quiz interactive projects"
+                >
+
+                    <div>
+
+                        <div class="card-number">
+                            08 / PROJECTS
+                        </div>
+
+                        <h3>
+                            JavaScript Mini Projects
+                        </h3>
+
+                        <p>
+                            A collection of practical JavaScript mini
+                            projects demonstrating interactive web
+                            applications and real-world programming
+                            concepts.
+                        </p>
+
+                        <span class="card-count">
+                            17 Projects
+                        </span>
+
+                    </div>
+
+                    <div class="card-bottom">
+
+                        <a
+                            href="javascript/projects/index.html"
+                            class="card-link"
+                        >
+                            VIEW PROJECTS →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     NODE.JS
+                ================================================== -->
+
+                <article
+                    class="card"
+                    data-search="node nodejs node.js backend server express routing middleware sessions cookies database crud authentication authorization rest api"
+                >
+
+                    <div>
+
+                        <div class="card-number">
+                            09 / NODE.JS
+                        </div>
+
+                        <h3>
+                            Node.js Backend
+                        </h3>
+
+                        <p>
+                            Backend practical programs covering Node.js
+                            servers, Express, routing, middleware,
+                            sessions, databases, CRUD, authentication,
+                            authorization and REST APIs.
+                        </p>
+
+                        <span class="card-count">
+                            Backend Experiments
+                        </span>
+
+                    </div>
+
+                    <div class="card-bottom">
+
+                        <a
+                            href="nodejs/index.html"
+                            class="card-link"
+                        >
+                            VIEW NODE.JS →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================================
+         NODE.JS QUICK CATEGORIES
+    ========================================================== -->
+
+    <section class="node-section">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        BACKEND DEVELOPMENT
+                    </span>
+
+                    <h2>
+                        Node.js Categories
+                    </h2>
+
+                </div>
+
+                <p>
+                    Direct access to the Node.js backend practical
+                    sections.
+                </p>
+
+            </div>
+
+
+            <div class="node-grid">
+
+
+                <a
+                    href="nodejs/server/index.html"
+                    class="node-item"
+                >
+                    <span>01</span>
+                    <h3>Server-Side Architecture</h3>
+                    <p>Node.js servers and core modules</p>
+                </a>
+
+
+                <a
+                    href="nodejs/express/index.html"
+                    class="node-item"
+                >
+                    <span>02</span>
+                    <h3>Express Framework</h3>
+                    <p>Express applications and responses</p>
+                </a>
+
+
+                <a
+                    href="nodejs/routing/index.html"
+                    class="node-item"
+                >
+                    <span>03</span>
+                    <h3>Routing</h3>
+                    <p>Routes, parameters and Express Router</p>
+                </a>
+
+
+                <a
+                    href="nodejs/middleware/index.html"
+                    class="node-item"
+                >
+                    <span>04</span>
+                    <h3>Middleware</h3>
+                    <p>Custom, logging and validation middleware</p>
+                </a>
+
+
+                <a
+                    href="nodejs/sessions/index.html"
+                    class="node-item"
+                >
+                    <span>05</span>
+                    <h3>Sessions & Cookies</h3>
+                    <p>Cookies, sessions and protected routes</p>
+                </a>
+
+
+                <a
+                    href="nodejs/database/index.html"
+                    class="node-item"
+                >
+                    <span>06</span>
+                    <h3>Database Connectivity</h3>
+                    <p>Database connection and data operations</p>
+                </a>
+
+
+                <a
+                    href="nodejs/crud/index.html"
+                    class="node-item"
+                >
+                    <span>07</span>
+                    <h3>CRUD Operations</h3>
+                    <p>Create, Read, Update and Delete</p>
+                </a>
+
+
+                <a
+                    href="nodejs/authentication/index.html"
+                    class="node-item"
+                >
+                    <span>08</span>
+                    <h3>Authentication</h3>
+                    <p>Registration, login, JWT and protected APIs</p>
+                </a>
+
+
+                <a
+                    href="nodejs/rest-api/index.html"
+                    class="node-item"
+                >
+                    <span>09</span>
+                    <h3>RESTful API</h3>
+                    <p>REST APIs, Postman and API security</p>
+                </a>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         QUICK NAVIGATION
+    ========================================================== -->
+
+    <section class="quick-nav">
+
+        <div class="container">
+
+            <div class="quick-nav-content">
+
+                <h2>
+                    QUICK NAVIGATION
+                </h2>
+
+                <div class="quick-links">
+
+                    <a href="index.html">
+                        HOME
+                    </a>
+
+                    <a href="html/index.html">
+                        HTML
+                    </a>
+
+                    <a href="css/index.html">
+                        CSS
+                    </a>
+
+                    <a href="javascript/index.html">
+                        JAVASCRIPT
+                    </a>
+
+                    <a href="javascript/dom/index.html">
+                        DOM
+                    </a>
+
+                    <a href="javascript/events/index.html">
+                        EVENTS
+                    </a>
+
+                    <a href="javascript/forms/index.html">
+                        FORMS
+                    </a>
+
+                    <a href="javascript/browser/index.html">
+                        BROWSER
+                    </a>
+
+                    <a href="javascript/projects/index.html">
+                        PROJECTS
+                    </a>
+
+                    <a href="nodejs/index.html">
+                        NODE.JS
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer>
+
+        <div class="footer-inner">
+
+            <div>
+
+                <div class="footer-name">
+                    CHARANI VANKUDAVATH
+                </div>
+
+                <div class="footer-description">
+
+                    Sai University • Practical Programs
+
+                    <br>
+
+                    Portfolio:
+
+                    <a
+                        href="https://charanivankudavathu.github.io"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        charanivankudavathu.github.io
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-right">
+
+                HTML • CSS • JavaScript • Node.js
+
+                <br>
+
+                Practical Experiment Collection
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script>
+
+        /* =========================================
+           MOBILE MENU
+        ========================================= */
+
+        function toggleMenu() {
+
+            const nav = document.getElementById("mainNav");
+
+            nav.classList.toggle("show");
+
+        }
+
+
+        /* =========================================
+           CLOSE MOBILE MENU
+        ========================================= */
+
+        document
+            .querySelectorAll("#mainNav a")
+            .forEach(link => {
+
+                link.addEventListener("click", () => {
+
+                    document
+                        .getElementById("mainNav")
+                        .classList.remove("show");
+
+                });
+
+            });
+
+
+        /* =========================================
+           SEARCH EXPERIMENTS
+        ========================================= */
+
+        const searchInput =
+            document.getElementById("searchInput");
+
+        const cards =
+            document.querySelectorAll(".card");
+
+        const searchResult =
+            document.getElementById("searchResult");
+
+
+        searchInput.addEventListener("input", function () {
+
+            const searchText =
+                this.value.toLowerCase().trim();
+
+            let visibleCards = 0;
+
+
+            cards.forEach(card => {
+
+                const searchableText =
+                    card.dataset.search.toLowerCase();
+
+                if (
+                    searchText === "" ||
+                    searchableText.includes(searchText)
+                ) {
+
+                    card.classList.remove("hidden");
+
+                    visibleCards++;
+
+                } else {
+
+                    card.classList.add("hidden");
+
+                }
+
+            });
+
+
+            if (searchText === "") {
+
+                searchResult.textContent =
+                    "Showing all practical sections.";
+
+            } else if (visibleCards === 0) {
+
+                searchResult.textContent =
+                    "No practical section found.";
+
+            } else {
+
+                searchResult.textContent =
+                    visibleCards +
+                    " practical section(s) found.";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

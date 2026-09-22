@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Experiment 03 | Practical Lab</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+
+        .color-container {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+
+        }
+
+        .color-box {
+
+            padding: 50px 20px;
+
+            text-align: center;
+
+            border: 2px solid #111111;
+
+            border-radius: 18px;
+
+            font-weight: bold;
+
+        }
+
+        .white {
+            background: #ffffff;
+            color: #111111;
+        }
+
+        .light-grey {
+            background: #dddddd;
+            color: #111111;
+        }
+
+        .dark-grey {
+            background: #555555;
+            color: #ffffff;
+        }
+
+        .black {
+            background: #111111;
+            color: #ffffff;
+        }
+
+        @media (max-width: 700px) {
+
+            .color-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+        @media (max-width: 450px) {
+
+            .color-container {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+
+                    <span class="logo-title">
+                        PRACTICAL LAB
+                    </span>
+
+                    <span class="logo-subtitle">
+                        HTML • CSS • JavaScript
+                    </span>
+
+                </div>
+
+            </a>
+
+            <nav class="desktop-nav">
+
+                <a href="../index.html">Home</a>
+
+                <a href="../html/index.html">HTML</a>
+
+                <a href="index.html" class="active">
+                    CSS
+                </a>
+
+                <a href="../javascript/index.html">
+                    JavaScript
+                </a>
+
+                <a href="https://charanivankudavathu.github.io"
+                   target="_blank">
+                    Portfolio
+                </a>
+
+            </nav>
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                aria-expanded="false">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+
+            <a href="../index.html">Home</a>
+
+            <a href="../html/index.html">
+                HTML Programs
+            </a>
+
+            <a href="index.html">
+                CSS Programs
+            </a>
+
+            <a href="../javascript/index.html">
+                JavaScript Programs
+            </a>
+
+            <a href="https://charanivankudavathu.github.io"
+               target="_blank">
+                My Portfolio
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+
+            <span class="eyebrow">
+                CSS • EXPERIMENT 03
+            </span>
+
+            <h1>
+                Colors, Backgrounds and Borders
+            </h1>
+
+            <p>
+                Demonstration using only black, white
+                and grey shades.
+            </p>
+
+        </div>
+
+
+        <div class="output-box">
+
+            <h2>
+                Output
+            </h2>
+
+            <div class="color-container">
+
+                <div class="color-box white">
+                    WHITE
+                </div>
+
+                <div class="color-box light-grey">
+                    LIGHT GREY
+                </div>
+
+                <div class="color-box dark-grey">
+                    DARK GREY
+                </div>
+
+                <div class="color-box black">
+                    BLACK
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab.
+                HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+
+                <a href="../index.html">
+                    Home
+                </a>
+
+                <a href="index.html">
+                    CSS Programs
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const mobileNav =
+    document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+
+});
+
+</script>
+
+</body>
+
+</html>

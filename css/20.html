@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Experiment 20</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .portfolio-demo {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .portfolio-hero {
+            padding: 50px 30px;
+            text-align: center;
+            background: #111111;
+            color: #ffffff;
+            border-radius: 12px;
+        }
+
+        .portfolio-hero h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-hero p {
+            color: #dddddd;
+            margin-bottom: 20px;
+        }
+
+        .portfolio-button {
+            display: inline-block;
+            padding: 12px 22px;
+            background: #ffffff;
+            color: #111111;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .portfolio-section {
+            margin-top: 25px;
+            padding: 30px;
+            border: 2px solid #111111;
+            border-radius: 12px;
+            background: #eeeeee;
+        }
+
+        .portfolio-section h3 {
+            margin-bottom: 15px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill {
+            padding: 10px 15px;
+            background: #111111;
+            color: #ffffff;
+            border-radius: 20px;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .project {
+            padding: 20px;
+            background: #ffffff;
+            border: 1px solid #777777;
+            border-radius: 8px;
+        }
+
+        .project h4 {
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 700px) {
+
+            .portfolio-hero h2 {
+                font-size: 30px;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+
+            <span class="eyebrow">CSS • Experiment 20</span>
+
+            <h1>Personal Portfolio Webpage</h1>
+
+            <p>
+                A simple professional portfolio layout created
+                using HTML and CSS.
+            </p>
+
+        </div>
+
+        <div class="output-box">
+
+            <div class="portfolio-demo">
+
+                <section class="portfolio-hero">
+
+                    <h2>CHARANI VANKUDAVATHU</h2>
+
+                    <p>
+                        Computer Science Student & Developer
+                    </p>
+
+                    <a href="#" class="portfolio-button">
+                        View My Work
+                    </a>
+
+                </section>
+
+                <section class="portfolio-section">
+
+                    <h3>About Me</h3>
+
+                    <p>
+                        I am a computer science student interested
+                        in web development, programming and
+                        technology.
+                    </p>
+
+                </section>
+
+                <section class="portfolio-section">
+
+                    <h3>Skills</h3>
+
+                    <div class="skills">
+
+                        <span class="skill">HTML</span>
+                        <span class="skill">CSS</span>
+                        <span class="skill">JavaScript</span>
+                        <span class="skill">Python</span>
+                        <span class="skill">C</span>
+
+                    </div>
+
+                </section>
+
+                <section class="portfolio-section">
+
+                    <h3>Projects</h3>
+
+                    <div class="project-grid">
+
+                        <div class="project">
+
+                            <h4>Project 01</h4>
+
+                            <p>
+                                Responsive website using HTML and CSS.
+                            </p>
+
+                        </div>
+
+                        <div class="project">
+
+                            <h4>Project 02</h4>
+
+                            <p>
+                                JavaScript interactive application.
+                            </p>
+
+                        </div>
+
+                        <div class="project">
+
+                            <h4>Project 03</h4>
+
+                            <p>
+                                Student practical laboratory website.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+
+});
+</script>
+
+</body>
+</html>

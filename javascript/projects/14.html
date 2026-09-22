@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT-14 | Random Password Generator</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .password-demo {
+            max-width: 650px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .password-demo input {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            border: 1px solid #999999;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        .password-demo button {
+            padding: 12px 22px;
+            margin: 5px;
+            border: none;
+            border-radius: 6px;
+            background: #111111;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .length-control {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">PROJECT-14</span>
+            <h1>Random Password Generator</h1>
+            <p>Generate a random password using JavaScript.</p>
+        </div>
+
+        <div class="password-demo">
+
+            <input
+                type="text"
+                id="password"
+                readonly
+                placeholder="Generated password"
+            >
+
+            <div class="length-control">
+
+                <label for="length">
+                    Password Length:
+                    <span id="lengthValue">12</span>
+                </label>
+
+                <input
+                    type="range"
+                    id="length"
+                    min="6"
+                    max="30"
+                    value="12"
+                >
+
+            </div>
+
+            <button id="generateButton">
+                Generate Password
+            </button>
+
+            <button id="copyButton">
+                Copy
+            </button>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+
+const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
+
+const lengthInput = document.getElementById("length");
+const lengthValue = document.getElementById("lengthValue");
+const password = document.getElementById("password");
+
+lengthInput.addEventListener("input", function () {
+
+    lengthValue.textContent = lengthInput.value;
+
+});
+
+document.getElementById("generateButton").addEventListener("click", function () {
+
+    const length = Number(lengthInput.value);
+
+    let result = "";
+
+    for (let i = 0; i < length; i++) {
+
+        const randomIndex =
+            Math.floor(Math.random() * characters.length);
+
+        result += characters[randomIndex];
+    }
+
+    password.value = result;
+
+});
+
+document.getElementById("copyButton").addEventListener("click", function () {
+
+    if (password.value === "") {
+        return;
+    }
+
+    navigator.clipboard.writeText(password.value);
+
+    alert("Password copied.");
+
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Experiment 11</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .pseudo-element-demo {
+            display: grid;
+            gap: 20px;
+        }
+
+        .pseudo-box {
+            padding: 25px;
+            border: 2px solid #111111;
+            border-radius: 10px;
+            background: #eeeeee;
+        }
+
+        .before-after {
+            position: relative;
+            padding: 20px 20px 20px 55px;
+            background: #ffffff;
+            border: 1px solid #999999;
+        }
+
+        .before-after::before {
+            content: "★";
+            position: absolute;
+            left: 20px;
+            top: 18px;
+            font-size: 22px;
+        }
+
+        .before-after::after {
+            content: " END";
+            font-weight: bold;
+        }
+
+        .first-letter::first-letter {
+            font-size: 42px;
+            font-weight: bold;
+        }
+
+        .first-line::first-line {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .quote {
+            position: relative;
+            padding: 25px 25px 25px 50px;
+            border-left: 5px solid #111111;
+            background: #dddddd;
+        }
+
+        .quote::before {
+            content: "“";
+            position: absolute;
+            left: 15px;
+            top: 5px;
+            font-size: 45px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 11</span>
+
+            <h1>CSS Pseudo-Elements</h1>
+
+            <p>
+                Demonstration of ::before, ::after,
+                ::first-letter and ::first-line.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="pseudo-element-demo">
+
+                <div class="pseudo-box">
+
+                    <h3>::before and ::after</h3>
+
+                    <div class="before-after">
+                        This text uses generated content before and after it.
+                    </div>
+
+                </div>
+
+                <div class="pseudo-box">
+
+                    <h3>::first-letter</h3>
+
+                    <p class="first-letter">
+                        CSS pseudo-elements can style a specific
+                        part of an HTML element.
+                    </p>
+
+                </div>
+
+                <div class="pseudo-box">
+
+                    <h3>::first-line</h3>
+
+                    <p class="first-line">
+                        This is the first line of this paragraph.
+                        The first line receives special styling.
+                        The remaining text uses normal styling.
+                    </p>
+
+                </div>
+
+                <div class="pseudo-box">
+
+                    <h3>Generated Quote</h3>
+
+                    <p class="quote">
+                        Learning CSS helps us create professional,
+                        responsive and attractive web pages.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DOM-11 | Live Character Counter</title>
+
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .dom-demo {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .text-area {
+            width: 100%;
+            min-height: 180px;
+            padding: 15px;
+            border: 1px solid #aaa;
+            border-radius: 8px;
+            resize: vertical;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .counter {
+            margin-top: 15px;
+            padding: 15px;
+            background: #eeeeee;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">DOM Manipulation • Experiment 11</span>
+
+            <h1>Live Character Counter for Textarea</h1>
+
+            <p>
+                Count characters in a textarea dynamically while the user types.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="dom-demo">
+
+                <textarea
+                    id="message"
+                    class="text-area"
+                    maxlength="200"
+                    placeholder="Type your message here..."
+                ></textarea>
+
+                <div class="counter">
+
+                    Characters:
+                    <span id="count">0</span>
+                    / 200
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+    const message =
+        document.getElementById("message");
+
+    const count =
+        document.getElementById("count");
+
+    message.addEventListener("input", function () {
+
+        count.textContent =
+            message.value.length;
+
+    });
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+
+        mobileNav.classList.toggle("active");
+
+    });
+</script>
+
+</body>
+</html>

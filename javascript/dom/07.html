@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DOM-07 | Dynamic CSS Classes</title>
+
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .dom-demo {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .class-box {
+            padding: 35px;
+            margin: 20px 0;
+            background: #eeeeee;
+            border: 2px solid #aaa;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .highlight {
+            background: #111;
+            color: white;
+            border: 4px solid #555;
+            transform: scale(1.02);
+        }
+
+        .demo-button {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 6px;
+            background: #111;
+            color: white;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .demo-button:hover {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">DOM Manipulation • Experiment 07</span>
+
+            <h1>Create and Remove CSS Classes Dynamically</h1>
+
+            <p>
+                Add and remove CSS classes dynamically using JavaScript.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="dom-demo">
+
+                <div id="classBox" class="class-box">
+
+                    <h2>Dynamic CSS Class</h2>
+
+                    <p>
+                        Add or remove the highlight class.
+                    </p>
+
+                </div>
+
+                <button class="demo-button" id="addClass">
+                    Add Class
+                </button>
+
+                <button class="demo-button" id="removeClass">
+                    Remove Class
+                </button>
+
+                <button class="demo-button" id="toggleClass">
+                    Toggle Class
+                </button>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+    const classBox =
+        document.getElementById("classBox");
+
+    document.getElementById("addClass")
+        .addEventListener("click", function () {
+
+            classBox.classList.add("highlight");
+
+        });
+
+    document.getElementById("removeClass")
+        .addEventListener("click", function () {
+
+            classBox.classList.remove("highlight");
+
+        });
+
+    document.getElementById("toggleClass")
+        .addEventListener("click", function () {
+
+            classBox.classList.toggle("highlight");
+
+        });
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+
+        mobileNav.classList.toggle("active");
+
+    });
+</script>
+
+</body>
+</html>

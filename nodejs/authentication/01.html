@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Authentication-01 | User Registration</title>
+
+    <link
+        rel="stylesheet"
+        href="../../styles/main.css"
+    >
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-content">
+
+        <h1>HTML-CSS-JS Practical</h1>
+
+        <button
+            class="menu-toggle"
+            onclick="toggleMenu()"
+            aria-label="Toggle Menu"
+        >
+            ☰
+        </button>
+
+        <nav id="mainNav">
+
+            <a href="../../index.html">
+                Home
+            </a>
+
+            <a href="../../html/index.html">
+                HTML
+            </a>
+
+            <a href="../../css/index.html">
+                CSS
+            </a>
+
+            <a href="../../javascript/index.html">
+                JavaScript
+            </a>
+
+            <a href="../index.html">
+                Node.js
+            </a>
+
+            <a href="index.html">
+                Authentication
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="page-header">
+
+        <h1>Authentication - Experiment 01</h1>
+
+        <p>
+            Implement User Registration.
+        </p>
+
+    </section>
+
+
+    <section class="experiment-wrapper">
+
+        <div class="experiment-card">
+
+            <div class="experiment-header">
+
+                <h2>
+                    User Registration
+                </h2>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>API Endpoint</h3>
+
+                <pre>
+POST /register
+                </pre>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>Request Data</h3>
+
+                <pre>
+{
+    "username": "student",
+    "password": "12345"
+}
+                </pre>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>Run</h3>
+
+                <pre>
+node 01.js
+                </pre>
+
+                <p>
+                    Server:
+                </p>
+
+                <pre>
+http://localhost:3061
+                </pre>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        HTML-CSS-JS Practical |
+        Node.js Authentication
+    </p>
+
+</footer>
+
+
+<script>
+
+function toggleMenu() {
+
+    const nav =
+        document.getElementById("mainNav");
+
+    nav.classList.toggle("active");
+
+}
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>02 - GET and POST Requests</title>
+
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .code-box {
+            background: #111111;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+
+                <div class="logo-mark">J</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">
+                        PRACTICAL LAB
+                    </span>
+
+                    <span class="logo-subtitle">
+                        HTML • CSS • JavaScript
+                    </span>
+                </div>
+
+            </a>
+
+            <nav class="desktop-nav">
+
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../../javascript/index.html">JavaScript</a>
+                <a href="../index.html" class="active">Node.js</a>
+
+            </nav>
+
+            <button class="menu-button" id="menuButton">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../../javascript/index.html">JavaScript Programs</a>
+            <a href="../index.html">Node.js</a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+
+            <span class="eyebrow">
+                EXPRESS-02
+            </span>
+
+            <h1>
+                Handle GET and POST requests using Express
+            </h1>
+
+            <p>
+                Demonstrate GET and POST request handling using Express.js.
+            </p>
+
+        </div>
+
+
+        <section>
+
+            <h2>Objective</h2>
+
+            <p>
+                To handle GET and POST HTTP requests using Express.js.
+            </p>
+
+        </section>
+
+
+        <section>
+
+            <h2>Node.js Code</h2>
+
+            <div class="code-box">
+<pre>const express = require("express");
+
+const app = express();
+
+app.use(express.urlencoded({ extended: true }));
+
+app.get("/", (req, res) => {
+    res.send("GET request received");
+});
+
+app.post("/submit", (req, res) => {
+
+    const name = req.body.name;
+
+    res.send("POST request received. Hello " + name);
+});
+
+app.listen(3000, () => {
+    console.log("Server running at http://localhost:3000");
+});</pre>
+            </div>
+
+        </section>
+
+
+        <section>
+
+            <h2>How to Run</h2>
+
+            <div class="code-box">
+<pre>node 02.js</pre>
+            </div>
+
+            <p>
+                GET request:
+                <strong>http://localhost:3000/</strong>
+            </p>
+
+            <p>
+                POST request can be tested using Postman.
+            </p>
+
+            <p>
+                POST URL:
+                <strong>http://localhost:3000/submit</strong>
+            </p>
+
+        </section>
+
+
+        <section>
+
+            <h2>Expected Output</h2>
+
+            <div class="output-box">
+                GET request received
+                <br><br>
+                POST request received. Hello Student
+            </div>
+
+        </section>
+
+    </article>
+
+</main>
+
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. Node.js
+            </div>
+
+            <div class="footer-links">
+
+                <a href="../../index.html">Home</a>
+                <a href="index.html">Express Programs</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const mobileNav =
+    document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+
+    mobileNav.classList.toggle("active");
+
+});
+
+</script>
+
+</body>
+</html>

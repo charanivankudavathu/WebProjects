@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Experiment 17</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .transition-demo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .transition-box {
+            width: 180px;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #111111;
+            color: #ffffff;
+            border-radius: 10px;
+            transition: all 0.5s ease;
+        }
+
+        .transition-box:hover {
+            transform: scale(1.15);
+            background: #555555;
+        }
+
+        .rotate-box:hover {
+            transform: rotate(10deg);
+        }
+
+        .move-box:hover {
+            transform: translateY(-20px);
+        }
+
+        .combined-box:hover {
+            transform: scale(1.1) rotate(5deg) translateY(-10px);
+        }
+
+        .transition-info {
+            margin-top: 30px;
+            padding: 20px;
+            border: 2px solid #111111;
+            border-radius: 10px;
+            background: #eeeeee;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+
+            <span class="eyebrow">CSS • Experiment 17</span>
+
+            <h1>Transitions and Transformations</h1>
+
+            <p>
+                Demonstration of CSS transition effects and
+                transform functions.
+            </p>
+
+        </div>
+
+        <div class="output-box">
+
+            <div class="transition-demo">
+
+                <div class="transition-box">
+                    Scale
+                </div>
+
+                <div class="transition-box rotate-box">
+                    Rotate
+                </div>
+
+                <div class="transition-box move-box">
+                    Move
+                </div>
+
+                <div class="transition-box combined-box">
+                    Combined
+                </div>
+
+            </div>
+
+            <div class="transition-info">
+
+                <h3>CSS Properties Used</h3>
+
+                <p>
+                    <strong>transition:</strong>
+                    Creates a smooth change between states.
+                </p>
+
+                <p>
+                    <strong>transform: scale():</strong>
+                    Changes the size of an element.
+                </p>
+
+                <p>
+                    <strong>transform: rotate():</strong>
+                    Rotates an element.
+                </p>
+
+                <p>
+                    <strong>transform: translateY():</strong>
+                    Moves an element vertically.
+                </p>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+
+});
+</script>
+
+</body>
+</html>

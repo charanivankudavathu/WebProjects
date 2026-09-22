@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Authentication-05 | JWT Authentication</title>
+
+    <link
+        rel="stylesheet"
+        href="../../styles/main.css"
+    >
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-content">
+
+        <h1>HTML-CSS-JS Practical</h1>
+
+        <button
+            class="menu-toggle"
+            onclick="toggleMenu()"
+        >
+            ☰
+        </button>
+
+        <nav id="mainNav">
+
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML</a>
+            <a href="../../css/index.html">CSS</a>
+
+            <a href="../../javascript/index.html">
+                JavaScript
+            </a>
+
+            <a href="../index.html">
+                Node.js
+            </a>
+
+            <a href="index.html">
+                Authentication
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="page-header">
+
+        <h1>Authentication - Experiment 05</h1>
+
+        <p>
+            Implement JWT-based Authentication.
+        </p>
+
+    </section>
+
+
+    <section class="experiment-wrapper">
+
+        <div class="experiment-card">
+
+            <div class="experiment-header">
+
+                <h2>
+                    JSON Web Token Authentication
+                </h2>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>Login Endpoint</h3>
+
+                <pre>
+POST /login
+                </pre>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>JWT Flow</h3>
+
+                <pre>
+Username + Password
+        ↓
+      Login
+        ↓
+    JWT Token
+        ↓
+Authorization Header
+                </pre>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>Run</h3>
+
+                <pre>
+node 05.js
+                </pre>
+
+                <pre>
+http://localhost:3065
+                </pre>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        HTML-CSS-JS Practical |
+        JWT Authentication
+    </p>
+
+</footer>
+
+
+<script>
+
+function toggleMenu() {
+
+    document
+        .getElementById("mainNav")
+        .classList
+        .toggle("active");
+
+}
+
+</script>
+
+</body>
+
+</html>

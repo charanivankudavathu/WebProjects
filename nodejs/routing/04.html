@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Routing-04 | 404 Not Found</title>
+
+    <link
+        rel="stylesheet"
+        href="../../styles/main.css"
+    >
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-content">
+
+        <h1>HTML-CSS-JS Practical</h1>
+
+        <button
+            class="menu-toggle"
+            onclick="toggleMenu()"
+        >
+            ☰
+        </button>
+
+        <nav id="mainNav">
+
+            <a href="../../index.html">Home</a>
+
+            <a href="../../html/index.html">
+                HTML
+            </a>
+
+            <a href="../../css/index.html">
+                CSS
+            </a>
+
+            <a href="../../javascript/index.html">
+                JavaScript
+            </a>
+
+            <a href="../index.html">
+                Node.js
+            </a>
+
+            <a href="index.html">
+                Routing
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="page-header">
+
+        <h1>Routing - Experiment 04</h1>
+
+        <p>
+            404 / Not Found Route Handling
+        </p>
+
+    </section>
+
+
+    <section class="experiment-wrapper">
+
+        <div class="experiment-card">
+
+            <div class="experiment-header">
+
+                <h2>
+                    Handling Invalid Routes
+                </h2>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>Valid Routes</h3>
+
+                <pre>
+/
+ /about
+                </pre>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>Invalid Route</h3>
+
+                <p>
+                    Try opening:
+                </p>
+
+                <pre>
+http://localhost:3014/test
+                </pre>
+
+                <p>
+                    The server will return:
+                </p>
+
+                <pre>
+404 - Page Not Found
+                </pre>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>Run</h3>
+
+                <pre>
+node 04.js
+                </pre>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        HTML-CSS-JS Practical | Node.js Routing
+    </p>
+
+</footer>
+
+
+<script>
+
+function toggleMenu() {
+
+    const nav = document.getElementById("mainNav");
+
+    nav.classList.toggle("active");
+
+}
+
+</script>
+
+</body>
+
+</html>

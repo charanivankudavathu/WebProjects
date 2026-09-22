@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Experiment 33</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .shape-demo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 35px;
+        }
+
+        .shape {
+            width: 150px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #111111;
+            color: #ffffff;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .rounded {
+            border-radius: 20px;
+        }
+
+        .circle {
+            border-radius: 50%;
+        }
+
+        .pill {
+            width: 220px;
+            height: 100px;
+            border-radius: 50px;
+        }
+
+        .ellipse {
+            width: 220px;
+            height: 140px;
+            border-radius: 50%;
+        }
+
+        .custom-radius {
+            border-radius: 10px 40px 10px 40px;
+        }
+
+        .shape-info {
+            margin-top: 30px;
+            padding: 20px;
+            background: #eeeeee;
+            border-left: 4px solid #111111;
+        }
+
+        @media (max-width: 550px) {
+            .shape {
+                width: 120px;
+                height: 120px;
+            }
+
+            .pill,
+            .ellipse {
+                width: 180px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 33</span>
+
+            <h1>Border Radius</h1>
+
+            <p>
+                Demonstration of border-radius for creating
+                rounded corners and different shapes.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="shape-demo">
+
+                <div class="shape rounded">
+                    Rounded
+                </div>
+
+                <div class="shape circle">
+                    Circle
+                </div>
+
+                <div class="shape pill">
+                    Pill
+                </div>
+
+                <div class="shape ellipse">
+                    Ellipse
+                </div>
+
+                <div class="shape custom-radius">
+                    Custom
+                </div>
+
+            </div>
+
+            <div class="shape-info">
+
+                <h3>Border Radius</h3>
+
+                <p>
+                    The <strong>border-radius</strong> property
+                    rounds the corners of an element.
+                </p>
+
+                <p>
+                    A value of <strong>50%</strong> can be used
+                    to create circular or elliptical shapes.
+                </p>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+</script>
+
+</body>
+</html>

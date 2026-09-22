@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>01 - Basic Express Application</title>
+
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .code-box {
+            background: #111111;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+
+                <a href="../../index.html">Home</a>
+
+                <a href="../../html/index.html">HTML</a>
+
+                <a href="../../css/index.html">CSS</a>
+
+                <a href="../../javascript/index.html">JavaScript</a>
+
+                <a href="../index.html" class="active">Node.js</a>
+
+            </nav>
+
+            <button class="menu-button" id="menuButton">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+
+            <a href="../../index.html">Home</a>
+
+            <a href="../../html/index.html">
+                HTML Programs
+            </a>
+
+            <a href="../../css/index.html">
+                CSS Programs
+            </a>
+
+            <a href="../../javascript/index.html">
+                JavaScript Programs
+            </a>
+
+            <a href="../index.html">
+                Node.js
+            </a>
+
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+
+            <span class="eyebrow">
+                EXPRESS-01
+            </span>
+
+            <h1>
+                Create a basic Express.js application
+            </h1>
+
+            <p>
+                Create and run a simple web application using Express.js.
+            </p>
+
+        </div>
+
+
+        <section>
+
+            <h2>Objective</h2>
+
+            <p>
+                To create a basic Express.js application and send a
+                response to the client.
+            </p>
+
+        </section>
+
+
+        <section>
+
+            <h2>Installation</h2>
+
+            <div class="code-box">
+<pre>npm init -y
+npm install express</pre>
+            </div>
+
+        </section>
+
+
+        <section>
+
+            <h2>Node.js Code</h2>
+
+            <div class="code-box">
+<pre>const express = require("express");
+
+const app = express();
+
+app.get("/", (req, res) => {
+    res.send("Hello from Express.js");
+});
+
+app.listen(3000, () => {
+    console.log("Express server running at http://localhost:3000");
+});</pre>
+            </div>
+
+        </section>
+
+
+        <section>
+
+            <h2>How to Run</h2>
+
+            <div class="code-box">
+<pre>node 01.js</pre>
+            </div>
+
+            <p>
+                Open
+                <strong>http://localhost:3000</strong>
+                in your browser.
+            </p>
+
+        </section>
+
+
+        <section>
+
+            <h2>Expected Output</h2>
+
+            <div class="output-box">
+                Hello from Express.js
+            </div>
+
+        </section>
+
+    </article>
+
+</main>
+
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. Node.js
+            </div>
+
+            <div class="footer-links">
+
+                <a href="../../index.html">
+                    Home
+                </a>
+
+                <a href="index.html">
+                    Express Programs
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const mobileNav =
+    document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+
+});
+
+</script>
+
+</body>
+</html>

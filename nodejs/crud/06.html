@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>CRUD-06 | Input Validation</title>
+
+    <link
+        rel="stylesheet"
+        href="../../styles/main.css"
+    >
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-content">
+
+        <h1>HTML-CSS-JS Practical</h1>
+
+        <button
+            class="menu-toggle"
+            onclick="toggleMenu()"
+        >
+            ☰
+        </button>
+
+        <nav id="mainNav">
+
+            <a href="../../index.html">Home</a>
+
+            <a href="../../html/index.html">
+                HTML
+            </a>
+
+            <a href="../../css/index.html">
+                CSS
+            </a>
+
+            <a href="../../javascript/index.html">
+                JavaScript
+            </a>
+
+            <a href="../index.html">
+                Node.js
+            </a>
+
+            <a href="index.html">
+                CRUD
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="page-header">
+
+        <h1>CRUD Operations - Experiment 06</h1>
+
+        <p>
+            Implement input validation for CRUD operations.
+        </p>
+
+    </section>
+
+
+    <section class="experiment-wrapper">
+
+        <div class="experiment-card">
+
+            <div class="experiment-header">
+
+                <h2>
+                    CRUD Input Validation
+                </h2>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>Validation Rules</h3>
+
+                <ul>
+
+                    <li>
+                        Name is required.
+                    </li>
+
+                    <li>
+                        Course is required.
+                    </li>
+
+                    <li>
+                        Semester must be a number.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>Run</h3>
+
+                <pre>
+node 06.js
+                </pre>
+
+                <p>
+                    Server:
+                </p>
+
+                <pre>
+http://localhost:3056
+                </pre>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        HTML-CSS-JS Practical |
+        CRUD Input Validation
+    </p>
+
+</footer>
+
+
+<script>
+
+function toggleMenu() {
+
+    const nav =
+        document.getElementById("mainNav");
+
+    nav.classList.toggle("active");
+
+}
+
+</script>
+
+</body>
+
+</html>

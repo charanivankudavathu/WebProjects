@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JS-21 | DOM & Event-Based Experiments</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .section-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-list {
+            display: grid;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .section-item {
+            padding: 20px;
+            border: 1px solid #555;
+            border-radius: 10px;
+            background: #f5f5f5;
+        }
+
+        .section-item h3 {
+            margin-top: 0;
+        }
+
+        .section-item p {
+            margin-bottom: 0;
+            line-height: 1.7;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">J</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="../css/index.html">CSS</a>
+                <a href="index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="../css/index.html">CSS Programs</a>
+            <a href="index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">JavaScript • Experiment 21</span>
+
+            <h1>DOM & Event-Based Experiments</h1>
+
+            <p>
+                Introduction to DOM manipulation and event-based JavaScript
+                programs.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="section-content">
+
+                <h2>Upcoming Experiments</h2>
+
+                <div class="section-list">
+
+                    <div class="section-item">
+                        <h3>JS-22 — Change Text</h3>
+                        <p>
+                            Change the content of an HTML element using
+                            JavaScript.
+                        </p>
+                    </div>
+
+                    <div class="section-item">
+                        <h3>JS-23 — Change Background Color</h3>
+                        <p>
+                            Change the background color of a webpage using
+                            JavaScript.
+                        </p>
+                    </div>
+
+                    <div class="section-item">
+                        <h3>JS-24 — Button Click Event</h3>
+                        <p>
+                            Demonstrate a button click event using JavaScript.
+                        </p>
+                    </div>
+
+                    <div class="section-item">
+                        <h3>JS-25 — Show/Hide Element</h3>
+                        <p>
+                            Show and hide an HTML element using JavaScript.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const mobileNav = document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+
+        mobileNav.classList.toggle("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            mobileNav.classList.contains("active")
+        );
+
+    });
+</script>
+
+</body>
+</html>

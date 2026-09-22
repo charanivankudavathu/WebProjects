@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM-07 | Dynamic Validation Messages</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .form-demo {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #999999;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .error {
+            display: block;
+            min-height: 20px;
+            margin-top: 5px;
+            color: #cc0000;
+            font-size: 14px;
+        }
+
+        .valid {
+            border: 2px solid #555555 !important;
+        }
+
+        .invalid {
+            border: 2px solid #cc0000 !important;
+        }
+
+        .success {
+            margin-top: 20px;
+            padding: 15px;
+            background: #eeeeee;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .form-button {
+            padding: 12px 25px;
+            background: #111111;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">FORM-07</span>
+            <h1>Dynamic Validation Messages</h1>
+            <p>
+                Display validation error messages dynamically
+                without reloading the page.
+            </p>
+        </div>
+
+        <div class="form-demo">
+
+            <form id="dynamicForm">
+
+                <div class="form-group">
+
+                    <label for="name">Name</label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                    >
+
+                    <span class="error" id="nameError"></span>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="email">Email</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                    >
+
+                    <span class="error" id="emailError"></span>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="phone">Mobile Number</label>
+
+                    <input
+                        type="text"
+                        id="phone"
+                        placeholder="Enter 10 digit mobile number"
+                    >
+
+                    <span class="error" id="phoneError"></span>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="password">Password</label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter password"
+                    >
+
+                    <span class="error" id="passwordError"></span>
+
+                </div>
+
+                <button type="submit" class="form-button">
+                    Validate Form
+                </button>
+
+                <div id="successMessage"></div>
+
+            </form>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+
+});
+
+const form = document.getElementById("dynamicForm");
+
+const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("email");
+const phoneInput = document.getElementById("phone");
+const passwordInput = document.getElementById("password");
+
+function showError(input, errorElement, message) {
+
+    errorElement.textContent = message;
+
+    input.classList.remove("valid");
+    input.classList.add("invalid");
+}
+
+function showSuccess(input, errorElement) {
+
+    errorElement.textContent = "";
+
+    input.classList.remove("invalid");
+    input.classList.add("valid");
+}
+
+nameInput.addEventListener("input", function () {
+
+    const value = nameInput.value.trim();
+
+    if (value === "") {
+
+        showError(
+            nameInput,
+            document.getElementById("nameError"),
+            "Name is required."
+        );
+
+    } else if (!/^[A-Za-z ]+$/.test(value)) {
+
+        showError(
+            nameInput,
+            document.getElementById("nameError"),
+            "Name must contain only alphabets."
+        );
+
+    } else {
+
+        showSuccess(
+            nameInput,
+            document.getElementById("nameError")
+        );
+
+    }
+
+});
+
+emailInput.addEventListener("input", function () {
+
+    const value = emailInput.value.trim();
+
+    if (value === "") {
+
+        showError(
+            emailInput,
+            document.getElementById("emailError"),
+            "Email is required."
+        );
+
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+
+        showError(
+            emailInput,
+            document.getElementById("emailError"),
+            "Enter a valid email address."
+        );
+
+    } else {
+
+        showSuccess(
+            emailInput,
+            document.getElementById("emailError")
+        );
+
+    }
+
+});
+
+phoneInput.addEventListener("input", function () {
+
+    const value = phoneInput.value.trim();
+
+    if (value === "") {
+
+        showError(
+            phoneInput,
+            document.getElementById("phoneError"),
+            "Mobile number is required."
+        );
+
+    } else if (!/^[0-9]{10}$/.test(value)) {
+
+        showError(
+            phoneInput,
+            document.getElementById("phoneError"),
+            "Mobile number must contain exactly 10 digits."
+        );
+
+    } else {
+
+        showSuccess(
+            phoneInput,
+            document.getElementById("phoneError")
+        );
+
+    }
+
+});
+
+passwordInput.addEventListener("input", function () {
+
+    const value = passwordInput.value;
+
+    if (value === "") {
+
+        showError(
+            passwordInput,
+            document.getElementById("passwordError"),
+            "Password is required."
+        );
+
+    } else if (value.length < 8) {
+
+        showError(
+            passwordInput,
+            document.getElementById("passwordError"),
+            "Password must contain at least 8 characters."
+        );
+
+    } else {
+
+        showSuccess(
+            passwordInput,
+            document.getElementById("passwordError")
+        );
+
+    }
+
+});
+
+form.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    nameInput.dispatchEvent(new Event("input"));
+    emailInput.dispatchEvent(new Event("input"));
+    phoneInput.dispatchEvent(new Event("input"));
+    passwordInput.dispatchEvent(new Event("input"));
+
+    const invalidFields =
+        document.querySelectorAll(".invalid");
+
+    if (invalidFields.length === 0) {
+
+        document.getElementById("successMessage").textContent =
+            "All fields are valid. Form submitted successfully.";
+
+        document.getElementById("successMessage").className =
+            "success";
+
+    } else {
+
+        document.getElementById("successMessage").textContent = "";
+        document.getElementById("successMessage").className = "";
+
+    }
+
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS-73 | CSS Functions</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .functions-demo {
+            background: #eeeeee;
+            border: 1px solid #cccccc;
+            border-radius: 14px;
+            padding: 30px;
+        }
+
+        .function-card {
+            background: #ffffff;
+            border: 1px solid #cccccc;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .function-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .clamp-heading {
+            font-size: clamp(28px, 6vw, 70px);
+            margin: 0;
+        }
+
+        .min-box {
+            width: min(100%, 600px);
+            background: #111111;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .max-box {
+            width: max(300px, 50%);
+            background: #222222;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .code-example {
+            margin-top: 15px;
+            padding: 12px;
+            background: #111111;
+            color: #ffffff;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+
+        @media (max-width: 600px) {
+            .functions-demo {
+                padding: 20px;
+            }
+
+            .max-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">
+                        HTML • CSS • JavaScript
+                    </span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 73</span>
+
+            <h1>clamp(), min() and max()</h1>
+
+            <p>
+                Demonstration of CSS mathematical sizing functions.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="functions-demo">
+
+                <div class="function-card">
+
+                    <h2 class="clamp-heading">
+                        clamp()
+                    </h2>
+
+                    <p>
+                        The heading has a minimum, preferred and
+                        maximum font size.
+                    </p>
+
+                    <div class="code-example">
+                        font-size: clamp(28px, 6vw, 70px);
+                    </div>
+
+                </div>
+
+
+                <div class="function-card">
+
+                    <h2>min()</h2>
+
+                    <div class="min-box">
+                        This element uses min(100%, 600px).
+                    </div>
+
+                    <div class="code-example">
+                        width: min(100%, 600px);
+                    </div>
+
+                </div>
+
+
+                <div class="function-card">
+
+                    <h2>max()</h2>
+
+                    <div class="max-box">
+                        This element uses max(300px, 50%).
+                    </div>
+
+                    <div class="code-example">
+                        width: max(300px, 50%);
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const mobileNav = document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+        mobileNav.classList.toggle("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            mobileNav.classList.contains("active")
+        );
+    });
+</script>
+
+</body>
+</html>

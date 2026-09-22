@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Experiment 29</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        :root {
+            --main-color: #111111;
+            --secondary-color: #555555;
+            --light-color: #eeeeee;
+            --text-color: #222222;
+            --spacing: 20px;
+            --radius: 10px;
+        }
+
+        .variables-demo {
+            display: grid;
+            gap: var(--spacing);
+        }
+
+        .variable-card {
+            padding: var(--spacing);
+            border: 2px solid var(--main-color);
+            border-radius: var(--radius);
+            background: var(--light-color);
+            color: var(--text-color);
+        }
+
+        .variable-header {
+            padding: var(--spacing);
+            background: var(--main-color);
+            color: #ffffff;
+            border-radius: var(--radius);
+        }
+
+        .variable-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 20px;
+            background: var(--secondary-color);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: var(--radius);
+        }
+
+        .variable-button:hover {
+            background: var(--main-color);
+        }
+
+        .code-example {
+            padding: 15px;
+            background: #ffffff;
+            border: 1px solid #777777;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        .code-example code {
+            line-height: 1.8;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+
+            <span class="eyebrow">CSS • Experiment 29</span>
+
+            <h1>CSS Variables</h1>
+
+            <p>
+                Demonstration of custom properties using
+                CSS variables and the var() function.
+            </p>
+
+        </div>
+
+        <div class="output-box">
+
+            <div class="variables-demo">
+
+                <div class="variable-header">
+
+                    <h2>CSS Custom Properties</h2>
+
+                    <p>
+                        This section uses variables defined
+                        inside :root.
+                    </p>
+
+                </div>
+
+                <div class="variable-card">
+
+                    <h3>Reusable Variables</h3>
+
+                    <p>
+                        Colors, spacing and border radius are
+                        stored as reusable CSS variables.
+                    </p>
+
+                    <a href="#" class="variable-button">
+                        Variable Button
+                    </a>
+
+                </div>
+
+                <div class="code-example">
+
+                    <code>
+                        --main-color: #111111;<br>
+                        --secondary-color: #555555;<br>
+                        --spacing: 20px;<br>
+                        --radius: 10px;<br><br>
+
+                        background: var(--main-color);<br>
+                        padding: var(--spacing);<br>
+                        border-radius: var(--radius);
+                    </code>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JS-15 | JavaScript Functions</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .program-form {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .program-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .program-form input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #555;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .program-form button {
+            padding: 12px 22px;
+            background: #111;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .program-form button:hover {
+            background: #333;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 18px;
+            background: #111;
+            color: #fff;
+            border-radius: 8px;
+            line-height: 1.9;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">J</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="../css/index.html">CSS</a>
+                <a href="index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="../css/index.html">CSS Programs</a>
+            <a href="index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">JavaScript • Experiment 15</span>
+
+            <h1>JavaScript Functions</h1>
+
+            <p>
+                Demonstrate function declaration, parameters, return values,
+                and function calls in JavaScript.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="program-form">
+
+                <label for="number1">
+                    Enter first number:
+                </label>
+
+                <input
+                    type="number"
+                    id="number1"
+                    placeholder="Example: 10"
+                >
+
+                <label for="number2">
+                    Enter second number:
+                </label>
+
+                <input
+                    type="number"
+                    id="number2"
+                    placeholder="Example: 5"
+                >
+
+                <button onclick="showFunctionResults()">
+                    Call Functions
+                </button>
+
+                <div class="result" id="result">
+                    Result will appear here.
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+
+    // Function with two parameters and a return value
+    function addNumbers(a, b) {
+        return a + b;
+    }
+
+
+    // Function with one parameter and a return value
+    function squareNumber(number) {
+        return number * number;
+    }
+
+
+    // Function to display results
+    function showFunctionResults() {
+
+        const value1 = document.getElementById("number1").value;
+        const value2 = document.getElementById("number2").value;
+        const result = document.getElementById("result");
+
+        if (value1 === "" || value2 === "") {
+            result.innerHTML = "Please enter both numbers.";
+            return;
+        }
+
+        const number1 = Number(value1);
+        const number2 = Number(value2);
+
+        const sum = addNumbers(number1, number2);
+        const square1 = squareNumber(number1);
+        const square2 = squareNumber(number2);
+
+        result.innerHTML =
+            "First number: <strong>" +
+            number1 +
+            "</strong><br>" +
+
+            "Second number: <strong>" +
+            number2 +
+            "</strong><br><br>" +
+
+            "addNumbers(" +
+            number1 +
+            ", " +
+            number2 +
+            ") = <strong>" +
+            sum +
+            "</strong><br>" +
+
+            "squareNumber(" +
+            number1 +
+            ") = <strong>" +
+            square1 +
+            "</strong><br>" +
+
+            "squareNumber(" +
+            number2 +
+            ") = <strong>" +
+            square2 +
+            "</strong>";
+    }
+
+
+    const menuButton = document.getElementById("menuButton");
+    const mobileNav = document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+
+        mobileNav.classList.toggle("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            mobileNav.classList.contains("active")
+        );
+
+    });
+
+</script>
+
+</body>
+</html>

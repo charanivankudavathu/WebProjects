@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS-72 | Responsive Typography</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .typography-demo {
+            background: #eeeeee;
+            border: 1px solid #cccccc;
+            border-radius: 14px;
+            padding: 35px;
+        }
+
+        .responsive-title {
+            font-size: 8vw;
+            font-weight: 800;
+            line-height: 1;
+            margin: 0 0 25px;
+        }
+
+        .responsive-subtitle {
+            font-size: 4vw;
+            margin-bottom: 20px;
+        }
+
+        .responsive-text {
+            font-size: 1.5vw;
+            line-height: 1.8;
+        }
+
+        .size-info {
+            margin-top: 25px;
+            padding: 18px;
+            background: #111111;
+            color: #ffffff;
+            border-radius: 8px;
+        }
+
+        @media (min-width: 1000px) {
+            .responsive-title {
+                font-size: 80px;
+            }
+
+            .responsive-subtitle {
+                font-size: 40px;
+            }
+
+            .responsive-text {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .typography-demo {
+                padding: 20px;
+            }
+
+            .responsive-title {
+                font-size: 12vw;
+            }
+
+            .responsive-subtitle {
+                font-size: 7vw;
+            }
+
+            .responsive-text {
+                font-size: 4vw;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">
+                        HTML • CSS • JavaScript
+                    </span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 72</span>
+
+            <h1>Responsive Typography</h1>
+
+            <p>
+                Demonstration of responsive text sizing using
+                viewport-based units.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="typography-demo">
+
+                <h2 class="responsive-title">
+                    Responsive Heading
+                </h2>
+
+                <h3 class="responsive-subtitle">
+                    Text changes with screen size
+                </h3>
+
+                <p class="responsive-text">
+                    Resize the browser window to observe how the
+                    typography automatically adjusts for different
+                    screen sizes.
+                </p>
+
+                <div class="size-info">
+                    CSS viewport units such as vw can be used to
+                    create responsive typography.
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const mobileNav = document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+        mobileNav.classList.toggle("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            mobileNav.classList.contains("active")
+        );
+    });
+</script>
+
+</body>
+</html>

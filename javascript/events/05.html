@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EVENT-05 | Bubbling and Capturing</title>
+
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .event-demo {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .outer {
+            padding: 35px;
+            background: #eeeeee;
+            border: 3px solid #111;
+            border-radius: 12px;
+        }
+
+        .middle {
+            padding: 30px;
+            background: #ddd;
+            border-radius: 10px;
+        }
+
+        .inner {
+            padding: 25px;
+            background: #fff;
+            border: 2px solid #111;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            background: #111;
+            color: white;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+
+        .demo-button {
+            margin-top: 15px;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 6px;
+            background: #111;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">Events • Experiment 05</span>
+
+            <h1>Event Bubbling and Event Capturing</h1>
+
+            <p>
+                Demonstrate the difference between bubbling and capturing.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="event-demo">
+
+                <div id="outer" class="outer">
+
+                    Outer Element
+
+                    <div id="middle" class="middle">
+
+                        Middle Element
+
+                        <div id="inner" class="inner">
+                            Click Inner Element
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button id="clearButton" class="demo-button">
+                    Clear Log
+                </button>
+
+                <div id="status" class="status">
+                    Click the inner element.
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+    const outer =
+        document.getElementById("outer");
+
+    const middle =
+        document.getElementById("middle");
+
+    const inner =
+        document.getElementById("inner");
+
+    const status =
+        document.getElementById("status");
+
+    function showEvent(message) {
+
+        status.innerHTML +=
+            message + "<br>";
+
+    }
+
+    outer.addEventListener(
+        "click",
+        function () {
+            showEvent("Outer - Bubbling");
+        }
+    );
+
+    middle.addEventListener(
+        "click",
+        function () {
+            showEvent("Middle - Bubbling");
+        }
+    );
+
+    inner.addEventListener(
+        "click",
+        function () {
+            showEvent("Inner - Bubbling");
+        }
+    );
+
+    outer.addEventListener(
+        "click",
+        function () {
+            showEvent("Outer - Capturing");
+        },
+        true
+    );
+
+    middle.addEventListener(
+        "click",
+        function () {
+            showEvent("Middle - Capturing");
+        },
+        true
+    );
+
+    inner.addEventListener(
+        "click",
+        function () {
+            showEvent("Inner - Capturing");
+        },
+        true
+    );
+
+    document
+        .getElementById("clearButton")
+        .addEventListener("click", function () {
+
+            status.innerHTML =
+                "Log cleared. Click the inner element.";
+
+        });
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+
+        mobileNav.classList.toggle("active");
+
+    });
+</script>
+
+</body>
+</html>

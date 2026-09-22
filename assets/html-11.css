@@ -1,0 +1,41 @@
+.external-box {
+background: #111111;
+color: #ffffff;
+padding: 25px;
+border-radius: 10px;
+margin-top: 20px;
+}
+
+.external-box h3 {
+margin-top: 0;
+}
+
+.external-button {
+display: inline-block;
+background: #ffffff;
+color: #111111;
+padding: 10px 18px;
+text-decoration: none;
+border-radius: 6px;
+}
+
+.external-button:hover {
+background: #dddddd;
+}
+
+.external-demo {
+padding: 25px;
+border: 2px solid #555555;
+border-radius: 12px;
+background: #eeeeee;
+}
+
+.external-demo h2 {
+margin-bottom: 15px;
+text-align: center;
+}
+
+.external-demo p {
+margin: 0;
+line-height: 1.7;
+}

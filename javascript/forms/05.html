@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM-05 | Feedback Form</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .form-demo {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #999999;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .form-group textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .error {
+            display: block;
+            margin-top: 5px;
+            color: #cc0000;
+            font-size: 14px;
+        }
+
+        .success {
+            margin-top: 20px;
+            padding: 15px;
+            background: #eeeeee;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .form-button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            background: #111111;
+            color: #ffffff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">FORM-05</span>
+            <h1>Feedback Form</h1>
+            <p>Create a feedback form with JavaScript validation.</p>
+        </div>
+
+        <div class="form-demo">
+
+            <form id="feedbackForm">
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Enter your name">
+                    <span class="error" id="nameError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                    <span class="error" id="emailError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="rating">Rating</label>
+                    <select id="rating">
+                        <option value="">Select rating</option>
+                        <option value="5">Excellent</option>
+                        <option value="4">Very Good</option>
+                        <option value="3">Good</option>
+                        <option value="2">Average</option>
+                        <option value="1">Poor</option>
+                    </select>
+                    <span class="error" id="ratingError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Feedback</label>
+                    <textarea
+                        id="message"
+                        placeholder="Enter your feedback"
+                    ></textarea>
+                    <span class="error" id="messageError"></span>
+                </div>
+
+                <button type="submit" class="form-button">
+                    Submit Feedback
+                </button>
+
+                <div id="successMessage"></div>
+
+            </form>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+
+const feedbackForm = document.getElementById("feedbackForm");
+
+feedbackForm.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const rating = document.getElementById("rating").value;
+    const message = document.getElementById("message").value.trim();
+
+    document.getElementById("nameError").textContent = "";
+    document.getElementById("emailError").textContent = "";
+    document.getElementById("ratingError").textContent = "";
+    document.getElementById("messageError").textContent = "";
+    document.getElementById("successMessage").textContent = "";
+
+    let valid = true;
+
+    if (name === "") {
+        document.getElementById("nameError").textContent =
+            "Name is required.";
+        valid = false;
+    }
+
+    if (email === "") {
+        document.getElementById("emailError").textContent =
+            "Email is required.";
+        valid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById("emailError").textContent =
+            "Enter a valid email address.";
+        valid = false;
+    }
+
+    if (rating === "") {
+        document.getElementById("ratingError").textContent =
+            "Please select a rating.";
+        valid = false;
+    }
+
+    if (message === "") {
+        document.getElementById("messageError").textContent =
+            "Feedback message is required.";
+        valid = false;
+    } else if (message.length < 10) {
+        document.getElementById("messageError").textContent =
+            "Feedback must contain at least 10 characters.";
+        valid = false;
+    }
+
+    if (valid) {
+        document.getElementById("successMessage").textContent =
+            "Thank you! Your feedback has been submitted successfully.";
+        document.getElementById("successMessage").className = "success";
+    }
+});
+</script>
+
+</body>
+</html>

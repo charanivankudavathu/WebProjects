@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>REST API-10 | DELETE REST API</title>
+
+    <link
+        rel="stylesheet"
+        href="../../styles/main.css"
+    >
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-content">
+
+        <h1>HTML-CSS-JS Practical</h1>
+
+        <button class="menu-toggle" onclick="toggleMenu()">
+            ☰
+        </button>
+
+        <nav id="mainNav">
+
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML</a>
+            <a href="../../css/index.html">CSS</a>
+            <a href="../../javascript/index.html">JavaScript</a>
+            <a href="../index.html">Node.js</a>
+            <a href="index.html">REST API</a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="page-header">
+
+        <h1>RESTful API - Experiment 10</h1>
+
+        <p>
+            Implement a DELETE REST API.
+        </p>
+
+    </section>
+
+
+    <section class="experiment-wrapper">
+
+        <div class="experiment-card">
+
+            <div class="experiment-header">
+                <h2>DELETE REST API</h2>
+            </div>
+
+            <div class="output-box">
+
+                <h3>Endpoint</h3>
+
+                <pre>
+DELETE /students/:id
+                </pre>
+
+            </div>
+
+            <div class="output-box">
+
+                <h3>Run</h3>
+
+                <pre>
+node 10.js
+
+http://localhost:3080
+                </pre>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    <p>
+        HTML-CSS-JS Practical |
+        Node.js REST API
+    </p>
+</footer>
+
+
+<script>
+
+function toggleMenu() {
+
+    document
+        .getElementById("mainNav")
+        .classList
+        .toggle("active");
+
+}
+
+</script>
+
+</body>
+</html>

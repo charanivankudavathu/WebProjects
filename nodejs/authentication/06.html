@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Authentication-06 | Protected API Routes</title>
+
+    <link
+        rel="stylesheet"
+        href="../../styles/main.css"
+    >
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-content">
+
+        <h1>HTML-CSS-JS Practical</h1>
+
+        <button
+            class="menu-toggle"
+            onclick="toggleMenu()"
+        >
+            ☰
+        </button>
+
+        <nav id="mainNav">
+
+            <a href="../../index.html">Home</a>
+
+            <a href="../../html/index.html">
+                HTML
+            </a>
+
+            <a href="../../css/index.html">
+                CSS
+            </a>
+
+            <a href="../../javascript/index.html">
+                JavaScript
+            </a>
+
+            <a href="../index.html">
+                Node.js
+            </a>
+
+            <a href="index.html">
+                Authentication
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="page-header">
+
+        <h1>Authentication - Experiment 06</h1>
+
+        <p>
+            Create Protected API Routes using authentication.
+        </p>
+
+    </section>
+
+
+    <section class="experiment-wrapper">
+
+        <div class="experiment-card">
+
+            <div class="experiment-header">
+
+                <h2>
+                    Protected API Route
+                </h2>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>Authentication Flow</h3>
+
+                <pre>
+Login
+  ↓
+JWT Token
+  ↓
+Authorization Header
+  ↓
+Authentication Middleware
+  ↓
+Protected API
+                </pre>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>Protected Endpoint</h3>
+
+                <pre>
+GET /dashboard
+                </pre>
+
+                <p>
+                    Header:
+                </p>
+
+                <pre>
+Authorization: Bearer YOUR_TOKEN
+                </pre>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>Run</h3>
+
+                <pre>
+node 06.js
+                </pre>
+
+                <pre>
+http://localhost:3066
+                </pre>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        HTML-CSS-JS Practical |
+        Protected API Routes
+    </p>
+
+</footer>
+
+
+<script>
+
+function toggleMenu() {
+
+    document
+        .getElementById("mainNav")
+        .classList
+        .toggle("active");
+
+}
+
+</script>
+
+</body>
+
+</html>

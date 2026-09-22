@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JS-33 | Quiz Application</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .quiz {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .question-box {
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #555;
+            border-radius: 10px;
+            background: #eeeeee;
+        }
+
+        .question-box h2 {
+            margin-top: 0;
+        }
+
+        .option {
+            display: block;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #777;
+            border-radius: 6px;
+            cursor: pointer;
+            background: #fff;
+        }
+
+        .option:hover {
+            background: #dddddd;
+        }
+
+        .quiz button {
+            padding: 12px 22px;
+            background: #111;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .quiz button:hover {
+            background: #333;
+        }
+
+        #quizResult {
+            margin-top: 20px;
+            padding: 18px;
+            background: #111;
+            color: #fff;
+            border-radius: 8px;
+            line-height: 1.7;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">J</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="../css/index.html">CSS</a>
+                <a href="index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="../css/index.html">CSS Programs</a>
+            <a href="index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">JavaScript • Experiment 33</span>
+
+            <h1>Simple Quiz Application</h1>
+
+            <p>
+                Answer the questions and calculate your score using JavaScript.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="quiz" id="quiz"></div>
+
+            <button onclick="submitQuiz()">
+                Submit Quiz
+            </button>
+
+            <div id="quizResult">
+                Select an answer for each question.
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+
+    const questions = [
+
+        {
+            question: "Which language is used to make webpages interactive?",
+            options: [
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "SQL"
+            ],
+            answer: 2
+        },
+
+        {
+            question: "Which keyword declares a constant in JavaScript?",
+            options: [
+                "var",
+                "let",
+                "const",
+                "constant"
+            ],
+            answer: 2
+        },
+
+        {
+            question: "Which method adds an element to the end of an array?",
+            options: [
+                "push()",
+                "pop()",
+                "shift()",
+                "slice()"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which object represents the current date and time?",
+            options: [
+                "Time",
+                "Date",
+                "Clock",
+                "Calendar"
+            ],
+            answer: 1
+        },
+
+        {
+            question: "Which symbol is used for a single-line comment?",
+            options: [
+                "/*",
+                "<!--",
+                "//",
+                "#"
+            ],
+            answer: 2
+        }
+
+    ];
+
+
+    function loadQuiz() {
+
+        const quiz =
+            document.getElementById("quiz");
+
+        questions.forEach(function(item, index) {
+
+            const questionBox =
+                document.createElement("div");
+
+            questionBox.className = "question-box";
+
+
+            const heading =
+                document.createElement("h2");
+
+            heading.textContent =
+                (index + 1) + ". " + item.question;
+
+
+            questionBox.appendChild(heading);
+
+
+            item.options.forEach(function(option, optionIndex) {
+
+                const label =
+                    document.createElement("label");
+
+                label.className = "option";
+
+
+                const radio =
+                    document.createElement("input");
+
+                radio.type = "radio";
+
+                radio.name =
+                    "question" + index;
+
+                radio.value =
+                    optionIndex;
+
+
+                label.appendChild(radio);
+
+                label.appendChild(
+                    document.createTextNode(" " + option)
+                );
+
+                questionBox.appendChild(label);
+
+            });
+
+
+            quiz.appendChild(questionBox);
+
+        });
+
+    }
+
+
+    function submitQuiz() {
+
+        let score = 0;
+
+        let answered = 0;
+
+
+        questions.forEach(function(item, index) {
+
+            const selected =
+                document.querySelector(
+                    'input[name="question' +
+                    index +
+                    '"]:checked'
+                );
+
+
+            if (selected) {
+
+                answered++;
+
+                if (
+                    Number(selected.value) ===
+                    item.answer
+                ) {
+                    score++;
+                }
+
+            }
+
+        });
+
+
+        const result =
+            document.getElementById("quizResult");
+
+
+        if (answered < questions.length) {
+
+            result.innerHTML =
+                "Please answer all " +
+                questions.length +
+                " questions.";
+
+            return;
+
+        }
+
+
+        result.innerHTML =
+            "Quiz completed!<br>" +
+            "Your score: <strong>" +
+            score +
+            " / " +
+            questions.length +
+            "</strong>";
+
+    }
+
+
+    loadQuiz();
+
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function() {
+
+        mobileNav.classList.toggle("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            mobileNav.classList.contains("active")
+        );
+
+    });
+
+</script>
+
+</body>
+</html>

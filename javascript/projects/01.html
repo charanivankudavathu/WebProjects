@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT-01 | Digital Calculator</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .calculator {
+            max-width: 360px;
+            margin: auto;
+            padding: 20px;
+            background: #111111;
+            border-radius: 15px;
+        }
+
+        #display {
+            width: 100%;
+            height: 70px;
+            margin-bottom: 15px;
+            padding: 10px;
+            text-align: right;
+            font-size: 28px;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .calculator-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .calculator-buttons button {
+            height: 60px;
+            border: none;
+            border-radius: 8px;
+            font-size: 20px;
+            cursor: pointer;
+            background: #eeeeee;
+            color: #111111;
+        }
+
+        .calculator-buttons button:hover {
+            background: #cccccc;
+        }
+
+        .calculator-buttons .operator {
+            background: #555555;
+            color: #ffffff;
+        }
+
+        .calculator-buttons .clear {
+            background: #333333;
+            color: #ffffff;
+        }
+
+        .calculator-buttons .equal {
+            grid-column: span 2;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">PROJECT-01</span>
+            <h1>Digital Calculator</h1>
+            <p>Create a digital calculator using JavaScript.</p>
+        </div>
+
+        <div class="calculator">
+
+            <input type="text" id="display" readonly>
+
+            <div class="calculator-buttons">
+
+                <button class="clear" onclick="clearDisplay()">C</button>
+                <button onclick="deleteLast()">DEL</button>
+                <button class="operator" onclick="addValue('%')">%</button>
+                <button class="operator" onclick="addValue('/')">÷</button>
+
+                <button onclick="addValue('7')">7</button>
+                <button onclick="addValue('8')">8</button>
+                <button onclick="addValue('9')">9</button>
+                <button class="operator" onclick="addValue('*')">×</button>
+
+                <button onclick="addValue('4')">4</button>
+                <button onclick="addValue('5')">5</button>
+                <button onclick="addValue('6')">6</button>
+                <button class="operator" onclick="addValue('-')">−</button>
+
+                <button onclick="addValue('1')">1</button>
+                <button onclick="addValue('2')">2</button>
+                <button onclick="addValue('3')">3</button>
+                <button class="operator" onclick="addValue('+')">+</button>
+
+                <button onclick="addValue('0')">0</button>
+                <button onclick="addValue('.')">.</button>
+                <button class="equal" onclick="calculate()">=</button>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+
+const display = document.getElementById("display");
+
+function addValue(value) {
+    display.value += value;
+}
+
+function clearDisplay() {
+    display.value = "";
+}
+
+function deleteLast() {
+    display.value = display.value.slice(0, -1);
+}
+
+function calculate() {
+
+    if (display.value === "") {
+        return;
+    }
+
+    try {
+        display.value = Function(
+            "return " + display.value
+        )();
+    } catch {
+        display.value = "Error";
+    }
+}
+</script>
+
+</body>
+</html>

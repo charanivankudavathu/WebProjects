@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Authorization-04 | Authorization Middleware</title>
+
+    <link
+        rel="stylesheet"
+        href="../../styles/main.css"
+    >
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-content">
+
+        <h1>HTML-CSS-JS Practical</h1>
+
+        <button
+            class="menu-toggle"
+            onclick="toggleMenu()"
+        >
+            ☰
+        </button>
+
+        <nav id="mainNav">
+
+            <a href="../../index.html">Home</a>
+
+            <a href="../../html/index.html">HTML</a>
+
+            <a href="../../css/index.html">CSS</a>
+
+            <a href="../../javascript/index.html">
+                JavaScript
+            </a>
+
+            <a href="../index.html">
+                Node.js
+            </a>
+
+            <a href="index.html">
+                Authorization
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="page-header">
+
+        <h1>Authorization - Experiment 04</h1>
+
+        <p>
+            Implement Authorization Middleware.
+        </p>
+
+    </section>
+
+
+    <section class="experiment-wrapper">
+
+        <div class="experiment-card">
+
+            <div class="experiment-header">
+
+                <h2>Authorization Middleware</h2>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>Middleware Flow</h3>
+
+                <pre>
+Request
+   ↓
+Check User Role
+   ↓
+Authorization Middleware
+   ↓
+Protected Route
+                </pre>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>Required Header</h3>
+
+                <pre>
+x-user-role: admin
+                </pre>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>Protected Route</h3>
+
+                <pre>
+GET /admin
+                </pre>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>Run</h3>
+
+                <pre>
+node 04.js
+                </pre>
+
+                <pre>
+http://localhost:3074
+                </pre>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        HTML-CSS-JS Practical |
+        Node.js Authorization
+    </p>
+
+</footer>
+
+
+<script>
+
+function toggleMenu() {
+
+    document
+        .getElementById("mainNav")
+        .classList
+        .toggle("active");
+
+}
+
+</script>
+
+</body>
+</html>

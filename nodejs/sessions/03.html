@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Session-03 | Session Management</title>
+
+    <link
+        rel="stylesheet"
+        href="../../styles/main.css"
+    >
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-content">
+
+        <h1>HTML-CSS-JS Practical</h1>
+
+        <button
+            class="menu-toggle"
+            onclick="toggleMenu()"
+        >
+            ☰
+        </button>
+
+        <nav id="mainNav">
+
+            <a href="../../index.html">Home</a>
+
+            <a href="../../html/index.html">HTML</a>
+
+            <a href="../../css/index.html">CSS</a>
+
+            <a href="../../javascript/index.html">
+                JavaScript
+            </a>
+
+            <a href="../index.html">
+                Node.js
+            </a>
+
+            <a href="index.html">
+                Sessions
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="page-header">
+
+        <h1>Session and Cookie Management - Experiment 03</h1>
+
+        <p>
+            Implement session management in Express.
+        </p>
+
+    </section>
+
+
+    <section class="experiment-wrapper">
+
+        <div class="experiment-card">
+
+            <div class="experiment-header">
+
+                <h2>
+                    Express Session Management
+                </h2>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>Concept</h3>
+
+                <p>
+                    A session allows the server to
+                    maintain information associated
+                    with a user's session.
+                </p>
+
+                <pre>
+Browser
+   ↓
+Session ID
+   ↓
+Express Session
+   ↓
+Session Data
+                </pre>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>Run</h3>
+
+                <pre>
+node 03.js
+                </pre>
+
+                <p>
+                    Open:
+                </p>
+
+                <pre>
+http://localhost:3033
+                </pre>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        HTML-CSS-JS Practical |
+        Node.js Session and Cookie Management
+    </p>
+
+</footer>
+
+
+<script>
+
+function toggleMenu() {
+
+    const nav =
+        document.getElementById("mainNav");
+
+    nav.classList.toggle("active");
+
+}
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT-11 | Student Marks Calculator</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .marks-demo {
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .marks-group {
+            margin-bottom: 15px;
+        }
+
+        .marks-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .marks-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #999999;
+            border-radius: 6px;
+        }
+
+        .marks-demo button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            background: #111111;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 25px;
+            padding: 20px;
+            background: #eeeeee;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">PROJECT-11</span>
+            <h1>Student Marks & Grade Calculator</h1>
+            <p>Calculate total, average, and grade from marks.</p>
+        </div>
+
+        <div class="marks-demo">
+
+            <div class="marks-group">
+                <label for="subject1">Subject 1</label>
+                <input type="number" id="subject1" min="0" max="100">
+            </div>
+
+            <div class="marks-group">
+                <label for="subject2">Subject 2</label>
+                <input type="number" id="subject2" min="0" max="100">
+            </div>
+
+            <div class="marks-group">
+                <label for="subject3">Subject 3</label>
+                <input type="number" id="subject3" min="0" max="100">
+            </div>
+
+            <div class="marks-group">
+                <label for="subject4">Subject 4</label>
+                <input type="number" id="subject4" min="0" max="100">
+            </div>
+
+            <div class="marks-group">
+                <label for="subject5">Subject 5</label>
+                <input type="number" id="subject5" min="0" max="100">
+            </div>
+
+            <button id="calculateButton">
+                Calculate
+            </button>
+
+            <div id="result">
+                Enter marks for all subjects.
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+
+document.getElementById("calculateButton").addEventListener("click", function () {
+
+    const marks = [];
+
+    for (let i = 1; i <= 5; i++) {
+
+        const value = Number(
+            document.getElementById("subject" + i).value
+        );
+
+        if (value < 0 || value > 100 || isNaN(value)) {
+
+            document.getElementById("result").textContent =
+                "Enter valid marks between 0 and 100.";
+
+            return;
+        }
+
+        marks.push(value);
+    }
+
+    const total = marks.reduce(function (sum, mark) {
+        return sum + mark;
+    }, 0);
+
+    const average = total / marks.length;
+
+    let grade;
+
+    if (average >= 90) {
+        grade = "A+";
+    } else if (average >= 80) {
+        grade = "A";
+    } else if (average >= 70) {
+        grade = "B";
+    } else if (average >= 60) {
+        grade = "C";
+    } else if (average >= 50) {
+        grade = "D";
+    } else {
+        grade = "F";
+    }
+
+    document.getElementById("result").innerHTML = `
+        <strong>Result</strong><br>
+        Total Marks: ${total} / 500<br>
+        Average: ${average.toFixed(2)}%<br>
+        Grade: ${grade}
+    `;
+
+});
+</script>
+
+</body>
+</html>

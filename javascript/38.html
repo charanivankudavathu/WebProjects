@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JS-38 | ES6 Features</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .demo {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .demo button {
+            padding: 12px 22px;
+            background: #111;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .demo button:hover {
+            background: #333;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background: #111;
+            color: #fff;
+            border-radius: 8px;
+            line-height: 2;
+            word-break: break-word;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">J</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="../css/index.html">CSS</a>
+                <a href="index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="../css/index.html">CSS Programs</a>
+            <a href="index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">JavaScript • Experiment 38</span>
+
+            <h1>ES6 Features</h1>
+
+            <p>
+                Demonstrate let, const, template literals, and destructuring.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="demo">
+
+                <button onclick="runES6Demo()">
+                    Run ES6 Demonstration
+                </button>
+
+                <div class="result" id="result">
+                    Click the button to see the output.
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+
+    function runES6Demo() {
+
+        let age = 20;
+
+        age = 21;
+
+        const course = "B.Tech";
+
+        const studentName = "Charani";
+
+        const message =
+            `Hello ${studentName}, you are ${age} years old and studying ${course}.`;
+
+
+        const student = {
+            name: "Charani",
+            branch: "Computer Science",
+            year: 2
+        };
+
+
+        const {
+            name,
+            branch,
+            year
+        } = student;
+
+
+        const numbers = [10, 20, 30];
+
+        const [first, second, third] =
+            numbers;
+
+
+        document.getElementById("result").innerHTML =
+
+            "<strong>let</strong><br>" +
+            "Age after reassignment: " +
+            age +
+            "<br><br>" +
+
+            "<strong>const</strong><br>" +
+            "Course: " +
+            course +
+            "<br><br>" +
+
+            "<strong>Template Literal</strong><br>" +
+            message +
+            "<br><br>" +
+
+            "<strong>Object Destructuring</strong><br>" +
+            "Name: " +
+            name +
+            "<br>" +
+            "Branch: " +
+            branch +
+            "<br>" +
+            "Year: " +
+            year +
+            "<br><br>" +
+
+            "<strong>Array Destructuring</strong><br>" +
+            "First: " +
+            first +
+            "<br>" +
+            "Second: " +
+            second +
+            "<br>" +
+            "Third: " +
+            third;
+
+    }
+
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function() {
+
+        mobileNav.classList.toggle("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            mobileNav.classList.contains("active")
+        );
+
+    });
+
+</script>
+
+</body>
+</html>

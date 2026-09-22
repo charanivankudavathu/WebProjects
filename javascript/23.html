@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JS-23 | Change Background Color</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .color-demo {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #colorBox {
+            padding: 60px 20px;
+            margin-bottom: 20px;
+            border: 2px solid #555;
+            border-radius: 12px;
+            background: #eeeeee;
+            transition: background-color 0.3s ease;
+        }
+
+        #colorBox h2 {
+            margin-top: 0;
+        }
+
+        .color-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .color-buttons button {
+            padding: 11px 20px;
+            border: none;
+            border-radius: 6px;
+            background: #111;
+            color: #fff;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .color-buttons button:hover {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">J</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="../css/index.html">CSS</a>
+                <a href="index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="../css/index.html">CSS Programs</a>
+            <a href="index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">JavaScript • Experiment 23</span>
+
+            <h1>Change Background Color</h1>
+
+            <p>
+                Change the background color of a webpage using JavaScript.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="color-demo">
+
+                <div id="colorBox">
+                    <h2>Background Color Demo</h2>
+                    <p>
+                        Click a button to change the background color.
+                    </p>
+                </div>
+
+                <div class="color-buttons">
+
+                    <button onclick="changeColor('#eeeeee')">
+                        Light Gray
+                    </button>
+
+                    <button onclick="changeColor('#dddddd')">
+                        Gray
+                    </button>
+
+                    <button onclick="changeColor('#bbbbbb')">
+                        Dark Gray
+                    </button>
+
+                    <button onclick="changeColor('#ffffff')">
+                        White
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+    function changeColor(color) {
+
+        document.getElementById("colorBox").style.backgroundColor =
+            color;
+
+    }
+
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+
+        mobileNav.classList.toggle("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            mobileNav.classList.contains("active")
+        );
+
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JS-32 | To-Do List</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .todo-app {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .todo-input {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .todo-input input {
+            flex: 1;
+            min-width: 0;
+            padding: 12px;
+            border: 1px solid #555;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .todo-input button {
+            padding: 12px 20px;
+            background: #111;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .todo-input button:hover {
+            background: #333;
+        }
+
+        #taskList {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #taskList li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 14px;
+            margin-bottom: 10px;
+            border: 1px solid #555;
+            border-radius: 8px;
+            background: #eeeeee;
+        }
+
+        .task-text {
+            flex: 1;
+            word-break: break-word;
+        }
+
+        .delete-button {
+            padding: 8px 14px;
+            background: #111;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .delete-button:hover {
+            background: #333;
+        }
+
+        .empty-message {
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .todo-input {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">J</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="../css/index.html">CSS</a>
+                <a href="index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="../css/index.html">CSS Programs</a>
+            <a href="index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">JavaScript • Experiment 32</span>
+
+            <h1>To-Do List</h1>
+
+            <p>
+                Create and manage tasks using JavaScript.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="todo-app">
+
+                <div class="todo-input">
+
+                    <input
+                        type="text"
+                        id="taskInput"
+                        placeholder="Enter a task"
+                    >
+
+                    <button onclick="addTask()">
+                        Add Task
+                    </button>
+
+                </div>
+
+                <ul id="taskList"></ul>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+
+    const taskInput =
+        document.getElementById("taskInput");
+
+    const taskList =
+        document.getElementById("taskList");
+
+
+    function addTask() {
+
+        const task =
+            taskInput.value.trim();
+
+        if (task === "") {
+            return;
+        }
+
+        const listItem =
+            document.createElement("li");
+
+
+        const taskText =
+            document.createElement("span");
+
+        taskText.className = "task-text";
+
+        taskText.textContent = task;
+
+
+        const deleteButton =
+            document.createElement("button");
+
+        deleteButton.className = "delete-button";
+
+        deleteButton.textContent = "Delete";
+
+
+        deleteButton.addEventListener("click", function() {
+
+            listItem.remove();
+
+            updateEmptyMessage();
+
+        });
+
+
+        listItem.appendChild(taskText);
+
+        listItem.appendChild(deleteButton);
+
+        taskList.appendChild(listItem);
+
+
+        taskInput.value = "";
+
+        taskInput.focus();
+
+        updateEmptyMessage();
+
+    }
+
+
+    function updateEmptyMessage() {
+
+        const existing =
+            document.querySelector(".empty-message");
+
+        if (existing) {
+            existing.remove();
+        }
+
+        if (taskList.children.length === 0) {
+
+            const message =
+                document.createElement("li");
+
+            message.className = "empty-message";
+
+            message.textContent =
+                "No tasks added yet.";
+
+            taskList.appendChild(message);
+
+        }
+
+    }
+
+
+    taskInput.addEventListener("keydown", function(event) {
+
+        if (event.key === "Enter") {
+            addTask();
+        }
+
+    });
+
+
+    updateEmptyMessage();
+
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function() {
+
+        mobileNav.classList.toggle("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            mobileNav.classList.contains("active")
+        );
+
+    });
+
+</script>
+
+</body>
+</html>

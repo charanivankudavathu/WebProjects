@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Experiment 01 | Practical Lab</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+
+        .internal-box {
+            padding: 25px;
+            margin: 20px 0;
+            background: #eeeeee;
+            border: 2px solid #555555;
+            border-radius: 16px;
+        }
+
+        .external-box {
+            padding: 25px;
+            margin: 20px 0;
+            background: #111111;
+            color: #ffffff;
+            border-radius: 16px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+
+                    <span class="logo-title">
+                        PRACTICAL LAB
+                    </span>
+
+                    <span class="logo-subtitle">
+                        HTML • CSS • JavaScript
+                    </span>
+
+                </div>
+
+            </a>
+
+            <nav class="desktop-nav">
+
+                <a href="../index.html">
+                    Home
+                </a>
+
+                <a href="../html/index.html">
+                    HTML
+                </a>
+
+                <a href="index.html" class="active">
+                    CSS
+                </a>
+
+                <a href="../javascript/index.html">
+                    JavaScript
+                </a>
+
+                <a href="https://charanivankudavathu.github.io"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Portfolio
+                </a>
+
+            </nav>
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                aria-expanded="false">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="../html/index.html">
+                HTML Programs
+            </a>
+
+            <a href="index.html">
+                CSS Programs
+            </a>
+
+            <a href="../javascript/index.html">
+                JavaScript Programs
+            </a>
+
+            <a href="https://charanivankudavathu.github.io"
+               target="_blank"
+               rel="noopener noreferrer">
+                My Portfolio
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+
+            <span class="eyebrow">
+                CSS • EXPERIMENT 01
+            </span>
+
+            <h1>
+                Inline, Internal and External CSS
+            </h1>
+
+            <p>
+                Demonstration of the three methods of applying CSS.
+            </p>
+
+        </div>
+
+
+        <div class="output-box">
+
+            <h2>
+                Output
+            </h2>
+
+
+            <!-- INLINE CSS -->
+
+            <div
+                style="
+                    padding: 25px;
+                    margin: 20px 0;
+                    background: #ffffff;
+                    border: 2px solid #111111;
+                    border-radius: 16px;
+                ">
+
+                <h3>
+                    Inline CSS
+                </h3>
+
+                <p>
+                    This section is styled using the
+                    style attribute.
+                </p>
+
+            </div>
+
+
+            <!-- INTERNAL CSS -->
+
+            <div class="internal-box">
+
+                <h3>
+                    Internal CSS
+                </h3>
+
+                <p>
+                    This section is styled using CSS
+                    written inside the style tag.
+                </p>
+
+            </div>
+
+
+            <!-- EXTERNAL CSS -->
+
+            <div class="external-box">
+
+                <h3>
+                    External CSS
+                </h3>
+
+                <p>
+                    This section demonstrates styling
+                    provided through an external stylesheet.
+                </p>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+
+                © 2026 Practical Lab.
+                HTML • CSS • JavaScript
+
+            </div>
+
+            <div class="footer-links">
+
+                <a href="../index.html">
+                    Home
+                </a>
+
+                <a href="index.html">
+                    CSS Programs
+                </a>
+
+                <a href="https://charanivankudavathu.github.io"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                    Portfolio
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const mobileNav =
+    document.getElementById("mobileNav");
+
+
+menuButton.addEventListener("click", function () {
+
+    mobileNav.classList.toggle("active");
+
+    const isOpen =
+        mobileNav.classList.contains("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        isOpen
+    );
+
+});
+
+</script>
+
+</body>
+
+</html>

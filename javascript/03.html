@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JS-03 | Largest of Three Numbers</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .demo-box {
+            max-width: 650px;
+            margin: auto;
+            background: #eeeeee;
+            border: 1px solid #cccccc;
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 700;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #aaaaaa;
+            border-radius: 7px;
+            font-size: 16px;
+        }
+
+        .demo-button {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 7px;
+            background: #111111;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .demo-button:hover {
+            background: #333333;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #111111;
+            color: #ffffff;
+            text-align: center;
+            font-size: 22px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+
+                <div class="logo-mark">
+                    J
+                </div>
+
+                <div class="logo-text">
+
+                    <span class="logo-title">
+                        PRACTICAL LAB
+                    </span>
+
+                    <span class="logo-subtitle">
+                        HTML • CSS • JavaScript
+                    </span>
+
+                </div>
+
+            </a>
+
+            <nav class="desktop-nav">
+
+                <a href="../index.html">
+                    Home
+                </a>
+
+                <a href="../html/index.html">
+                    HTML
+                </a>
+
+                <a href="../css/index.html">
+                    CSS
+                </a>
+
+                <a href="index.html" class="active">
+                    JavaScript
+                </a>
+
+            </nav>
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                aria-expanded="false"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="../html/index.html">
+                HTML Programs
+            </a>
+
+            <a href="../css/index.html">
+                CSS Programs
+            </a>
+
+            <a href="index.html">
+                JavaScript Programs
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+
+            <span class="eyebrow">
+                JavaScript • Experiment 03
+            </span>
+
+            <h1>
+                Largest of Three Numbers
+            </h1>
+
+            <p>
+                Find the largest value among three
+                numbers using JavaScript.
+            </p>
+
+        </div>
+
+
+        <div class="output-box">
+
+            <div class="demo-box">
+
+                <div class="input-group">
+
+                    <label for="num1">
+                        Number 1
+                    </label>
+
+                    <input
+                        type="number"
+                        id="num1"
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="num2">
+                        Number 2
+                    </label>
+
+                    <input
+                        type="number"
+                        id="num2"
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="num3">
+                        Number 3
+                    </label>
+
+                    <input
+                        type="number"
+                        id="num3"
+                    >
+
+                </div>
+
+
+                <button
+                    class="demo-button"
+                    onclick="findLargest()"
+                >
+                    Find Largest
+                </button>
+
+
+                <div
+                    class="result"
+                    id="result"
+                >
+                    Result will appear here.
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab.
+                HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+
+                <a href="../index.html">
+                    Home
+                </a>
+
+                <a href="index.html">
+                    JavaScript Programs
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+function findLargest() {
+
+    const a =
+        Number(document.getElementById("num1").value);
+
+    const b =
+        Number(document.getElementById("num2").value);
+
+    const c =
+        Number(document.getElementById("num3").value);
+
+
+    const result =
+        document.getElementById("result");
+
+
+    if (
+        document.getElementById("num1").value === "" ||
+        document.getElementById("num2").value === "" ||
+        document.getElementById("num3").value === ""
+    ) {
+
+        result.textContent =
+            "Please enter all three numbers.";
+
+        return;
+
+    }
+
+
+    const largest =
+        Math.max(a, b, c);
+
+
+    result.textContent =
+        "Largest Number: " + largest;
+
+}
+
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const mobileNav =
+    document.getElementById("mobileNav");
+
+
+menuButton.addEventListener("click", function () {
+
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+
+});
+
+</script>
+
+</body>
+</html>

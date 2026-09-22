@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS 47 - Dashboard Grid</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 18px;
+            margin-top: 25px;
+        }
+
+        .dashboard-card {
+            padding: 25px;
+            background: #eeeeee;
+            border: 2px solid #222222;
+            border-radius: 12px;
+        }
+
+        .dashboard-card h2 {
+            margin-bottom: 10px;
+        }
+
+        .dashboard-card p {
+            line-height: 1.6;
+        }
+
+        .large-card {
+            grid-column: span 2;
+        }
+
+        .wide-card {
+            grid-column: 1 / -1;
+            background: #111111;
+            color: #ffffff;
+        }
+
+        .number {
+            font-size: 36px;
+            font-weight: 800;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 800px) {
+            .dashboard {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .large-card {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .large-card,
+            .wide-card {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 47</span>
+
+            <h1>Dashboard Layout Using CSS Grid</h1>
+
+            <p>
+                A dashboard interface demonstrating rows,
+                columns, gaps, and grid spanning.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="dashboard">
+
+                <div class="dashboard-card large-card">
+                    <h2>Total Students</h2>
+                    <p>Students currently registered.</p>
+                    <div class="number">1,250</div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h2>Courses</h2>
+                    <p>Available academic courses.</p>
+                    <div class="number">24</div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h2>Projects</h2>
+                    <p>Completed student projects.</p>
+                    <div class="number">86</div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h2>Labs</h2>
+                    <p>Practical laboratory sessions.</p>
+                    <div class="number">12</div>
+                </div>
+
+                <div class="dashboard-card wide-card">
+                    <h2>Dashboard Summary</h2>
+                    <p>
+                        CSS Grid makes it possible to arrange
+                        dashboard components into rows and columns.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+</script>
+
+</body>
+</html>

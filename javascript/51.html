@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JS-51 | Armstrong Number</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .program-box {
+            max-width: 600px;
+            margin: 25px auto;
+            padding: 25px;
+            background: #111;
+            color: #fff;
+            border: 1px solid #444;
+            border-radius: 10px;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            border: 1px solid #555;
+            border-radius: 6px;
+        }
+
+        button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 6px;
+            background: #fff;
+            color: #111;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background: #ddd;
+        }
+
+        .output {
+            margin-top: 20px;
+            padding: 18px;
+            background: #222;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">J</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="../css/index.html">CSS</a>
+                <a href="index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="../css/index.html">CSS Programs</a>
+            <a href="index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">JavaScript • Experiment 51</span>
+
+            <h1>Armstrong Number</h1>
+
+            <p>
+                Check whether a given number is an Armstrong number.
+            </p>
+        </div>
+
+
+        <div class="program-box">
+
+            <div class="input-group">
+
+                <label for="number">
+                    Enter Number
+                </label>
+
+                <input
+                    type="number"
+                    id="number"
+                    placeholder="Enter a number"
+                >
+
+            </div>
+
+
+            <button onclick="checkArmstrong()">
+                Check Number
+            </button>
+
+
+            <div class="output" id="output">
+                Enter a number and click the button.
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+
+<script>
+
+    function checkArmstrong() {
+
+        const input =
+            document.getElementById("number").value;
+
+        const output =
+            document.getElementById("output");
+
+
+        if (input === "") {
+
+            output.textContent =
+                "Please enter a number.";
+
+            return;
+
+        }
+
+
+        const number = Number(input);
+
+
+        if (number < 0) {
+
+            output.textContent =
+                "Please enter a non-negative number.";
+
+            return;
+
+        }
+
+
+        const digits = input.replace("-", "").length;
+
+        let temp = number;
+        let sum = 0;
+
+
+        while (temp > 0) {
+
+            const digit = temp % 10;
+
+            sum += Math.pow(digit, digits);
+
+            temp = Math.floor(temp / 10);
+
+        }
+
+
+        if (number === 0) {
+            sum = 0;
+        }
+
+
+        if (sum === number) {
+
+            output.innerHTML =
+                "<strong>" + number +
+                "</strong> is an Armstrong number.";
+
+        } else {
+
+            output.innerHTML =
+                "<strong>" + number +
+                "</strong> is not an Armstrong number.";
+
+        }
+
+    }
+
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+
+    menuButton.addEventListener("click", function() {
+
+        mobileNav.classList.toggle("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            mobileNav.classList.contains("active")
+        );
+
+    });
+
+</script>
+
+</body>
+</html>

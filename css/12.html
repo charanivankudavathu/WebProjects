@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Experiment 12</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .list-demo {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .list-card {
+            padding: 25px;
+            border: 2px solid #111111;
+            border-radius: 10px;
+            background: #eeeeee;
+        }
+
+        .square-list {
+            list-style-type: square;
+        }
+
+        .circle-list {
+            list-style-type: circle;
+        }
+
+        .roman-list {
+            list-style-type: upper-roman;
+        }
+
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .styled-table th,
+        .styled-table td {
+            border: 1px solid #555555;
+            padding: 14px;
+            text-align: left;
+        }
+
+        .styled-table th {
+            background: #111111;
+            color: #ffffff;
+        }
+
+        .styled-table tr:nth-child(even) {
+            background: #eeeeee;
+        }
+
+        .styled-table tr:hover {
+            background: #dddddd;
+        }
+
+        @media (max-width: 650px) {
+            .list-demo {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 12</span>
+
+            <h1>CSS Lists and Tables</h1>
+
+            <p>
+                Demonstration of different list styles and
+                CSS table formatting.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="list-demo">
+
+                <div class="list-card">
+
+                    <h3>Square List</h3>
+
+                    <ul class="square-list">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>Python</li>
+                    </ul>
+
+                </div>
+
+                <div class="list-card">
+
+                    <h3>Circle List</h3>
+
+                    <ul class="circle-list">
+                        <li>Frontend</li>
+                        <li>Backend</li>
+                        <li>Database</li>
+                        <li>Deployment</li>
+                    </ul>
+
+                </div>
+
+                <div class="list-card">
+
+                    <h3>Roman Number List</h3>
+
+                    <ol class="roman-list">
+                        <li>Introduction</li>
+                        <li>Design</li>
+                        <li>Development</li>
+                        <li>Testing</li>
+                    </ol>
+
+                </div>
+
+            </div>
+
+            <h3>Styled Student Table</h3>
+
+            <div class="table-wrapper">
+
+                <table class="styled-table">
+
+                    <thead>
+                        <tr>
+                            <th>Roll No.</th>
+                            <th>Name</th>
+                            <th>Course</th>
+                            <th>Marks</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>01</td>
+                            <td>Student A</td>
+                            <td>HTML</td>
+                            <td>85</td>
+                        </tr>
+
+                        <tr>
+                            <td>02</td>
+                            <td>Student B</td>
+                            <td>CSS</td>
+                            <td>90</td>
+                        </tr>
+
+                        <tr>
+                            <td>03</td>
+                            <td>Student C</td>
+                            <td>JavaScript</td>
+                            <td>88</td>
+                        </tr>
+
+                        <tr>
+                            <td>04</td>
+                            <td>Student D</td>
+                            <td>Python</td>
+                            <td>92</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+</script>
+
+</body>
+</html>

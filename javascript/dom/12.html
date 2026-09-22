@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DOM-12 | Password Show Hide</title>
+
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .dom-demo {
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .password-row {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .password-row input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+        }
+
+        .demo-button {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 6px;
+            background: #111;
+            color: white;
+            cursor: pointer;
+        }
+
+        .demo-button:hover {
+            background: #333;
+        }
+
+        @media (max-width: 600px) {
+            .password-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">DOM Manipulation • Experiment 12</span>
+
+            <h1>Password Show/Hide Feature</h1>
+
+            <p>
+                Show or hide a password using JavaScript.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="dom-demo">
+
+                <div class="password-row">
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter password"
+                    >
+
+                    <button
+                        class="demo-button"
+                        id="toggleButton"
+                    >
+                        Show
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+    const password =
+        document.getElementById("password");
+
+    const toggleButton =
+        document.getElementById("toggleButton");
+
+    toggleButton.addEventListener("click", function () {
+
+        if (password.type === "password") {
+
+            password.type = "text";
+            toggleButton.textContent = "Hide";
+
+        } else {
+
+            password.type = "password";
+            toggleButton.textContent = "Show";
+
+        }
+
+    });
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+
+        mobileNav.classList.toggle("active");
+
+    });
+</script>
+
+</body>
+</html>

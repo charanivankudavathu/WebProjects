@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Routing-02 | Route and Query Parameters</title>
+
+    <link
+        rel="stylesheet"
+        href="../../styles/main.css"
+    >
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-content">
+
+        <h1>HTML-CSS-JS Practical</h1>
+
+        <button
+            class="menu-toggle"
+            onclick="toggleMenu()"
+        >
+            ☰
+        </button>
+
+        <nav id="mainNav">
+
+            <a href="../../index.html">Home</a>
+
+            <a href="../../html/index.html">
+                HTML
+            </a>
+
+            <a href="../../css/index.html">
+                CSS
+            </a>
+
+            <a href="../../javascript/index.html">
+                JavaScript
+            </a>
+
+            <a href="../index.html">
+                Node.js
+            </a>
+
+            <a href="index.html">
+                Routing
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="page-header">
+
+        <h1>Routing - Experiment 02</h1>
+
+        <p>
+            Route Parameters and Query Parameters
+        </p>
+
+    </section>
+
+
+    <section class="experiment-wrapper">
+
+        <div class="experiment-card">
+
+            <div class="experiment-header">
+
+                <h2>
+                    Parameters in Express Routing
+                </h2>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>Route Parameter</h3>
+
+                <p>
+                    Example:
+                </p>
+
+                <pre>
+/student/101
+                </pre>
+
+                <p>
+                    Here <strong>101</strong> is a
+                    route parameter.
+                </p>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>Query Parameters</h3>
+
+                <p>
+                    Example:
+                </p>
+
+                <pre>
+/search?name=John&course=BTech
+                </pre>
+
+                <p>
+                    Here <strong>name</strong> and
+                    <strong>course</strong> are query
+                    parameters.
+                </p>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>Run Program</h3>
+
+                <pre>
+node 02.js
+                </pre>
+
+                <p>
+                    Server:
+                </p>
+
+                <pre>
+http://localhost:3012
+                </pre>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        HTML-CSS-JS Practical | Node.js Routing
+    </p>
+
+</footer>
+
+
+<script>
+
+function toggleMenu() {
+
+    const nav = document.getElementById("mainNav");
+
+    nav.classList.toggle("active");
+
+}
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS 50 - Sticky Header</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .sticky-demo {
+            margin-top: 25px;
+        }
+
+        .sticky-navigation {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+
+            padding: 15px;
+
+            background: #111111;
+            border-radius: 10px;
+        }
+
+        .sticky-navigation a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+        }
+
+        .sticky-navigation a:hover {
+            background: #444444;
+        }
+
+        .content-section {
+            min-height: 400px;
+            padding: 40px 25px;
+            margin-top: 20px;
+            border: 2px solid #cccccc;
+            border-radius: 12px;
+            background: #eeeeee;
+        }
+
+        .content-section:nth-child(even) {
+            background: #dddddd;
+        }
+
+        .content-section h2 {
+            margin-bottom: 15px;
+        }
+
+        .content-section p {
+            line-height: 1.8;
+            max-width: 800px;
+        }
+
+        .sticky-note {
+            padding: 15px;
+            margin-bottom: 20px;
+            background: #111111;
+            color: #ffffff;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .sticky-navigation {
+                justify-content: stretch;
+            }
+
+            .sticky-navigation a {
+                flex: 1;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 50</span>
+
+            <h1>Sticky Header</h1>
+
+            <p>
+                Demonstration of the CSS
+                <strong>position: sticky</strong> property.
+            </p>
+        </div>
+
+        <div class="output-box sticky-demo">
+
+            <div class="sticky-note">
+                <strong>Scroll down:</strong>
+                the navigation bar will remain visible
+                when it reaches the top of the page.
+            </div>
+
+            <nav class="sticky-navigation">
+                <a href="#section1">Section 1</a>
+                <a href="#section2">Section 2</a>
+                <a href="#section3">Section 3</a>
+            </nav>
+
+            <section class="content-section" id="section1">
+                <h2>Section 1</h2>
+
+                <p>
+                    This section demonstrates the beginning
+                    of the scrollable content.
+                </p>
+
+                <p>
+                    The navigation above uses
+                    <strong>position: sticky</strong>.
+                    Scroll the page to observe its behavior.
+                </p>
+            </section>
+
+            <section class="content-section" id="section2">
+                <h2>Section 2</h2>
+
+                <p>
+                    When this section reaches the top of its
+                    scrolling area, the navigation remains
+                    fixed at the top.
+                </p>
+
+                <p>
+                    Sticky positioning combines normal document
+                    flow with fixed-like behavior.
+                </p>
+            </section>
+
+            <section class="content-section" id="section3">
+                <h2>Section 3</h2>
+
+                <p>
+                    This is the final section of the demonstration.
+                    Continue scrolling to see the complete effect.
+                </p>
+
+                <p>
+                    The sticky navigation stops when its containing
+                    element reaches the end of its scrolling area.
+                </p>
+            </section>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+</script>
+
+</body>
+</html>

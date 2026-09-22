@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM-01 | Student Registration Form</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .form-demo {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #999999;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .error {
+            display: block;
+            margin-top: 5px;
+            color: #cc0000;
+            font-size: 14px;
+        }
+
+        .success {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background: #eeeeee;
+            color: #111111;
+            font-weight: 600;
+        }
+
+        .form-button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            background: #111111;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .form-button:hover {
+            background: #333333;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">FORM-01</span>
+            <h1>Student Registration Form</h1>
+            <p>Create a student registration form with JavaScript validation.</p>
+        </div>
+
+        <div class="form-demo">
+
+            <form id="studentForm">
+
+                <div class="form-group">
+                    <label for="name">Student Name</label>
+                    <input type="text" id="name" placeholder="Enter your name">
+                    <span class="error" id="nameError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                    <span class="error" id="emailError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Mobile Number</label>
+                    <input type="text" id="phone" placeholder="Enter mobile number">
+                    <span class="error" id="phoneError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" placeholder="Enter age">
+                    <span class="error" id="ageError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="course">Course</label>
+                    <select id="course">
+                        <option value="">Select Course</option>
+                        <option value="B.Tech">B.Tech</option>
+                        <option value="B.Sc">B.Sc</option>
+                        <option value="BCA">BCA</option>
+                        <option value="MCA">MCA</option>
+                    </select>
+                    <span class="error" id="courseError"></span>
+                </div>
+
+                <button type="submit" class="form-button">
+                    Register
+                </button>
+
+                <div id="successMessage"></div>
+
+            </form>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+
+const studentForm = document.getElementById("studentForm");
+
+studentForm.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const age = document.getElementById("age").value.trim();
+    const course = document.getElementById("course").value;
+
+    document.getElementById("nameError").textContent = "";
+    document.getElementById("emailError").textContent = "";
+    document.getElementById("phoneError").textContent = "";
+    document.getElementById("ageError").textContent = "";
+    document.getElementById("courseError").textContent = "";
+    document.getElementById("successMessage").textContent = "";
+
+    let valid = true;
+
+    if (name === "") {
+        document.getElementById("nameError").textContent =
+            "Student name is required.";
+        valid = false;
+    } else if (!/^[A-Za-z ]+$/.test(name)) {
+        document.getElementById("nameError").textContent =
+            "Name must contain only alphabets.";
+        valid = false;
+    }
+
+    if (email === "") {
+        document.getElementById("emailError").textContent =
+            "Email is required.";
+        valid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById("emailError").textContent =
+            "Enter a valid email address.";
+        valid = false;
+    }
+
+    if (phone === "") {
+        document.getElementById("phoneError").textContent =
+            "Mobile number is required.";
+        valid = false;
+    } else if (!/^[0-9]{10}$/.test(phone)) {
+        document.getElementById("phoneError").textContent =
+            "Mobile number must contain 10 digits.";
+        valid = false;
+    }
+
+    if (age === "") {
+        document.getElementById("ageError").textContent =
+            "Age is required.";
+        valid = false;
+    } else if (age < 16 || age > 100) {
+        document.getElementById("ageError").textContent =
+            "Enter a valid age between 16 and 100.";
+        valid = false;
+    }
+
+    if (course === "") {
+        document.getElementById("courseError").textContent =
+            "Please select a course.";
+        valid = false;
+    }
+
+    if (valid) {
+        document.getElementById("successMessage").textContent =
+            "Registration successful!";
+        document.getElementById("successMessage").className = "success";
+    }
+});
+</script>
+
+</body>
+</html>

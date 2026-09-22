@@ -1,0 +1,3927 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="CSS Practical Lab - Charani Vankudavathu">
+
+    <meta
+        name="author"
+        content="Charani Vankudavathu">
+
+    <title>CSS Practical Lab | Charani Vankudavathu</title>
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #f4f4f4;
+
+            color: #111;
+
+            line-height: 1.6;
+
+            min-height: 100vh;
+        }
+
+
+        a {
+            color: inherit;
+
+            text-decoration: none;
+        }
+
+
+        button,
+        input {
+            font: inherit;
+        }
+
+
+        :root {
+
+            --black: #080808;
+
+            --black2: #111111;
+
+            --dark: #181818;
+
+            --dark-grey: #242424;
+
+            --grey: #555555;
+
+            --medium-grey: #777777;
+
+            --silver: #a8a8a8;
+
+            --border: #d7d7d7;
+
+            --light: #eeeeee;
+
+            --off-white: #f7f7f7;
+
+            --white: #ffffff;
+
+            --container: 1180px;
+
+        }
+
+
+        /* =====================================================
+           CONTAINER
+        ===================================================== */
+
+        .container {
+
+            width:
+                min(
+                    calc(100% - 40px),
+                    var(--container)
+                );
+
+            margin: 0 auto;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .header {
+
+            width: 100%;
+
+            background: var(--black);
+
+            color: white;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            border-bottom:
+                1px solid #292929;
+        }
+
+
+        .navbar {
+
+            min-height: 78px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+
+        /* =====================================================
+           BRAND
+        ===================================================== */
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            flex-shrink: 0;
+        }
+
+
+        .brand-logo {
+
+            width: 42px;
+
+            height: 42px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border:
+                1px solid #777;
+
+            background: #151515;
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: 800;
+        }
+
+
+        .brand-text {
+
+            display: flex;
+
+            flex-direction: column;
+
+            line-height: 1.15;
+        }
+
+
+        .brand-title {
+
+            font-size: 16px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.2px;
+        }
+
+
+        .brand-subtitle {
+
+            margin-top: 4px;
+
+            font-size: 10px;
+
+            color: #999;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =====================================================
+           DESKTOP NAVIGATION
+        ===================================================== */
+
+        .desktop-nav {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 5px;
+
+            margin-left: auto;
+        }
+
+
+        .nav-link {
+
+            position: relative;
+
+            padding: 10px 13px;
+
+            color: #cfcfcf;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            transition:
+                color .25s ease,
+                background .25s ease;
+        }
+
+
+        .nav-link::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 13px;
+
+            right: 13px;
+
+            bottom: 3px;
+
+            height: 1px;
+
+            background: white;
+
+            transform: scaleX(0);
+
+            transition:
+                transform .25s ease;
+        }
+
+
+        .nav-link:hover {
+
+            color: white;
+
+            background: #181818;
+        }
+
+
+        .nav-link:hover::after {
+
+            transform: scaleX(1);
+        }
+
+
+        .nav-link.active {
+
+            color: white;
+        }
+
+
+        .nav-link.active::after {
+
+            transform: scaleX(1);
+        }
+
+
+        /* =====================================================
+           PORTFOLIO
+        ===================================================== */
+
+        .portfolio-link {
+
+            margin-left: 8px;
+
+            padding: 10px 15px;
+
+            border:
+                1px solid #555;
+
+            color: white;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            transition: all .25s ease;
+        }
+
+
+        .portfolio-link:hover {
+
+            background: white;
+
+            color: black;
+
+            border-color: white;
+        }
+
+
+        /* =====================================================
+           MOBILE MENU BUTTON
+        ===================================================== */
+
+        .menu-button {
+
+            display: none;
+
+            width: 44px;
+
+            height: 44px;
+
+            background: transparent;
+
+            border:
+                1px solid #555;
+
+            color: white;
+
+            cursor: pointer;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-direction: column;
+
+            gap: 5px;
+        }
+
+
+        .menu-button span {
+
+            width: 19px;
+
+            height: 2px;
+
+            background: white;
+
+            display: block;
+
+            transition: all .25s ease;
+        }
+
+
+        .menu-button.open span:nth-child(1) {
+
+            transform:
+                translateY(7px)
+                rotate(45deg);
+        }
+
+
+        .menu-button.open span:nth-child(2) {
+
+            opacity: 0;
+        }
+
+
+        .menu-button.open span:nth-child(3) {
+
+            transform:
+                translateY(-7px)
+                rotate(-45deg);
+        }
+
+
+        /* =====================================================
+           MOBILE NAVIGATION
+        ===================================================== */
+
+        .mobile-nav {
+
+            display: none;
+
+            background: #111;
+
+            border-top:
+                1px solid #292929;
+
+            padding:
+                10px 20px 20px;
+        }
+
+
+        .mobile-nav.active {
+
+            display: block;
+        }
+
+
+        .mobile-nav a {
+
+            display: block;
+
+            padding: 13px 10px;
+
+            border-bottom:
+                1px solid #292929;
+
+            color: #ddd;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+
+        .mobile-nav a:hover {
+
+            color: white;
+
+            background: #191919;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero-section {
+
+            padding: 55px 0 25px;
+        }
+
+
+        .hero {
+
+            position: relative;
+
+            min-height: 370px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0a0a0a,
+                    #161616 55%,
+                    #252525
+                );
+
+            color: white;
+
+            border:
+                1px solid #2c2c2c;
+
+            padding: 55px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 10px 35px
+                rgba(0,0,0,.08);
+        }
+
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 330px;
+
+            height: 330px;
+
+            right: -120px;
+
+            top: -130px;
+
+            border:
+                1px solid #444;
+
+            border-radius: 50%;
+        }
+
+
+        .hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 230px;
+
+            height: 230px;
+
+            right: -55px;
+
+            top: -75px;
+
+            border:
+                1px solid #353535;
+
+            border-radius: 50%;
+        }
+
+
+        .hero-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 720px;
+        }
+
+
+        .hero-label {
+
+            font-size: 12px;
+
+            letter-spacing: 5px;
+
+            color: #aaa;
+
+            font-weight: 700;
+
+            margin-bottom: 15px;
+        }
+
+
+        .hero-title {
+
+            font-size:
+                clamp(
+                    34px,
+                    5vw,
+                    62px
+                );
+
+            line-height: 1.05;
+
+            font-weight: 900;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 17px;
+        }
+
+
+        .hero-description {
+
+            max-width: 680px;
+
+            color: #c5c5c5;
+
+            font-size: 15px;
+
+            line-height: 1.8;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =====================================================
+           STATISTICS
+        ===================================================== */
+
+        .hero-stats {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+        }
+
+
+        .stat {
+
+            min-width: 145px;
+
+            padding: 13px 17px;
+
+            border:
+                1px solid #414141;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .035
+                );
+        }
+
+
+        .stat-number {
+
+            display: block;
+
+            font-size: 20px;
+
+            font-weight: 800;
+        }
+
+
+        .stat-label {
+
+            display: block;
+
+            font-size: 10px;
+
+            color: #999;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =====================================================
+           CODE VISUAL
+        ===================================================== */
+
+        .code-area {
+
+            position: absolute;
+
+            right: 50px;
+
+            bottom: 42px;
+
+            width: 280px;
+
+            border:
+                1px solid #3b3b3b;
+
+            background: #101010;
+
+            padding: 18px;
+
+            z-index: 3;
+        }
+
+
+        .code-top {
+
+            display: flex;
+
+            gap: 6px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .code-dot {
+
+            width: 7px;
+
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #777;
+        }
+
+
+        .code-line {
+
+            height: 6px;
+
+            margin: 8px 0;
+
+            background: #303030;
+        }
+
+
+        .code-line.short {
+
+            width: 45%;
+        }
+
+
+        .code-line.medium {
+
+            width: 70%;
+        }
+
+
+        .code-line.long {
+
+            width: 90%;
+        }
+
+
+        .code-label {
+
+            margin-top: 14px;
+
+            color: #777;
+
+            font-size: 9px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =====================================================
+           SEARCH
+        ===================================================== */
+
+        .search-section {
+
+            padding: 25px 0;
+        }
+
+
+        .search-box {
+
+            background: white;
+
+            border:
+                1px solid #d7d7d7;
+
+            padding: 22px;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0,0,0,.04);
+        }
+
+
+        .search-title {
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 10px;
+
+            color: #555;
+        }
+
+
+        .search-wrapper {
+
+            position: relative;
+        }
+
+
+        .search-input {
+
+            width: 100%;
+
+            height: 52px;
+
+            border:
+                1px solid #cfcfcf;
+
+            background: #fafafa;
+
+            padding:
+                0 50px 0 17px;
+
+            outline: none;
+
+            color: #111;
+
+            font-size: 14px;
+        }
+
+
+        .search-input:focus {
+
+            border-color: #222;
+
+            background: white;
+        }
+
+
+        .search-icon {
+
+            position: absolute;
+
+            right: 18px;
+
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            font-size: 17px;
+
+            color: #555;
+        }
+
+
+        /* =====================================================
+           EXPERIMENT SECTION
+        ===================================================== */
+
+        .experiments-section {
+
+            padding:
+                15px 0 60px;
+        }
+
+
+        .section-heading {
+
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .section-heading-left h2 {
+
+            font-size: 24px;
+
+            font-weight: 850;
+        }
+
+
+        .section-line {
+
+            width: 65px;
+
+            height: 3px;
+
+            background: #111;
+
+            margin-top: 9px;
+        }
+
+
+        .total {
+
+            color: #666;
+
+            font-size: 13px;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           EXPERIMENT CARDS
+        ===================================================== */
+
+        .experiment-list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+        }
+
+
+        .experiment-card {
+
+            display: grid;
+
+            grid-template-columns:
+                75px
+                minmax(220px, 1fr)
+                minmax(250px, 1fr)
+                100px;
+
+            align-items: center;
+
+            min-height: 78px;
+
+            background: white;
+
+            border:
+                1px solid #d7d7d7;
+
+            padding:
+                10px 18px;
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease,
+                border .25s ease;
+        }
+
+
+        .experiment-card:hover {
+
+            transform:
+                translateY(-2px);
+
+            border-color: #999;
+
+            box-shadow:
+                0 8px 22px
+                rgba(0,0,0,.07);
+        }
+
+
+        .experiment-number {
+
+            font-size: 22px;
+
+            font-weight: 900;
+
+            color: #999;
+        }
+
+
+        .experiment-title {
+
+            font-size: 15px;
+
+            font-weight: 800;
+        }
+
+
+        .experiment-description {
+
+            font-size: 12px;
+
+            color: #777;
+        }
+
+
+        .open-button {
+
+            justify-self: end;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+                9px 13px;
+
+            background: #111;
+
+            color: white;
+
+            border:
+                1px solid #111;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            transition: all .25s ease;
+        }
+
+
+        .open-button:hover {
+
+            background: white;
+
+            color: black;
+        }
+
+
+        /* =====================================================
+           NO RESULTS
+        ===================================================== */
+
+        .no-results {
+
+            display: none;
+
+            padding: 35px;
+
+            text-align: center;
+
+            background: white;
+
+            border:
+                1px solid #d7d7d7;
+
+            color: #666;
+        }
+
+
+        .no-results.show {
+
+            display: block;
+        }
+
+
+        /* =====================================================
+           QUICK NAVIGATION
+        ===================================================== */
+
+        .quick-section {
+
+            padding-bottom: 55px;
+        }
+
+
+        .quick-box {
+
+            background: #111;
+
+            color: white;
+
+            padding: 30px;
+
+            border:
+                1px solid #292929;
+        }
+
+
+        .quick-title {
+
+            font-size: 11px;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            color: #999;
+
+            margin-bottom: 20px;
+        }
+
+
+        .quick-links {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 10px;
+        }
+
+
+        .quick-link {
+
+            padding: 16px;
+
+            border:
+                1px solid #3a3a3a;
+
+            text-align: center;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            transition: all .25s ease;
+        }
+
+
+        .quick-link:hover {
+
+            background: white;
+
+            color: black;
+
+            border-color: white;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .footer {
+
+            background: #080808;
+
+            color: white;
+
+            border-top:
+                1px solid #222;
+
+            padding: 40px 0;
+        }
+
+
+        .footer-content {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+
+        .footer-name {
+
+            font-size: 15px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+        }
+
+
+        .footer-subtitle {
+
+            margin-top: 5px;
+
+            color: #777;
+
+            font-size: 11px;
+        }
+
+
+        .footer-right {
+
+            text-align: right;
+
+            font-size: 12px;
+
+            color: #888;
+        }
+
+
+        .footer-right a {
+
+            color: white;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           TABLET / LAPTOP
+        ===================================================== */
+
+        @media (max-width: 1000px) {
+
+            .nav-link {
+
+                padding:
+                    10px 8px;
+
+                font-size: 12px;
+            }
+
+
+            .portfolio-link {
+
+                padding:
+                    9px 11px;
+            }
+
+
+            .hero {
+
+                padding: 45px;
+            }
+
+
+            .code-area {
+
+                right: 35px;
+
+                width: 230px;
+            }
+
+
+            .experiment-card {
+
+                grid-template-columns:
+                    60px
+                    1fr
+                    160px
+                    90px;
+            }
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 760px) {
+
+            .container {
+
+                width:
+                    min(
+                        calc(100% - 28px),
+                        var(--container)
+                    );
+            }
+
+
+            .navbar {
+
+                min-height: 68px;
+            }
+
+
+            .desktop-nav {
+
+                display: none;
+            }
+
+
+            .menu-button {
+
+                display: flex;
+            }
+
+
+            .brand-logo {
+
+                width: 38px;
+
+                height: 38px;
+            }
+
+
+            .brand-title {
+
+                font-size: 14px;
+            }
+
+
+            .brand-subtitle {
+
+                font-size: 8px;
+            }
+
+
+            .hero-section {
+
+                padding-top: 25px;
+            }
+
+
+            .hero {
+
+                min-height: auto;
+
+                padding:
+                    32px 24px 25px;
+            }
+
+
+            .hero-label {
+
+                font-size: 9px;
+
+                letter-spacing: 3px;
+            }
+
+
+            .hero-title {
+
+                font-size: 37px;
+
+                letter-spacing: -1.5px;
+            }
+
+
+            .hero-description {
+
+                font-size: 13px;
+            }
+
+
+            .hero-stats {
+
+                display: grid;
+
+                grid-template-columns:
+                    repeat(3, 1fr);
+
+                gap: 7px;
+            }
+
+
+            .stat {
+
+                min-width: 0;
+
+                padding:
+                    10px 8px;
+            }
+
+
+            .stat-number {
+
+                font-size: 16px;
+            }
+
+
+            .stat-label {
+
+                font-size: 7px;
+
+                letter-spacing: .5px;
+            }
+
+
+            .code-area {
+
+                position: relative;
+
+                right: auto;
+
+                bottom: auto;
+
+                width: 100%;
+
+                margin-top: 28px;
+            }
+
+
+            .search-box {
+
+                padding: 16px;
+            }
+
+
+            .section-heading {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+
+                gap: 5px;
+            }
+
+
+            .section-heading-left h2 {
+
+                font-size: 21px;
+            }
+
+
+            .experiment-card {
+
+                display: grid;
+
+                grid-template-columns:
+                    45px
+                    1fr
+                    auto;
+
+                gap: 7px;
+
+                padding: 14px;
+
+                min-height: 95px;
+            }
+
+
+            .experiment-number {
+
+                font-size: 18px;
+
+                grid-row: span 2;
+
+                align-self: start;
+            }
+
+
+            .experiment-title {
+
+                font-size: 14px;
+            }
+
+
+            .experiment-description {
+
+                font-size: 11px;
+
+                grid-column: 2 / 3;
+            }
+
+
+            .open-button {
+
+                grid-column: 3;
+
+                grid-row: 1 / 3;
+
+                align-self: center;
+
+                padding:
+                    8px 9px;
+
+                font-size: 9px;
+            }
+
+
+            .quick-box {
+
+                padding:
+                    22px 15px;
+            }
+
+
+            .quick-links {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .quick-link {
+
+                padding:
+                    13px 8px;
+
+                font-size: 11px;
+            }
+
+
+            .footer-content {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+
+            .footer-right {
+
+                text-align: left;
+            }
+
+        }
+
+
+        /* =====================================================
+           SMALL MOBILE
+        ===================================================== */
+
+        @media (max-width: 420px) {
+
+            .hero-title {
+
+                font-size: 31px;
+            }
+
+
+            .hero-stats {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .stat {
+
+                display: flex;
+
+                align-items: center;
+
+                justify-content: space-between;
+            }
+
+
+            .experiment-card {
+
+                grid-template-columns:
+                    38px
+                    1fr;
+            }
+
+
+            .open-button {
+
+                grid-column: 2;
+
+                grid-row: auto;
+
+                justify-self: start;
+
+                margin-top: 7px;
+            }
+
+
+            .experiment-description {
+
+                grid-column: 2;
+            }
+
+
+            .quick-links {
+
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER
+    ===================================================== -->
+
+    <header class="header">
+
+        <div class="container">
+
+            <nav class="navbar">
+
+
+                <!-- BRAND -->
+
+                <a
+                    href="../index.html"
+                    class="brand">
+
+                    <div class="brand-logo">
+                        &lt;/&gt;
+                    </div>
+
+                    <div class="brand-text">
+
+                        <span class="brand-title">
+                            PRACTICAL LAB
+                        </span>
+
+                        <span class="brand-subtitle">
+                            HTML • CSS • JS
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- DESKTOP NAVIGATION -->
+
+                <div class="desktop-nav">
+
+                    <a
+                        href="../index.html"
+                        class="nav-link">
+                        Home
+                    </a>
+
+
+                    <a
+                        href="../html/index.html"
+                        class="nav-link">
+                        HTML
+                    </a>
+
+
+                    <a
+                        href="index.html"
+                        class="nav-link active">
+                        CSS
+                    </a>
+
+
+                    <a
+                        href="../javascript/index.html"
+                        class="nav-link">
+                        JavaScript
+                    </a>
+
+
+                    <a
+                        href="../nodejs/index.html"
+                        class="nav-link">
+                        Node.js
+                    </a>
+
+
+                    <a
+                        href="https://charanivankudavathu.github.io"
+                        target="_blank"
+                        class="portfolio-link">
+                        Portfolio
+                    </a>
+
+                </div>
+
+
+                <!-- MOBILE BUTTON -->
+
+                <button
+                    class="menu-button"
+                    id="menuButton"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false">
+
+                    <span></span>
+
+                    <span></span>
+
+                    <span></span>
+
+                </button>
+
+            </nav>
+
+        </div>
+
+
+        <!-- MOBILE NAV -->
+
+        <div
+            class="mobile-nav"
+            id="mobileNav">
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="../html/index.html">
+                HTML
+            </a>
+
+            <a href="index.html">
+                CSS
+            </a>
+
+            <a href="../javascript/index.html">
+                JavaScript
+            </a>
+
+            <a href="../nodejs/index.html">
+                Node.js
+            </a>
+
+            <a
+                href="https://charanivankudavathu.github.io"
+                target="_blank">
+                Portfolio
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+
+    <section class="hero-section">
+
+        <div class="container">
+
+            <div class="hero">
+
+
+                <div class="hero-content">
+
+                    <div class="hero-label">
+                        C S S &nbsp; • &nbsp; P R A C T I C A L &nbsp; L A B
+                    </div>
+
+
+                    <h1 class="hero-title">
+                        CSS Practical Programs
+                    </h1>
+
+
+                    <p class="hero-description">
+                        Explore and practice 75 hands-on CSS
+                        experiments covering selectors, colors,
+                        backgrounds, layouts, positioning,
+                        responsive design, animations and more.
+                    </p>
+
+
+                    <div class="hero-stats">
+
+
+                        <div class="stat">
+
+                            <span class="stat-number">
+                                75
+                            </span>
+
+                            <span class="stat-label">
+                                Experiments
+                            </span>
+
+                        </div>
+
+
+                        <div class="stat">
+
+                            <span class="stat-number">
+                                01
+                            </span>
+
+                            <span class="stat-label">
+                                CSS Lab
+                            </span>
+
+                        </div>
+
+
+                        <div class="stat">
+
+                            <span class="stat-number">
+                                75
+                            </span>
+
+                            <span class="stat-label">
+                                Programs
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CODE VISUAL -->
+
+                <div class="code-area">
+
+                    <div class="code-top">
+
+                        <span class="code-dot"></span>
+
+                        <span class="code-dot"></span>
+
+                        <span class="code-dot"></span>
+
+                    </div>
+
+
+                    <div class="code-line long"></div>
+
+                    <div class="code-line medium"></div>
+
+                    <div class="code-line short"></div>
+
+                    <div class="code-line long"></div>
+
+                    <div class="code-line medium"></div>
+
+                    <div class="code-line short"></div>
+
+
+                    <div class="code-label">
+                        CSS / VISUAL AREA
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SEARCH
+    ===================================================== -->
+
+    <section class="search-section">
+
+        <div class="container">
+
+            <div class="search-box">
+
+                <div class="search-title">
+                    Search Experiments
+                </div>
+
+
+                <div class="search-wrapper">
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        class="search-input"
+                        placeholder="Search CSS experiments..."
+                        autocomplete="off">
+
+
+                    <span class="search-icon">
+                        🔍
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CSS EXPERIMENTS
+    ===================================================== -->
+
+    <section class="experiments-section">
+
+        <div class="container">
+
+
+            <div class="section-heading">
+
+                <div class="section-heading-left">
+
+                    <h2>
+                        CSS Experiments
+                    </h2>
+
+                    <div class="section-line"></div>
+
+                </div>
+
+
+                <div class="total">
+                    Total: 75
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="experiment-list"
+                id="experimentList">
+
+
+                <!-- 01 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="01 introduction css">
+
+                    <div class="experiment-number">
+                        01
+                    </div>
+
+                    <div class="experiment-title">
+                        Introduction to CSS
+                    </div>
+
+                    <div class="experiment-description">
+                        Demonstrate the basic concepts and syntax of CSS.
+                    </div>
+
+                    <a
+                        href="01.html"
+                        class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 02 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="02 css selectors">
+
+                    <div class="experiment-number">
+                        02
+                    </div>
+
+                    <div class="experiment-title">
+                        CSS Selectors
+                    </div>
+
+                    <div class="experiment-description">
+                        Practice element, class, ID, universal and grouping selectors.
+                    </div>
+
+                    <a
+                        href="02.html"
+                        class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 03 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="03 css colors backgrounds">
+
+                    <div class="experiment-number">
+                        03
+                    </div>
+
+                    <div class="experiment-title">
+                        CSS Colors and Backgrounds
+                    </div>
+
+                    <div class="experiment-description">
+                        Apply colors and backgrounds using CSS.
+                    </div>
+
+                    <a
+                        href="03.html"
+                        class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 04 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="04 fonts text">
+
+                    <div class="experiment-number">
+                        04
+                    </div>
+
+                    <div class="experiment-title">
+                        CSS Fonts and Text
+                    </div>
+
+                    <div class="experiment-description">
+                        Work with font and text properties.
+                    </div>
+
+                    <a
+                        href="04.html"
+                        class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 05 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="05 box model">
+
+                    <div class="experiment-number">
+                        05
+                    </div>
+
+                    <div class="experiment-title">
+                        CSS Box Model
+                    </div>
+
+                    <div class="experiment-description">
+                        Demonstrate margin, border, padding and content.
+                    </div>
+
+                    <a
+                        href="05.html"
+                        class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 06 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="06 width height">
+
+                    <div class="experiment-number">
+                        06
+                    </div>
+
+                    <div class="experiment-title">
+                        Width and Height
+                    </div>
+
+                    <div class="experiment-description">
+                        Control element dimensions using CSS.
+                    </div>
+
+                    <a
+                        href="06.html"
+                        class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 07 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="07 borders">
+
+                    <div class="experiment-number">
+                        07
+                    </div>
+
+                    <div class="experiment-title">
+                        CSS Borders
+                    </div>
+
+                    <div class="experiment-description">
+                        Create and style borders around elements.
+                    </div>
+
+                    <a
+                        href="07.html"
+                        class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 08 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="08 border radius">
+
+                    <div class="experiment-number">
+                        08
+                    </div>
+
+                    <div class="experiment-title">
+                        Border Radius
+                    </div>
+
+                    <div class="experiment-description">
+                        Create rounded corners using CSS.
+                    </div>
+
+                    <a
+                        href="08.html"
+                        class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 09 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="09 shadows">
+
+                    <div class="experiment-number">
+                        09
+                    </div>
+
+                    <div class="experiment-title">
+                        CSS Shadows
+                    </div>
+
+                    <div class="experiment-description">
+                        Apply box-shadow and text-shadow effects.
+                    </div>
+
+                    <a
+                        href="09.html"
+                        class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 10 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="10 display">
+
+                    <div class="experiment-number">
+                        10
+                    </div>
+
+                    <div class="experiment-title">
+                        CSS Display Property
+                    </div>
+
+                    <div class="experiment-description">
+                        Demonstrate block, inline and display properties.
+                    </div>
+
+                    <a
+                        href="10.html"
+                        class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 11 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="11 position">
+
+                    <div class="experiment-number">
+                        11
+                    </div>
+
+                    <div class="experiment-title">
+                        CSS Positioning
+                    </div>
+
+                    <div class="experiment-description">
+                        Demonstrate static, relative, absolute and fixed positioning.
+                    </div>
+
+                    <a
+                        href="11.html"
+                        class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 12 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="12 z index">
+
+                    <div class="experiment-number">
+                        12
+                    </div>
+
+                    <div class="experiment-title">
+                        Z-Index
+                    </div>
+
+                    <div class="experiment-description">
+                        Control the stacking order of elements.
+                    </div>
+
+                    <a
+                        href="12.html"
+                        class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 13 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="13 overflow">
+
+                    <div class="experiment-number">
+                        13
+                    </div>
+
+                    <div class="experiment-title">
+                        Overflow
+                    </div>
+
+                    <div class="experiment-description">
+                        Manage overflowing content with CSS.
+                    </div>
+
+                    <a
+                        href="13.html"
+                        class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 14 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="14 float">
+
+                    <div class="experiment-number">
+                        14
+                    </div>
+
+                    <div class="experiment-title">
+                        CSS Float
+                    </div>
+
+                    <div class="experiment-description">
+                        Position elements using float and clear.
+                    </div>
+
+                    <a
+                        href="14.html"
+                        class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 15 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="15 flexbox">
+
+                    <div class="experiment-number">
+                        15
+                    </div>
+
+                    <div class="experiment-title">
+                        CSS Flexbox
+                    </div>
+
+                    <div class="experiment-description">
+                        Create flexible layouts using Flexbox.
+                    </div>
+
+                    <a
+                        href="15.html"
+                        class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 16 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="16 flex direction">
+
+                    <div class="experiment-number">
+                        16
+                    </div>
+
+                    <div class="experiment-title">
+                        Flex Direction
+                    </div>
+
+                    <div class="experiment-description">
+                        Arrange flex items using row and column directions.
+                    </div>
+
+                    <a href="16.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 17 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="17 justify content">
+
+                    <div class="experiment-number">
+                        17
+                    </div>
+
+                    <div class="experiment-title">
+                        Justify Content
+                    </div>
+
+                    <div class="experiment-description">
+                        Align flex items along the main axis.
+                    </div>
+
+                    <a href="17.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 18 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="18 align items">
+
+                    <div class="experiment-number">
+                        18
+                    </div>
+
+                    <div class="experiment-title">
+                        Align Items
+                    </div>
+
+                    <div class="experiment-description">
+                        Align flex items along the cross axis.
+                    </div>
+
+                    <a href="18.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 19 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="19 gap">
+
+                    <div class="experiment-number">
+                        19
+                    </div>
+
+                    <div class="experiment-title">
+                        CSS Gap
+                    </div>
+
+                    <div class="experiment-description">
+                        Create spacing between flex and grid items.
+                    </div>
+
+                    <a href="19.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 20 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="20 grid">
+
+                    <div class="experiment-number">
+                        20
+                    </div>
+
+                    <div class="experiment-title">
+                        CSS Grid
+                    </div>
+
+                    <div class="experiment-description">
+                        Create two-dimensional layouts using CSS Grid.
+                    </div>
+
+                    <a href="20.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 21 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="21 grid columns">
+
+                    <div class="experiment-number">
+                        21
+                    </div>
+
+                    <div class="experiment-title">
+                        Grid Columns
+                    </div>
+
+                    <div class="experiment-description">
+                        Define columns in a CSS Grid layout.
+                    </div>
+
+                    <a href="21.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 22 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="22 grid rows">
+
+                    <div class="experiment-number">
+                        22
+                    </div>
+
+                    <div class="experiment-title">
+                        Grid Rows
+                    </div>
+
+                    <div class="experiment-description">
+                        Define rows in a CSS Grid layout.
+                    </div>
+
+                    <a href="22.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 23 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="23 grid area">
+
+                    <div class="experiment-number">
+                        23
+                    </div>
+
+                    <div class="experiment-title">
+                        Grid Areas
+                    </div>
+
+                    <div class="experiment-description">
+                        Organize layouts using named grid areas.
+                    </div>
+
+                    <a href="23.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 24 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="24 responsive">
+
+                    <div class="experiment-number">
+                        24
+                    </div>
+
+                    <div class="experiment-title">
+                        Responsive Web Design
+                    </div>
+
+                    <div class="experiment-description">
+                        Create layouts that adapt to different screens.
+                    </div>
+
+                    <a href="24.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 25 -->
+
+                <article
+                    class="experiment-card"
+                    data-search="25 media query">
+
+                    <div class="experiment-number">
+                        25
+                    </div>
+
+                    <div class="experiment-title">
+                        Media Queries
+                    </div>
+
+                    <div class="experiment-description">
+                        Apply styles based on screen size.
+                    </div>
+
+                    <a href="25.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 26 -->
+
+                <article class="experiment-card" data-search="26 pseudo class">
+
+                    <div class="experiment-number">26</div>
+
+                    <div class="experiment-title">
+                        Pseudo Classes
+                    </div>
+
+                    <div class="experiment-description">
+                        Style elements based on their state.
+                    </div>
+
+                    <a href="26.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 27 -->
+
+                <article class="experiment-card" data-search="27 pseudo elements">
+
+                    <div class="experiment-number">27</div>
+
+                    <div class="experiment-title">
+                        Pseudo Elements
+                    </div>
+
+                    <div class="experiment-description">
+                        Style specific parts of elements.
+                    </div>
+
+                    <a href="27.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 28 -->
+
+                <article class="experiment-card" data-search="28 transitions">
+
+                    <div class="experiment-number">28</div>
+
+                    <div class="experiment-title">
+                        CSS Transitions
+                    </div>
+
+                    <div class="experiment-description">
+                        Create smooth property transitions.
+                    </div>
+
+                    <a href="28.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 29 -->
+
+                <article class="experiment-card" data-search="29 transform">
+
+                    <div class="experiment-number">29</div>
+
+                    <div class="experiment-title">
+                        CSS Transform
+                    </div>
+
+                    <div class="experiment-description">
+                        Rotate, scale, skew and move elements.
+                    </div>
+
+                    <a href="29.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 30 -->
+
+                <article class="experiment-card" data-search="30 animation">
+
+                    <div class="experiment-number">30</div>
+
+                    <div class="experiment-title">
+                        CSS Animations
+                    </div>
+
+                    <div class="experiment-description">
+                        Create animations using keyframes.
+                    </div>
+
+                    <a href="30.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 31 -->
+
+                <article class="experiment-card" data-search="31 keyframes">
+
+                    <div class="experiment-number">31</div>
+
+                    <div class="experiment-title">
+                        CSS Keyframes
+                    </div>
+
+                    <div class="experiment-description">
+                        Define animation stages using keyframes.
+                    </div>
+
+                    <a href="31.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 32 -->
+
+                <article class="experiment-card" data-search="32 opacity">
+
+                    <div class="experiment-number">32</div>
+
+                    <div class="experiment-title">
+                        Opacity
+                    </div>
+
+                    <div class="experiment-description">
+                        Control element transparency.
+                    </div>
+
+                    <a href="32.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 33 -->
+
+                <article class="experiment-card" data-search="33 cursor">
+
+                    <div class="experiment-number">33</div>
+
+                    <div class="experiment-title">
+                        CSS Cursor
+                    </div>
+
+                    <div class="experiment-description">
+                        Change the mouse cursor appearance.
+                    </div>
+
+                    <a href="33.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 34 -->
+
+                <article class="experiment-card" data-search="34 lists">
+
+                    <div class="experiment-number">34</div>
+
+                    <div class="experiment-title">
+                        Styling Lists
+                    </div>
+
+                    <div class="experiment-description">
+                        Customize HTML lists using CSS.
+                    </div>
+
+                    <a href="34.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 35 -->
+
+                <article class="experiment-card" data-search="35 tables">
+
+                    <div class="experiment-number">35</div>
+
+                    <div class="experiment-title">
+                        Styling Tables
+                    </div>
+
+                    <div class="experiment-description">
+                        Design HTML tables using CSS.
+                    </div>
+
+                    <a href="35.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 36 -->
+
+                <article class="experiment-card" data-search="36 forms">
+
+                    <div class="experiment-number">36</div>
+
+                    <div class="experiment-title">
+                        Styling Forms
+                    </div>
+
+                    <div class="experiment-description">
+                        Create professional form layouts.
+                    </div>
+
+                    <a href="36.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 37 -->
+
+                <article class="experiment-card" data-search="37 buttons">
+
+                    <div class="experiment-number">37</div>
+
+                    <div class="experiment-title">
+                        CSS Buttons
+                    </div>
+
+                    <div class="experiment-description">
+                        Create styled and interactive buttons.
+                    </div>
+
+                    <a href="37.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 38 -->
+
+                <article class="experiment-card" data-search="38 navigation">
+
+                    <div class="experiment-number">38</div>
+
+                    <div class="experiment-title">
+                        Navigation Bar
+                    </div>
+
+                    <div class="experiment-description">
+                        Create a navigation bar using CSS.
+                    </div>
+
+                    <a href="38.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 39 -->
+
+                <article class="experiment-card" data-search="39 dropdown">
+
+                    <div class="experiment-number">39</div>
+
+                    <div class="experiment-title">
+                        Dropdown Menu
+                    </div>
+
+                    <div class="experiment-description">
+                        Create dropdown navigation menus.
+                    </div>
+
+                    <a href="39.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 40 -->
+
+                <article class="experiment-card" data-search="40 cards">
+
+                    <div class="experiment-number">40</div>
+
+                    <div class="experiment-title">
+                        CSS Cards
+                    </div>
+
+                    <div class="experiment-description">
+                        Design reusable card components.
+                    </div>
+
+                    <a href="40.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 41 -->
+
+                <article class="experiment-card" data-search="41 profile card">
+
+                    <div class="experiment-number">41</div>
+
+                    <div class="experiment-title">
+                        Profile Card
+                    </div>
+
+                    <div class="experiment-description">
+                        Create a responsive profile card.
+                    </div>
+
+                    <a href="41.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 42 -->
+
+                <article class="experiment-card" data-search="42 pricing">
+
+                    <div class="experiment-number">42</div>
+
+                    <div class="experiment-title">
+                        Pricing Cards
+                    </div>
+
+                    <div class="experiment-description">
+                        Create pricing layouts using CSS.
+                    </div>
+
+                    <a href="42.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 43 -->
+
+                <article class="experiment-card" data-search="43 hero section">
+
+                    <div class="experiment-number">43</div>
+
+                    <div class="experiment-title">
+                        Hero Section
+                    </div>
+
+                    <div class="experiment-description">
+                        Create a professional webpage hero section.
+                    </div>
+
+                    <a href="43.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 44 -->
+
+                <article class="experiment-card" data-search="44 footer">
+
+                    <div class="experiment-number">44</div>
+
+                    <div class="experiment-title">
+                        Website Footer
+                    </div>
+
+                    <div class="experiment-description">
+                        Design a responsive website footer.
+                    </div>
+
+                    <a href="44.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 45 -->
+
+                <article class="experiment-card" data-search="45 image gallery">
+
+                    <div class="experiment-number">45</div>
+
+                    <div class="experiment-title">
+                        Image Gallery
+                    </div>
+
+                    <div class="experiment-description">
+                        Create a responsive image gallery layout.
+                    </div>
+
+                    <a href="45.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 46 -->
+
+                <article class="experiment-card" data-search="46 object fit">
+
+                    <div class="experiment-number">46</div>
+
+                    <div class="experiment-title">
+                        Object Fit
+                    </div>
+
+                    <div class="experiment-description">
+                        Control how images fit inside containers.
+                    </div>
+
+                    <a href="46.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 47 -->
+
+                <article class="experiment-card" data-search="47 gradients">
+
+                    <div class="experiment-number">47</div>
+
+                    <div class="experiment-title">
+                        CSS Gradients
+                    </div>
+
+                    <div class="experiment-description">
+                        Create linear and radial gradients.
+                    </div>
+
+                    <a href="47.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 48 -->
+
+                <article class="experiment-card" data-search="48 variables">
+
+                    <div class="experiment-number">48</div>
+
+                    <div class="experiment-title">
+                        CSS Variables
+                    </div>
+
+                    <div class="experiment-description">
+                        Create reusable CSS custom properties.
+                    </div>
+
+                    <a href="48.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 49 -->
+
+                <article class="experiment-card" data-search="49 calc">
+
+                    <div class="experiment-number">49</div>
+
+                    <div class="experiment-title">
+                        CSS Calc Function
+                    </div>
+
+                    <div class="experiment-description">
+                        Calculate CSS values dynamically.
+                    </div>
+
+                    <a href="49.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 50 -->
+
+                <article class="experiment-card" data-search="50 min max clamp">
+
+                    <div class="experiment-number">50</div>
+
+                    <div class="experiment-title">
+                        CSS Min Max Clamp
+                    </div>
+
+                    <div class="experiment-description">
+                        Create flexible responsive values.
+                    </div>
+
+                    <a href="50.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 51 -->
+
+                <article class="experiment-card" data-search="51 aspect ratio">
+
+                    <div class="experiment-number">51</div>
+
+                    <div class="experiment-title">
+                        Aspect Ratio
+                    </div>
+
+                    <div class="experiment-description">
+                        Maintain proportional element dimensions.
+                    </div>
+
+                    <a href="51.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 52 -->
+
+                <article class="experiment-card" data-search="52 sticky">
+
+                    <div class="experiment-number">52</div>
+
+                    <div class="experiment-title">
+                        Sticky Position
+                    </div>
+
+                    <div class="experiment-description">
+                        Create sticky page elements.
+                    </div>
+
+                    <a href="52.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 53 -->
+
+                <article class="experiment-card" data-search="53 fixed">
+
+                    <div class="experiment-number">53</div>
+
+                    <div class="experiment-title">
+                        Fixed Elements
+                    </div>
+
+                    <div class="experiment-description">
+                        Position elements relative to the viewport.
+                    </div>
+
+                    <a href="53.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 54 -->
+
+                <article class="experiment-card" data-search="54 tooltip">
+
+                    <div class="experiment-number">54</div>
+
+                    <div class="experiment-title">
+                        CSS Tooltip
+                    </div>
+
+                    <div class="experiment-description">
+                        Create tooltips using CSS.
+                    </div>
+
+                    <a href="54.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 55 -->
+
+                <article class="experiment-card" data-search="55 loading">
+
+                    <div class="experiment-number">55</div>
+
+                    <div class="experiment-title">
+                        Loading Animation
+                    </div>
+
+                    <div class="experiment-description">
+                        Create a CSS loading animation.
+                    </div>
+
+                    <a href="55.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 56 -->
+
+                <article class="experiment-card" data-search="56 hover">
+
+                    <div class="experiment-number">56</div>
+
+                    <div class="experiment-title">
+                        Hover Effects
+                    </div>
+
+                    <div class="experiment-description">
+                        Create interactive hover effects.
+                    </div>
+
+                    <a href="56.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 57 -->
+
+                <article class="experiment-card" data-search="57 focus">
+
+                    <div class="experiment-number">57</div>
+
+                    <div class="experiment-title">
+                        Focus Effects
+                    </div>
+
+                    <div class="experiment-description">
+                        Style focused form elements.
+                    </div>
+
+                    <a href="57.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 58 -->
+
+                <article class="experiment-card" data-search="58 checked">
+
+                    <div class="experiment-number">58</div>
+
+                    <div class="experiment-title">
+                        Checked State
+                    </div>
+
+                    <div class="experiment-description">
+                        Style checked form controls.
+                    </div>
+
+                    <a href="58.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 59 -->
+
+                <article class="experiment-card" data-search="59 nth child">
+
+                    <div class="experiment-number">59</div>
+
+                    <div class="experiment-title">
+                        Nth Child Selector
+                    </div>
+
+                    <div class="experiment-description">
+                        Select elements using nth-child.
+                    </div>
+
+                    <a href="59.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 60 -->
+
+                <article class="experiment-card" data-search="60 attribute selector">
+
+                    <div class="experiment-number">60</div>
+
+                    <div class="experiment-title">
+                        Attribute Selectors
+                    </div>
+
+                    <div class="experiment-description">
+                        Style elements using attribute selectors.
+                    </div>
+
+                    <a href="60.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 61 -->
+
+                <article class="experiment-card" data-search="61 multi column">
+
+                    <div class="experiment-number">61</div>
+
+                    <div class="experiment-title">
+                        Multi-Column Layout
+                    </div>
+
+                    <div class="experiment-description">
+                        Create newspaper-style column layouts.
+                    </div>
+
+                    <a href="61.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 62 -->
+
+                <article class="experiment-card" data-search="62 text columns">
+
+                    <div class="experiment-number">62</div>
+
+                    <div class="experiment-title">
+                        CSS Column Properties
+                    </div>
+
+                    <div class="experiment-description">
+                        Control text column layouts.
+                    </div>
+
+                    <a href="62.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 63 -->
+
+                <article class="experiment-card" data-search="63 filters">
+
+                    <div class="experiment-number">63</div>
+
+                    <div class="experiment-title">
+                        CSS Filters
+                    </div>
+
+                    <div class="experiment-description">
+                        Apply visual filters to elements.
+                    </div>
+
+                    <a href="63.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 64 -->
+
+                <article class="experiment-card" data-search="64 blend mode">
+
+                    <div class="experiment-number">64</div>
+
+                    <div class="experiment-title">
+                        Blend Modes
+                    </div>
+
+                    <div class="experiment-description">
+                        Demonstrate CSS blend modes.
+                    </div>
+
+                    <a href="64.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 65 -->
+
+                <article class="experiment-card" data-search="65 backdrop">
+
+                    <div class="experiment-number">65</div>
+
+                    <div class="experiment-title">
+                        Backdrop Effects
+                    </div>
+
+                    <div class="experiment-description">
+                        Create visual backdrop effects.
+                    </div>
+
+                    <a href="65.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 66 -->
+
+                <article class="experiment-card" data-search="66 glassmorphism">
+
+                    <div class="experiment-number">66</div>
+
+                    <div class="experiment-title">
+                        Glassmorphism
+                    </div>
+
+                    <div class="experiment-description">
+                        Create a glass-style interface using CSS.
+                    </div>
+
+                    <a href="66.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 67 -->
+
+                <article class="experiment-card" data-search="67 neumorphism">
+
+                    <div class="experiment-number">67</div>
+
+                    <div class="experiment-title">
+                        Neumorphism
+                    </div>
+
+                    <div class="experiment-description">
+                        Create soft UI effects using CSS shadows.
+                    </div>
+
+                    <a href="67.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 68 -->
+
+                <article class="experiment-card" data-search="68 responsive card">
+
+                    <div class="experiment-number">68</div>
+
+                    <div class="experiment-title">
+                        Responsive Cards
+                    </div>
+
+                    <div class="experiment-description">
+                        Build responsive card layouts.
+                    </div>
+
+                    <a href="68.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 69 -->
+
+                <article class="experiment-card" data-search="69 responsive navigation">
+
+                    <div class="experiment-number">69</div>
+
+                    <div class="experiment-title">
+                        Responsive Navigation
+                    </div>
+
+                    <div class="experiment-description">
+                        Create navigation for desktop and mobile.
+                    </div>
+
+                    <a href="69.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 70 -->
+
+                <article class="experiment-card" data-search="70 landing page">
+
+                    <div class="experiment-number">70</div>
+
+                    <div class="experiment-title">
+                        CSS Landing Page
+                    </div>
+
+                    <div class="experiment-description">
+                        Build a complete landing page using CSS.
+                    </div>
+
+                    <a href="70.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 71 -->
+
+                <article class="experiment-card" data-search="71 dashboard">
+
+                    <div class="experiment-number">71</div>
+
+                    <div class="experiment-title">
+                        CSS Dashboard
+                    </div>
+
+                    <div class="experiment-description">
+                        Create a dashboard layout with CSS.
+                    </div>
+
+                    <a href="71.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 72 -->
+
+                <article class="experiment-card" data-search="72 portfolio">
+
+                    <div class="experiment-number">72</div>
+
+                    <div class="experiment-title">
+                        Portfolio Layout
+                    </div>
+
+                    <div class="experiment-description">
+                        Create a professional portfolio layout.
+                    </div>
+
+                    <a href="72.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 73 -->
+
+                <article class="experiment-card" data-search="73 website layout">
+
+                    <div class="experiment-number">73</div>
+
+                    <div class="experiment-title">
+                        Complete Website Layout
+                    </div>
+
+                    <div class="experiment-description">
+                        Combine multiple CSS layout techniques.
+                    </div>
+
+                    <a href="73.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 74 -->
+
+                <article class="experiment-card" data-search="74 responsive website">
+
+                    <div class="experiment-number">74</div>
+
+                    <div class="experiment-title">
+                        Responsive Website
+                    </div>
+
+                    <div class="experiment-description">
+                        Create a complete responsive webpage.
+                    </div>
+
+                    <a href="74.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+                <!-- 75 -->
+
+                <article class="experiment-card" data-search="75 complete css project">
+
+                    <div class="experiment-number">75</div>
+
+                    <div class="experiment-title">
+                        Complete CSS Project
+                    </div>
+
+                    <div class="experiment-description">
+                        Combine CSS concepts into a complete project.
+                    </div>
+
+                    <a href="75.html" class="open-button">
+                        Open →
+                    </a>
+
+                </article>
+
+
+            </div>
+
+
+            <div
+                class="no-results"
+                id="noResults">
+
+                No matching CSS experiment found.
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         QUICK NAVIGATION
+    ===================================================== -->
+
+    <section class="quick-section">
+
+        <div class="container">
+
+            <div class="quick-box">
+
+                <div class="quick-title">
+                    Quick Navigation
+                </div>
+
+
+                <div class="quick-links">
+
+                    <a
+                        href="../html/index.html"
+                        class="quick-link">
+                        HTML
+                    </a>
+
+
+                    <a
+                        href="index.html"
+                        class="quick-link">
+                        CSS
+                    </a>
+
+
+                    <a
+                        href="../javascript/index.html"
+                        class="quick-link">
+                        JavaScript
+                    </a>
+
+
+                    <a
+                        href="../nodejs/index.html"
+                        class="quick-link">
+                        Node.js
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-content">
+
+
+                <div>
+
+                    <div class="footer-name">
+                        CHARANI VANKUDAVATH
+                    </div>
+
+                    <div class="footer-subtitle">
+                        Sai University • Practical Programs
+                    </div>
+
+                </div>
+
+
+                <div class="footer-right">
+
+                    Portfolio:
+
+                    <a
+                        href="https://charanivankudavathu.github.io"
+                        target="_blank">
+
+                        charanivankudavathu.github.io
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+
+        /* =====================================================
+           MOBILE MENU
+        ===================================================== */
+
+        const menuButton =
+            document.getElementById(
+                "menuButton"
+            );
+
+
+        const mobileNav =
+            document.getElementById(
+                "mobileNav"
+            );
+
+
+        menuButton.addEventListener(
+            "click",
+            function () {
+
+                const isOpen =
+                    mobileNav.classList.toggle(
+                        "active"
+                    );
+
+
+                menuButton.classList.toggle(
+                    "open",
+                    isOpen
+                );
+
+
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    isOpen
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           CLOSE MOBILE MENU
+        ===================================================== */
+
+        const mobileLinks =
+            mobileNav.querySelectorAll("a");
+
+
+        mobileLinks.forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        mobileNav.classList.remove(
+                            "active"
+                        );
+
+
+                        menuButton.classList.remove(
+                            "open"
+                        );
+
+
+                        menuButton.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           SEARCH
+        ===================================================== */
+
+        const searchInput =
+            document.getElementById(
+                "searchInput"
+            );
+
+
+        const experimentCards =
+            document.querySelectorAll(
+                ".experiment-card"
+            );
+
+
+        const noResults =
+            document.getElementById(
+                "noResults"
+            );
+
+
+        searchInput.addEventListener(
+            "input",
+            function () {
+
+                const value =
+                    searchInput.value
+                        .toLowerCase()
+                        .trim();
+
+
+                let visibleCount = 0;
+
+
+                experimentCards.forEach(
+                    function (card) {
+
+                        const text =
+                            card
+                                .getAttribute(
+                                    "data-search"
+                                )
+                                .toLowerCase();
+
+
+                        if (
+                            text.includes(value)
+                        ) {
+
+                            card.style.display =
+                                "grid";
+
+                            visibleCount++;
+
+                        }
+
+                        else {
+
+                            card.style.display =
+                                "none";
+
+                        }
+
+                    }
+                );
+
+
+                if (visibleCount === 0) {
+
+                    noResults.classList.add(
+                        "show"
+                    );
+
+                }
+
+                else {
+
+                    noResults.classList.remove(
+                        "show"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           ESCAPE KEY
+        ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key === "Escape"
+                    &&
+                    mobileNav.classList.contains(
+                        "active"
+                    )
+                ) {
+
+                    mobileNav.classList.remove(
+                        "active"
+                    );
+
+
+                    menuButton.classList.remove(
+                        "open"
+                    );
+
+
+                    menuButton.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

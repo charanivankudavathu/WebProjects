@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EVENT-07 | Keyboard Controlled Game</title>
+
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .event-demo {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .game-area {
+            position: relative;
+            height: 350px;
+            background: #eeeeee;
+            border: 3px solid #111;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        #player {
+            position: absolute;
+            width: 45px;
+            height: 45px;
+            background: #111;
+            border-radius: 8px;
+            left: 20px;
+            top: 20px;
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            background: #111;
+            color: white;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .instructions {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">Events • Experiment 07</span>
+
+            <h1>Keyboard-Controlled Webpage/Game</h1>
+
+            <p>
+                Move the player using the keyboard arrow keys.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="event-demo">
+
+                <div class="instructions">
+                    Use ↑ ↓ ← → arrow keys to move the box.
+                </div>
+
+                <div id="gameArea" class="game-area">
+
+                    <div id="player"></div>
+
+                </div>
+
+                <div id="status" class="status">
+                    Position: X = 20, Y = 20
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+    const player =
+        document.getElementById("player");
+
+    const gameArea =
+        document.getElementById("gameArea");
+
+    const status =
+        document.getElementById("status");
+
+    let x = 20;
+    let y = 20;
+
+    const speed = 10;
+
+    document.addEventListener("keydown", function (event) {
+
+        if (
+            event.key === "ArrowUp" ||
+            event.key === "ArrowDown" ||
+            event.key === "ArrowLeft" ||
+            event.key === "ArrowRight"
+        ) {
+            event.preventDefault();
+        }
+
+        if (event.key === "ArrowUp") {
+            y -= speed;
+        }
+
+        if (event.key === "ArrowDown") {
+            y += speed;
+        }
+
+        if (event.key === "ArrowLeft") {
+            x -= speed;
+        }
+
+        if (event.key === "ArrowRight") {
+            x += speed;
+        }
+
+        const maxX =
+            gameArea.clientWidth - player.offsetWidth;
+
+        const maxY =
+            gameArea.clientHeight - player.offsetHeight;
+
+        x = Math.max(0, Math.min(x, maxX));
+        y = Math.max(0, Math.min(y, maxY));
+
+        player.style.left = x + "px";
+        player.style.top = y + "px";
+
+        status.textContent =
+            "Position: X = " + x + ", Y = " + y;
+
+    });
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+
+        mobileNav.classList.toggle("active");
+
+    });
+</script>
+
+</body>
+</html>

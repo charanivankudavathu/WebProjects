@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Routing-01 | Basic Routing</title>
+
+    <link
+        rel="stylesheet"
+        href="../../styles/main.css"
+    >
+
+    <style>
+
+        .route-list {
+            display: grid;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .route-item {
+            padding: 18px;
+            border: 1px solid #444;
+            border-radius: 10px;
+            background: #f5f5f5;
+        }
+
+        .route-item code {
+            font-weight: bold;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-content">
+
+        <h1>HTML-CSS-JS Practical</h1>
+
+        <button
+            class="menu-toggle"
+            onclick="toggleMenu()"
+        >
+            ☰
+        </button>
+
+        <nav id="mainNav">
+
+            <a href="../../index.html">Home</a>
+
+            <a href="../../html/index.html">
+                HTML
+            </a>
+
+            <a href="../../css/index.html">
+                CSS
+            </a>
+
+            <a href="../../javascript/index.html">
+                JavaScript
+            </a>
+
+            <a href="../index.html">
+                Node.js
+            </a>
+
+            <a href="index.html">
+                Routing
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="page-header">
+
+        <h1>Routing - Experiment 01</h1>
+
+        <p>
+            Implement basic routing using Express.
+        </p>
+
+    </section>
+
+
+    <section class="experiment-wrapper">
+
+        <div class="experiment-card">
+
+            <div class="experiment-header">
+
+                <h2>
+                    Basic Routing Using Express
+                </h2>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>Available Routes</h3>
+
+                <div class="route-list">
+
+                    <div class="route-item">
+
+                        <strong>Home</strong>
+
+                        <p>
+                            <code>/</code>
+                        </p>
+
+                    </div>
+
+
+                    <div class="route-item">
+
+                        <strong>About</strong>
+
+                        <p>
+                            <code>/about</code>
+                        </p>
+
+                    </div>
+
+
+                    <div class="route-item">
+
+                        <strong>Contact</strong>
+
+                        <p>
+                            <code>/contact</code>
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <h3>How to Run</h3>
+
+                <p>
+                    Open Terminal inside the routing folder.
+                </p>
+
+                <pre>
+node 01.js
+                </pre>
+
+                <p>
+                    Then open:
+                </p>
+
+                <pre>
+http://localhost:3011
+                </pre>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        HTML-CSS-JS Practical | Node.js Routing
+    </p>
+
+</footer>
+
+
+<script>
+
+function toggleMenu() {
+
+    const nav = document.getElementById("mainNav");
+
+    nav.classList.toggle("active");
+
+}
+
+</script>
+
+</body>
+
+</html>

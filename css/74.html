@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS-74 | calc() Function</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .calc-demo {
+            background: #eeeeee;
+            border: 1px solid #cccccc;
+            border-radius: 14px;
+            padding: 30px;
+        }
+
+        .calc-box {
+            width: calc(100% - 80px);
+            margin: 20px auto;
+            background: #111111;
+            color: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+        .calc-heading {
+            font-size: calc(24px + 2vw);
+            text-align: center;
+            margin: 0 0 25px;
+        }
+
+        .calc-columns {
+            display: flex;
+            gap: 20px;
+        }
+
+        .calc-column {
+            width: calc(50% - 10px);
+            background: #ffffff;
+            border: 1px solid #cccccc;
+            padding: 25px;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+        .code-example {
+            margin-top: 15px;
+            padding: 12px;
+            background: #222222;
+            color: #ffffff;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+
+        @media (max-width: 650px) {
+            .calc-box {
+                width: calc(100% - 20px);
+            }
+
+            .calc-columns {
+                flex-direction: column;
+            }
+
+            .calc-column {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">
+                        HTML • CSS • JavaScript
+                    </span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 74</span>
+
+            <h1>CSS calc() Function</h1>
+
+            <p>
+                Demonstration of the calc() function for performing
+                calculations inside CSS property values.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="calc-demo">
+
+                <h2 class="calc-heading">
+                    CSS calc() Demonstration
+                </h2>
+
+
+                <div class="calc-box">
+
+                    <h3>Calculated Width</h3>
+
+                    <p>
+                        This box uses:
+                    </p>
+
+                    <div class="code-example">
+                        width: calc(100% - 80px);
+                    </div>
+
+                </div>
+
+
+                <div class="calc-columns">
+
+                    <div class="calc-column">
+
+                        <h3>Column 1</h3>
+
+                        <p>
+                            Each column uses half of the available
+                            width minus the gap.
+                        </p>
+
+                        <div class="code-example">
+                            width: calc(50% - 10px);
+                        </div>
+
+                    </div>
+
+
+                    <div class="calc-column">
+
+                        <h3>Column 2</h3>
+
+                        <p>
+                            Resize the browser to observe the
+                            responsive calculation.
+                        </p>
+
+                        <div class="code-example">
+                            width: calc(50% - 10px);
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const mobileNav = document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+        mobileNav.classList.toggle("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            mobileNav.classList.contains("active")
+        );
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Experiment 07</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .position-area {
+            position: relative;
+            min-height: 600px;
+            border: 2px solid #111111;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .position-box {
+            padding: 18px;
+            margin-bottom: 20px;
+            border: 2px solid #111111;
+            background: #eeeeee;
+        }
+
+        .static-box {
+            position: static;
+        }
+
+        .relative-box {
+            position: relative;
+            left: 30px;
+            top: 10px;
+        }
+
+        .absolute-container {
+            position: relative;
+            height: 150px;
+            border: 2px dashed #555555;
+            margin-top: 20px;
+        }
+
+        .absolute-box {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            padding: 15px;
+            background: #111111;
+            color: #ffffff;
+        }
+
+        .fixed-box {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background: #111111;
+            color: #ffffff;
+            padding: 12px 18px;
+            border-radius: 8px;
+            z-index: 10;
+        }
+
+        .sticky-box {
+            position: sticky;
+            top: 0;
+            background: #dddddd;
+            padding: 15px;
+            border: 2px solid #111111;
+            margin-bottom: 20px;
+            z-index: 5;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 07</span>
+
+            <h1>CSS Positioning</h1>
+
+            <p>
+                Demonstration of static, relative, absolute,
+                fixed and sticky positioning.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="position-area">
+
+                <div class="sticky-box">
+                    Sticky Position — scroll inside the page to observe.
+                </div>
+
+                <div class="position-box static-box">
+                    <strong>Static:</strong>
+                    Normal document positioning.
+                </div>
+
+                <div class="position-box relative-box">
+                    <strong>Relative:</strong>
+                    Moved relative to its normal position.
+                </div>
+
+                <div class="absolute-container">
+
+                    <div class="absolute-box">
+                        <strong>Absolute:</strong>
+                        Positioned relative to its container.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<div class="fixed-box">
+    Fixed Position
+</div>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+
+});
+</script>
+
+</body>
+</html>

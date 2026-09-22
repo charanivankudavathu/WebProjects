@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM-06 | College Admission Form</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .form-demo {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #999999;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .error {
+            display: block;
+            margin-top: 5px;
+            color: #cc0000;
+            font-size: 14px;
+        }
+
+        .success {
+            margin-top: 20px;
+            padding: 15px;
+            background: #eeeeee;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .form-button {
+            padding: 12px 25px;
+            background: #111111;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">FORM-06</span>
+            <h1>College Admission Form</h1>
+            <p>Create a college admission form with JavaScript validation.</p>
+        </div>
+
+        <div class="form-demo">
+
+            <form id="admissionForm">
+
+                <div class="form-group">
+                    <label for="name">Student Name</label>
+                    <input type="text" id="name" placeholder="Enter student name">
+                    <span class="error" id="nameError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter email">
+                    <span class="error" id="emailError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Mobile Number</label>
+                    <input type="text" id="phone" placeholder="Enter mobile number">
+                    <span class="error" id="phoneError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="marks">12th Percentage</label>
+                    <input
+                        type="number"
+                        id="marks"
+                        placeholder="Enter percentage"
+                        step="0.01"
+                    >
+                    <span class="error" id="marksError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="course">Preferred Course</label>
+                    <select id="course">
+                        <option value="">Select Course</option>
+                        <option value="B.Tech">B.Tech</option>
+                        <option value="B.Sc">B.Sc</option>
+                        <option value="BCA">BCA</option>
+                        <option value="BBA">BBA</option>
+                        <option value="BA">BA</option>
+                    </select>
+                    <span class="error" id="courseError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" placeholder="Enter city">
+                    <span class="error" id="cityError"></span>
+                </div>
+
+                <button type="submit" class="form-button">
+                    Apply for Admission
+                </button>
+
+                <div id="successMessage"></div>
+
+            </form>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+
+const admissionForm = document.getElementById("admissionForm");
+
+admissionForm.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const marks = document.getElementById("marks").value;
+    const course = document.getElementById("course").value;
+    const city = document.getElementById("city").value.trim();
+
+    document.getElementById("nameError").textContent = "";
+    document.getElementById("emailError").textContent = "";
+    document.getElementById("phoneError").textContent = "";
+    document.getElementById("marksError").textContent = "";
+    document.getElementById("courseError").textContent = "";
+    document.getElementById("cityError").textContent = "";
+    document.getElementById("successMessage").textContent = "";
+
+    let valid = true;
+
+    if (name === "") {
+        document.getElementById("nameError").textContent =
+            "Student name is required.";
+        valid = false;
+    }
+
+    if (email === "") {
+        document.getElementById("emailError").textContent =
+            "Email is required.";
+        valid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById("emailError").textContent =
+            "Enter a valid email address.";
+        valid = false;
+    }
+
+    if (phone === "") {
+        document.getElementById("phoneError").textContent =
+            "Mobile number is required.";
+        valid = false;
+    } else if (!/^[0-9]{10}$/.test(phone)) {
+        document.getElementById("phoneError").textContent =
+            "Mobile number must contain 10 digits.";
+        valid = false;
+    }
+
+    if (marks === "") {
+        document.getElementById("marksError").textContent =
+            "Percentage is required.";
+        valid = false;
+    } else if (marks < 0 || marks > 100) {
+        document.getElementById("marksError").textContent =
+            "Percentage must be between 0 and 100.";
+        valid = false;
+    }
+
+    if (course === "") {
+        document.getElementById("courseError").textContent =
+            "Please select a course.";
+        valid = false;
+    }
+
+    if (city === "") {
+        document.getElementById("cityError").textContent =
+            "City is required.";
+        valid = false;
+    }
+
+    if (valid) {
+        document.getElementById("successMessage").textContent =
+            "Admission form submitted successfully!";
+        document.getElementById("successMessage").className = "success";
+    }
+});
+</script>
+
+</body>
+</html>

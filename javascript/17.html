@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JS-17 | Strings and String Methods</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .program-form {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .program-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .program-form input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #555;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .program-form button {
+            padding: 12px 22px;
+            background: #111;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .program-form button:hover {
+            background: #333;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 18px;
+            background: #111;
+            color: #fff;
+            border-radius: 8px;
+            line-height: 1.9;
+            word-break: break-word;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">J</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="../css/index.html">CSS</a>
+                <a href="index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="../css/index.html">CSS Programs</a>
+            <a href="index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">JavaScript • Experiment 17</span>
+
+            <h1>Strings and String Methods</h1>
+
+            <p>
+                Demonstrate strings and commonly used string methods.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="program-form">
+
+                <label for="textInput">
+                    Enter a string:
+                </label>
+
+                <input
+                    type="text"
+                    id="textInput"
+                    placeholder="Example: JavaScript Programming"
+                >
+
+                <button onclick="showStringMethods()">
+                    Apply String Methods
+                </button>
+
+                <div class="result" id="result">
+                    Result will appear here.
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+
+    function showStringMethods() {
+
+        const text = document.getElementById("textInput").value;
+        const result = document.getElementById("result");
+
+        if (text.trim() === "") {
+            result.innerHTML = "Please enter a string.";
+            return;
+        }
+
+        result.innerHTML =
+            "Original String: <strong>" + text + "</strong><br><br>" +
+
+            "Length: <strong>" + text.length + "</strong><br>" +
+
+            "Uppercase: <strong>" +
+            text.toUpperCase() +
+            "</strong><br>" +
+
+            "Lowercase: <strong>" +
+            text.toLowerCase() +
+            "</strong><br>" +
+
+            "Trimmed: <strong>" +
+            text.trim() +
+            "</strong><br>" +
+
+            "First Character: <strong>" +
+            text.charAt(0) +
+            "</strong><br>" +
+
+            "Includes 'JavaScript': <strong>" +
+            text.toLowerCase().includes("javascript") +
+            "</strong><br>" +
+
+            "Replaced Spaces: <strong>" +
+            text.replaceAll(" ", "-") +
+            "</strong>";
+    }
+
+
+    const menuButton = document.getElementById("menuButton");
+    const mobileNav = document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+
+        mobileNav.classList.toggle("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            mobileNav.classList.contains("active")
+        );
+
+    });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS 48 - Two Column Grid</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .two-column {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .column {
+            padding: 25px;
+            border: 2px solid #222222;
+            border-radius: 12px;
+        }
+
+        .main-column {
+            background: #eeeeee;
+        }
+
+        .side-column {
+            background: #111111;
+            color: #ffffff;
+        }
+
+        .column h2 {
+            margin-bottom: 15px;
+        }
+
+        .column p {
+            line-height: 1.7;
+        }
+
+        .side-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .side-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #555555;
+        }
+
+        @media (max-width: 700px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 48</span>
+
+            <h1>Two-Column Webpage Layout</h1>
+
+            <p>
+                A two-column responsive layout created using
+                CSS Grid.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="two-column">
+
+                <section class="column main-column">
+
+                    <h2>Main Content</h2>
+
+                    <p>
+                        CSS Grid allows a webpage to be divided
+                        into multiple columns and rows.
+                    </p>
+
+                    <p>
+                        In this example, the main content occupies
+                        two parts of the available space while the
+                        sidebar occupies one part.
+                    </p>
+
+                    <p>
+                        The layout automatically changes to one
+                        column on smaller screens.
+                    </p>
+
+                </section>
+
+                <aside class="column side-column">
+
+                    <h2>Sidebar</h2>
+
+                    <ul class="side-list">
+                        <li>HTML Basics</li>
+                        <li>CSS Layouts</li>
+                        <li>Flexbox</li>
+                        <li>CSS Grid</li>
+                        <li>Responsive Design</li>
+                    </ul>
+
+                </aside>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+</script>
+
+</body>
+</html>

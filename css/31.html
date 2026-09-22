@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Experiment 31</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .gradient-demo {
+            display: grid;
+            gap: 25px;
+        }
+
+        .gradient-box {
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 25px;
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .linear-gradient {
+            background: linear-gradient(
+                135deg,
+                #111111,
+                #555555,
+                #999999
+            );
+        }
+
+        .horizontal-gradient {
+            background: linear-gradient(
+                to right,
+                #111111,
+                #777777
+            );
+        }
+
+        .radial-gradient {
+            background: radial-gradient(
+                circle,
+                #111111,
+                #555555,
+                #aaaaaa
+            );
+        }
+
+        .radial-center {
+            background: radial-gradient(
+                circle at center,
+                #222222,
+                #666666,
+                #cccccc
+            );
+        }
+
+        .gradient-info {
+            padding: 20px;
+            background: #eeeeee;
+            border-left: 4px solid #111111;
+        }
+
+        @media (max-width: 500px) {
+            .gradient-box {
+                min-height: 160px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 31</span>
+
+            <h1>Linear and Radial Gradients</h1>
+
+            <p>
+                Demonstration of linear-gradient() and
+                radial-gradient() functions.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="gradient-demo">
+
+                <div class="gradient-box linear-gradient">
+                    Linear Gradient
+                </div>
+
+                <div class="gradient-box horizontal-gradient">
+                    Horizontal Linear Gradient
+                </div>
+
+                <div class="gradient-box radial-gradient">
+                    Radial Gradient
+                </div>
+
+                <div class="gradient-box radial-center">
+                    Radial Center Gradient
+                </div>
+
+            </div>
+
+            <div class="gradient-info">
+
+                <h3>Gradient Functions</h3>
+
+                <p>
+                    <strong>linear-gradient()</strong>
+                    creates a gradual transition between colors
+                    along a straight line.
+                </p>
+
+                <p>
+                    <strong>radial-gradient()</strong>
+                    creates a gradual transition from a central
+                    point outward.
+                </p>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+</script>
+
+</body>
+</html>

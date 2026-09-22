@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Experiment 10</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+        <a href="../index.html" class="logo">
+            <div class="logo-mark">C</div>
+            <div class="logo-text">
+                <span class="logo-title">PRACTICAL LAB</span>
+                <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+            </div>
+        </a>
+
+        <nav class="desktop-nav">
+            <a href="../index.html">Home</a>
+            <a href="index.html" class="active">HTML</a>
+            <a href="../css/index.html">CSS</a>
+            <a href="../javascript/index.html">JavaScript</a>
+        </nav>
+
+        <button class="menu-button" id="menuButton"
+            aria-label="Open navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </div>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">HTML Programs</a>
+        <a href="../css/index.html">CSS Programs</a>
+        <a href="../javascript/index.html">JavaScript Programs</a>
+    </nav>
+</div>
+
+</header>
+
+<main class="experiment-wrapper">
+
+<article class="experiment-card">
+
+    <div class="experiment-header">
+        <span class="eyebrow">HTML • Experiment 10</span>
+        <h1>College Timetable</h1>
+        <p>Demonstration of an HTML table for a college timetable.</p>
+    </div>
+
+    <div class="output-box table-wrapper">
+
+        <table border="1" cellpadding="12" cellspacing="0">
+
+            <tr>
+                <th>Day</th>
+                <th>9:15–10:10</th>
+                <th>10:15–11:10</th>
+                <th>11:15–12:10</th>
+                <th>12:15–1:10</th>
+                <th>1:00–1:55</th>
+                <th>2:00–2:55</th>
+                <th>3:00–3:55</th>
+                <th>4:00–4:55</th>
+            </tr>
+
+            <tr>
+                <th>Monday</th>
+                <td>--NO CLASS--</td>
+                <td>--NO CLASS--</td>
+                <td>DAA</td>
+                <td>--NO CLASS--</td>
+                <td>--LUNCH BREAK--</td>
+                <td>FDA</td>
+                <td>--CLASSES COMPLETED--</td>
+                <td>--CLASSES COMPLETED--</td>
+            </tr>
+
+            <tr>
+                <th>Tuesday</th>
+                <td>Linear Algebra</td>
+                <td>--NO CLASS--</td>
+                <td>--NO CLASS--</td>
+                <td>--LUNCH BREAK--</td>
+                <td>Linear Algebra</td>
+                <td>FDA</td>
+                <td>--CLASSES COMPLETED--</td>
+                <td>--CLASSES COMPLETED--</td>
+            </tr>
+
+            <tr>
+                <th>Wednesday</th>
+                <td>--NO CLASS--</td>
+                <td>Linear Algebra</td>
+                <td>Web Technology</td>
+                <td>Web Technology</td>
+                <td>--CLASSES COMPLETED--</td>
+                <td>--CLASSES COMPLETED--</td>
+                <td>--CLASSES COMPLETED--</td>
+                <td>--CLASSES COMPLETED--</td>
+            </tr>
+
+            <tr>
+                <th>Thursday</th>
+                <td>FDA</td>
+                <td>Linear Algebra</td>
+                <td>DAA</td>
+                <td>--LUNCH BREAK--</td>
+                <td>--LUNCH BREAK--</td>
+                <td>Web Technology</td>
+                <td>Web Technology</td>
+                <td>--CLASSES COMPLETED--</td>
+            </tr>
+
+            <tr>
+                <th>Friday</th>
+                <td>DAA LAB</td>
+                <td>DAA LAB</td>
+                <td>FDA LAB</td>
+                <td>FDA LAB</td>
+                <td>Emerging Tools & Applications(SEC-4&5) -</td>
+                <td>FDA</td>
+                <td>FDA</td>
+                <td>--CLASSES COMPLETED--</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</article>
+
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-text">© 2026 Practical Lab. HTML • CSS • JavaScript</div>
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">HTML Programs</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+</script>
+
+</body>
+</html>

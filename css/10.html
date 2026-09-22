@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Experiment 10</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .pseudo-demo {
+            display: grid;
+            gap: 20px;
+        }
+
+        .pseudo-card {
+            padding: 20px;
+            border: 2px solid #111111;
+            background: #eeeeee;
+            border-radius: 10px;
+        }
+
+        .pseudo-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .hover-button {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #111111;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .hover-button:hover {
+            background: #555555;
+        }
+
+        .active-button {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #333333;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .active-button:active {
+            transform: scale(0.9);
+        }
+
+        .focus-input {
+            padding: 12px;
+            width: 100%;
+            max-width: 400px;
+            border: 2px solid #999999;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        .focus-input:focus {
+            border-color: #111111;
+            background: #eeeeee;
+        }
+
+        .visited-link {
+            color: #111111;
+            font-weight: bold;
+        }
+
+        .visited-link:visited {
+            color: #666666;
+        }
+
+        .first-item:first-child {
+            font-weight: bold;
+            background: #dddddd;
+        }
+
+        .last-item:last-child {
+            font-weight: bold;
+            background: #cccccc;
+        }
+
+        .pseudo-list {
+            padding-left: 20px;
+        }
+
+        .pseudo-list li {
+            padding: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 10</span>
+
+            <h1>CSS Pseudo-Classes</h1>
+
+            <p>
+                Demonstration of :hover, :active, :focus,
+                :visited, :first-child and :last-child.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="pseudo-demo">
+
+                <div class="pseudo-card">
+
+                    <h3>:hover</h3>
+
+                    <a href="#" class="hover-button">
+                        Hover Over Me
+                    </a>
+
+                </div>
+
+                <div class="pseudo-card">
+
+                    <h3>:active</h3>
+
+                    <button class="active-button">
+                        Press and Hold
+                    </button>
+
+                </div>
+
+                <div class="pseudo-card">
+
+                    <h3>:focus</h3>
+
+                    <input
+                        type="text"
+                        class="focus-input"
+                        placeholder="Click inside this input"
+                    >
+
+                </div>
+
+                <div class="pseudo-card">
+
+                    <h3>:visited</h3>
+
+                    <a
+                        href="https://example.com"
+                        target="_blank"
+                        class="visited-link"
+                    >
+                        Visit Example Website
+                    </a>
+
+                </div>
+
+                <div class="pseudo-card">
+
+                    <h3>:first-child and :last-child</h3>
+
+                    <ul class="pseudo-list">
+
+                        <li class="first-item">
+                            First Item
+                        </li>
+
+                        <li>
+                            Middle Item
+                        </li>
+
+                        <li class="last-item">
+                            Last Item
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS 51 - Fixed Sidebar</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .fixed-demo {
+            margin-top: 25px;
+            min-height: 600px;
+        }
+
+        .demo-layout {
+            position: relative;
+            min-height: 600px;
+        }
+
+        .fixed-sidebar {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+
+            width: 180px;
+            padding: 20px;
+
+            background: #111111;
+            border-radius: 12px;
+
+            z-index: 50;
+        }
+
+        .fixed-sidebar h3 {
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .fixed-sidebar a {
+            display: block;
+            padding: 10px 8px;
+            margin-bottom: 6px;
+
+            color: #ffffff;
+            text-decoration: none;
+
+            border-radius: 6px;
+        }
+
+        .fixed-sidebar a:hover {
+            background: #444444;
+        }
+
+        .sidebar-content {
+            margin-left: 230px;
+            padding: 20px;
+        }
+
+        .content-box {
+            padding: 30px;
+            margin-bottom: 20px;
+
+            background: #eeeeee;
+            border: 2px solid #222222;
+            border-radius: 12px;
+
+            min-height: 250px;
+        }
+
+        .content-box h2 {
+            margin-bottom: 15px;
+        }
+
+        .content-box p {
+            line-height: 1.8;
+        }
+
+        @media (max-width: 750px) {
+            .fixed-sidebar {
+                position: sticky;
+                top: 10px;
+                left: auto;
+                transform: none;
+
+                width: auto;
+                margin-bottom: 20px;
+            }
+
+            .sidebar-content {
+                margin-left: 0;
+            }
+
+            .fixed-sidebar a {
+                display: inline-block;
+                margin-right: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 51</span>
+
+            <h1>Fixed Sidebar</h1>
+
+            <p>
+                A sidebar that remains visible while the page
+                content is scrolled.
+            </p>
+        </div>
+
+        <div class="output-box fixed-demo">
+
+            <div class="demo-layout">
+
+                <aside class="fixed-sidebar">
+
+                    <h3>Menu</h3>
+
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+
+                </aside>
+
+                <div class="sidebar-content">
+
+                    <section class="content-box" id="about">
+                        <h2>About</h2>
+
+                        <p>
+                            This section demonstrates a webpage
+                            containing a fixed sidebar.
+                        </p>
+
+                        <p>
+                            The sidebar uses
+                            <strong>position: fixed</strong>
+                            so it stays in the same location
+                            while the page is scrolled.
+                        </p>
+                    </section>
+
+                    <section class="content-box" id="services">
+                        <h2>Services</h2>
+
+                        <p>
+                            Web development, responsive design,
+                            UI development, and frontend programming
+                            are examples of web services.
+                        </p>
+                    </section>
+
+                    <section class="content-box" id="projects">
+                        <h2>Projects</h2>
+
+                        <p>
+                            Projects can include portfolios,
+                            college websites, dashboards,
+                            galleries, and interactive applications.
+                        </p>
+                    </section>
+
+                    <section class="content-box" id="contact">
+                        <h2>Contact</h2>
+
+                        <p>
+                            The contact section can contain
+                            email addresses, forms, social links,
+                            or other communication details.
+                        </p>
+                    </section>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+</script>
+
+</body>
+</html>

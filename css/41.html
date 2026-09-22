@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS 41 - Tooltip</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .tooltip-demo {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            margin: 80px auto;
+        }
+
+        .tooltip-button {
+            background: #111111;
+            color: #ffffff;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .tooltip-text {
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+
+            width: 220px;
+            padding: 12px;
+
+            background: #111111;
+            color: #ffffff;
+            text-align: center;
+
+            border-radius: 8px;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition:
+                opacity 0.3s ease,
+                visibility 0.3s ease;
+        }
+
+        .tooltip-text::after {
+            content: "";
+            position: absolute;
+
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+
+            border-width: 7px;
+            border-style: solid;
+            border-color: #111111 transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltip-text,
+        .tooltip:focus-within .tooltip-text {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .info-box {
+            padding: 18px;
+            background: #eeeeee;
+            border-radius: 10px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 41</span>
+
+            <h1>CSS Tooltip</h1>
+
+            <p>
+                A tooltip that appears when the user hovers over
+                or focuses on an element.
+            </p>
+        </div>
+
+        <div class="output-box tooltip-demo">
+
+            <div class="tooltip">
+
+                <button class="tooltip-button">
+                    Hover Over Me
+                </button>
+
+                <div class="tooltip-text">
+                    This is a CSS tooltip!
+                </div>
+
+            </div>
+
+            <div class="info-box">
+                The tooltip is created using
+                <strong>position</strong>,
+                <strong>opacity</strong>,
+                <strong>visibility</strong>,
+                <strong>:hover</strong>, and
+                <strong>::after</strong>.
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+</script>
+
+</body>
+</html>

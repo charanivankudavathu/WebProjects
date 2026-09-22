@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS-69 | Sliding Card Animation</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .slider-area {
+            background: #eeeeee;
+            border: 1px solid #cccccc;
+            border-radius: 12px;
+            padding: 30px;
+            overflow: hidden;
+        }
+
+        .slider-track {
+            display: flex;
+            gap: 25px;
+            width: max-content;
+            animation: slideCards 12s linear infinite;
+        }
+
+        .slide-card {
+            width: 260px;
+            min-height: 180px;
+            background: #111111;
+            color: #ffffff;
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .slide-card h3 {
+            margin-top: 0;
+        }
+
+        .slide-card p {
+            line-height: 1.6;
+            color: #dddddd;
+        }
+
+        @keyframes slideCards {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .slider-area:hover .slider-track {
+            animation-play-state: paused;
+        }
+
+        .instruction {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            .slide-card {
+                width: 220px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">
+                        HTML • CSS • JavaScript
+                    </span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 69</span>
+
+            <h1>Sliding Card Animation</h1>
+
+            <p>
+                A continuously sliding card layout created using
+                CSS keyframe animation.
+            </p>
+        </div>
+
+
+        <div class="output-box">
+
+            <div class="slider-area">
+
+                <div class="slider-track">
+
+                    <div class="slide-card">
+                        <h3>HTML</h3>
+                        <p>
+                            HTML provides the structure of a webpage.
+                        </p>
+                    </div>
+
+                    <div class="slide-card">
+                        <h3>CSS</h3>
+                        <p>
+                            CSS is used to style and design webpages.
+                        </p>
+                    </div>
+
+                    <div class="slide-card">
+                        <h3>JavaScript</h3>
+                        <p>
+                            JavaScript adds interaction and functionality.
+                        </p>
+                    </div>
+
+                    <div class="slide-card">
+                        <h3>Responsive Design</h3>
+                        <p>
+                            Responsive layouts work across different devices.
+                        </p>
+                    </div>
+
+                    <div class="slide-card">
+                        <h3>HTML</h3>
+                        <p>
+                            HTML provides the structure of a webpage.
+                        </p>
+                    </div>
+
+                    <div class="slide-card">
+                        <h3>CSS</h3>
+                        <p>
+                            CSS is used to style and design webpages.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="instruction">
+                    Hover over the cards to pause the animation.
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const mobileNav = document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+
+        mobileNav.classList.toggle("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            mobileNav.classList.contains("active")
+        );
+
+    });
+</script>
+
+</body>
+</html>

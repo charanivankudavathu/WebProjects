@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS 45 - Responsive Image Gallery</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: 25px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 2px solid #222222;
+            background: #eeeeee;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 220px;
+            display: block;
+            object-fit: cover;
+
+            transition:
+                transform 0.4s ease,
+                filter 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+            filter: grayscale(100%);
+        }
+
+        .gallery-caption {
+            padding: 12px;
+            background: #111111;
+            color: #ffffff;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        @media (max-width: 1000px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item img {
+                height: 260px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 45</span>
+
+            <h1>Responsive Image Gallery</h1>
+
+            <p>
+                A responsive gallery created using CSS Grid,
+                media queries, object-fit, and hover effects.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="gallery">
+
+                <div class="gallery-item">
+                    <img
+                        src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80"
+                        alt="Modern office"
+                    >
+                    <div class="gallery-caption">
+                        Modern Office
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img
+                        src="https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=800&q=80"
+                        alt="Office interior"
+                    >
+                    <div class="gallery-caption">
+                        Workspace
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img
+                        src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80"
+                        alt="Office room"
+                    >
+                    <div class="gallery-caption">
+                        Creative Space
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img
+                        src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+                        alt="Meeting room"
+                    >
+                    <div class="gallery-caption">
+                        Meeting Room
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img
+                        src="https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=800&q=80"
+                        alt="Office desk"
+                    >
+                    <div class="gallery-caption">
+                        Study Area
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img
+                        src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80"
+                        alt="Office workspace"
+                    >
+                    <div class="gallery-caption">
+                        Work Area
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+</script>
+
+</body>
+</html>

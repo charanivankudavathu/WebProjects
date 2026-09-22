@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Experiment 12</title>
+    <link rel="stylesheet" href="../styles/main.css">
+
+
+<style>
+    .selector-demo {
+        margin: 15px 0;
+        padding: 20px;
+        border: 2px solid #111;
+        border-radius: 10px;
+    }
+
+    .selector-demo h2 {
+        font-family: Georgia, serif;
+    }
+
+    .selector-demo p {
+        margin: 15px;
+        padding: 15px;
+        border: 2px solid #777;
+    }
+
+    .highlight {
+        background: #eeeeee;
+    }
+</style>
+
+
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+
+    <div class="header-inner">
+
+        <a href="../index.html" class="logo">
+            <div class="logo-mark">C</div>
+            <div class="logo-text">
+                <span class="logo-title">PRACTICAL LAB</span>
+                <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+            </div>
+        </a>
+
+        <nav class="desktop-nav">
+            <a href="../index.html">Home</a>
+            <a href="index.html" class="active">HTML</a>
+            <a href="../css/index.html">CSS</a>
+            <a href="../javascript/index.html">JavaScript</a>
+        </nav>
+
+        <button class="menu-button" id="menuButton"
+            aria-label="Open navigation menu"
+            aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </div>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">HTML Programs</a>
+        <a href="../css/index.html">CSS Programs</a>
+        <a href="../javascript/index.html">JavaScript Programs</a>
+    </nav>
+
+</div>
+
+
+</header>
+
+<main class="experiment-wrapper">
+
+
+<article class="experiment-card">
+
+    <div class="experiment-header">
+        <span class="eyebrow">HTML • Experiment 12</span>
+        <h1>CSS Selectors and Properties</h1>
+        <p>
+            Demonstration of selectors, colors, fonts, margins,
+            padding and borders.
+        </p>
+    </div>
+
+    <div class="output-box">
+
+        <div class="selector-demo">
+
+            <h2>CSS Selector Example</h2>
+
+            <p>
+                This paragraph demonstrates margin,
+                padding and border properties.
+            </p>
+
+            <p class="highlight">
+                This paragraph uses a CSS class selector.
+            </p>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+
+    <div class="footer-inner">
+
+        <div class="footer-text">
+            © 2026 Practical Lab. HTML • CSS • JavaScript
+        </div>
+
+        <div class="footer-links">
+            <a href="../index.html">Home</a>
+            <a href="index.html">HTML Programs</a>
+        </div>
+
+    </div>
+
+</div>
+
+
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+</script>
+
+</body>
+</html>

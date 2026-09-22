@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EVENT-02 | Keyboard Events</title>
+
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .event-demo {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .keyboard-input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #aaa;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 17px;
+            margin: 20px 0;
+        }
+
+        .event-status {
+            padding: 20px;
+            background: #eeeeee;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">Events • Experiment 02</span>
+
+            <h1>Demonstrate Keyboard Events</h1>
+
+            <p>
+                Demonstrate keydown, keyup and keyboard input events.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="event-demo">
+
+                <input
+                    type="text"
+                    id="keyboardInput"
+                    class="keyboard-input"
+                    placeholder="Press any key..."
+                >
+
+                <div id="status" class="event-status">
+                    Press a key inside the input box.
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+    const keyboardInput =
+        document.getElementById("keyboardInput");
+
+    const status =
+        document.getElementById("status");
+
+    keyboardInput.addEventListener("keydown", function (event) {
+
+        status.innerHTML =
+            "<strong>Key Down:</strong> " +
+            event.key;
+
+    });
+
+    keyboardInput.addEventListener("keyup", function (event) {
+
+        status.innerHTML =
+            "<strong>Key Up:</strong> " +
+            event.key;
+
+    });
+
+    keyboardInput.addEventListener("input", function () {
+
+        status.innerHTML +=
+            "<br><strong>Current Value:</strong> " +
+            keyboardInput.value;
+
+    });
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+
+        mobileNav.classList.toggle("active");
+
+    });
+</script>
+
+</body>
+</html>

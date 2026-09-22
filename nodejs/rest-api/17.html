@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>REST API-17 | User Authentication API</title>
+
+    <link
+        rel="stylesheet"
+        href="../../styles/main.css"
+    >
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-content">
+
+        <h1>HTML-CSS-JS Practical</h1>
+
+        <button class="menu-toggle" onclick="toggleMenu()">
+            ☰
+        </button>
+
+        <nav id="mainNav">
+
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML</a>
+            <a href="../../css/index.html">CSS</a>
+            <a href="../../javascript/index.html">JavaScript</a>
+            <a href="../index.html">Node.js</a>
+            <a href="index.html">REST API</a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="page-header">
+
+        <h1>RESTful API - Experiment 17</h1>
+
+        <p>
+            Create a User REST API with Authentication and Authorization.
+        </p>
+
+    </section>
+
+
+    <section class="experiment-wrapper">
+
+        <div class="experiment-card">
+
+            <div class="experiment-header">
+                <h2>
+                    User REST API + Authentication
+                </h2>
+            </div>
+
+            <div class="output-box">
+
+                <h3>Authentication</h3>
+
+                <pre>
+POST /login
+                </pre>
+
+            </div>
+
+            <div class="output-box">
+
+                <h3>Protected API</h3>
+
+                <pre>
+GET /users
+                </pre>
+
+            </div>
+
+            <div class="output-box">
+
+                <h3>Admin API</h3>
+
+                <pre>
+GET /admin/users
+                </pre>
+
+            </div>
+
+            <div class="output-box">
+
+                <h3>Run</h3>
+
+                <pre>
+node 17.js
+
+http://localhost:3087
+                </pre>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    <p>
+        HTML-CSS-JS Practical |
+        Node.js REST API
+    </p>
+</footer>
+
+
+<script>
+
+function toggleMenu() {
+
+    document
+        .getElementById("mainNav")
+        .classList
+        .toggle("active");
+
+}
+
+</script>
+
+</body>
+</html>

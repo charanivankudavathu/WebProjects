@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Experiment 30</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .background-demo {
+            display: grid;
+            gap: 25px;
+        }
+
+        .background-box {
+            min-height: 250px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-radius: 12px;
+            border: 2px solid #111111;
+            color: #ffffff;
+            background-color: #333333;
+            background-image:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.65),
+                    rgba(0, 0, 0, 0.65)
+                ),
+                url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .background-content {
+            max-width: 650px;
+        }
+
+        .background-content h2 {
+            margin-bottom: 15px;
+            font-size: 32px;
+        }
+
+        .background-content p {
+            line-height: 1.7;
+        }
+
+        .position-examples {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .position-box {
+            min-height: 150px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            border-radius: 10px;
+            background-color: #111111;
+            background-image:
+                radial-gradient(
+                    circle,
+                    #777777 1px,
+                    transparent 1px
+                );
+            background-size: 15px 15px;
+        }
+
+        .top-left {
+            background-position: top left;
+        }
+
+        .center {
+            background-position: center;
+        }
+
+        .bottom-right {
+            background-position: bottom right;
+        }
+
+        @media (max-width: 650px) {
+
+            .position-examples {
+                grid-template-columns: 1fr;
+            }
+
+            .background-box {
+                min-height: 220px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+
+            <span class="eyebrow">CSS • Experiment 30</span>
+
+            <h1>Background Images and Positioning</h1>
+
+            <p>
+                Demonstration of background-image, background-size
+                and background-position.
+            </p>
+
+        </div>
+
+        <div class="output-box">
+
+            <div class="background-demo">
+
+                <div class="background-box">
+
+                    <div class="background-content">
+
+                        <h2>Background Image</h2>
+
+                        <p>
+                            This section demonstrates a CSS
+                            background image with cover sizing
+                            and centered positioning.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="position-examples">
+
+                    <div class="position-box top-left">
+                        Top Left
+                    </div>
+
+                    <div class="position-box center">
+                        Center
+                    </div>
+
+                    <div class="position-box bottom-right">
+                        Bottom Right
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+
+});
+</script>
+
+</body>
+</html>

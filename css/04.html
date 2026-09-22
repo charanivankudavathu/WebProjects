@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Experiment 04 | Practical Lab</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+
+        .typography-demo {
+
+            padding: 30px;
+
+            background: #eeeeee;
+
+            border: 1px solid #777777;
+
+            border-radius: 18px;
+
+        }
+
+        .large-text {
+            font-size: 32px;
+        }
+
+        .bold-text {
+            font-weight: 800;
+        }
+
+        .italic-text {
+            font-style: italic;
+        }
+
+        .uppercase-text {
+            text-transform: uppercase;
+        }
+
+        .spacing-text {
+            letter-spacing: 5px;
+        }
+
+        .center-text {
+            text-align: center;
+        }
+
+        .line-text {
+            line-height: 2;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+
+                    <span class="logo-title">
+                        PRACTICAL LAB
+                    </span>
+
+                    <span class="logo-subtitle">
+                        HTML • CSS • JavaScript
+                    </span>
+
+                </div>
+
+            </a>
+
+            <nav class="desktop-nav">
+
+                <a href="../index.html">Home</a>
+
+                <a href="../html/index.html">HTML</a>
+
+                <a href="index.html" class="active">
+                    CSS
+                </a>
+
+                <a href="../javascript/index.html">
+                    JavaScript
+                </a>
+
+                <a href="https://charanivankudavathu.github.io"
+                   target="_blank">
+                    Portfolio
+                </a>
+
+            </nav>
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                aria-expanded="false">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+
+            <a href="../index.html">Home</a>
+
+            <a href="../html/index.html">
+                HTML Programs
+            </a>
+
+            <a href="index.html">
+                CSS Programs
+            </a>
+
+            <a href="../javascript/index.html">
+                JavaScript Programs
+            </a>
+
+            <a href="https://charanivankudavathu.github.io"
+               target="_blank">
+                My Portfolio
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+
+            <span class="eyebrow">
+                CSS • EXPERIMENT 04
+            </span>
+
+            <h1>
+                Font Properties and Text Formatting
+            </h1>
+
+            <p>
+                Demonstration of different CSS typography
+                and text formatting properties.
+            </p>
+
+        </div>
+
+
+        <div class="output-box">
+
+            <h2>
+                Output
+            </h2>
+
+            <div class="typography-demo">
+
+                <p class="large-text">
+                    Large Text
+                </p>
+
+                <p class="bold-text">
+                    Bold Text
+                </p>
+
+                <p class="italic-text">
+                    Italic Text
+                </p>
+
+                <p class="uppercase-text">
+                    uppercase transformation
+                </p>
+
+                <p class="spacing-text">
+                    Letter Spacing
+                </p>
+
+                <p class="center-text">
+                    Center Aligned Text
+                </p>
+
+                <p class="line-text">
+                    This paragraph demonstrates line-height.
+                    CSS provides many properties that can be
+                    used to improve readability and presentation.
+                </p>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab.
+                HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+
+                <a href="../index.html">
+                    Home
+                </a>
+
+                <a href="index.html">
+                    CSS Programs
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const mobileNav =
+    document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+
+});
+
+</script>
+
+</body>
+
+</html>

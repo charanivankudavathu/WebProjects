@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS-71 | Dark Mode</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        :root {
+            --page-bg: #eeeeee;
+            --card-bg: #ffffff;
+            --text-color: #111111;
+            --border-color: #cccccc;
+            --button-bg: #111111;
+            --button-text: #ffffff;
+        }
+
+        body:has(#darkMode:checked) {
+            --page-bg: #111111;
+            --card-bg: #222222;
+            --text-color: #ffffff;
+            --border-color: #555555;
+            --button-bg: #ffffff;
+            --button-text: #111111;
+        }
+
+        .theme-demo {
+            background: var(--page-bg);
+            color: var(--text-color);
+            padding: 40px;
+            border-radius: 14px;
+            transition: 0.4s;
+        }
+
+        .theme-card {
+            max-width: 650px;
+            margin: auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 30px;
+            transition: 0.4s;
+        }
+
+        .theme-card h2 {
+            margin-top: 0;
+        }
+
+        .theme-card p {
+            line-height: 1.7;
+        }
+
+        .theme-button {
+            display: inline-block;
+            margin-top: 15px;
+            background: var(--button-bg);
+            color: var(--button-text);
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        #darkMode {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">
+                        HTML • CSS • JavaScript
+                    </span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 71</span>
+
+            <h1>Dark Mode Using CSS Variables</h1>
+
+            <p>
+                Demonstration of CSS custom properties to create
+                a light and dark theme.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="theme-demo">
+
+                <div class="theme-card">
+
+                    <h2>Theme Demonstration</h2>
+
+                    <p>
+                        This section uses CSS variables for the
+                        background, text, border, and button colors.
+                    </p>
+
+                    <input type="checkbox" id="darkMode">
+
+                    <label for="darkMode" class="theme-button">
+                        Toggle Dark Mode
+                    </label>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const mobileNav = document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+        mobileNav.classList.toggle("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            mobileNav.classList.contains("active")
+        );
+    });
+</script>
+
+</body>
+</html>

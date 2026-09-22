@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DOM Manipulation | Practical Lab</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #0a0a0a;
+            --dark: #151515;
+            --charcoal: #222;
+            --grey: #555;
+            --silver: #999;
+            --light: #e8e8e8;
+            --soft: #f4f4f4;
+            --white: #fff;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--soft);
+            color: var(--black);
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            background: var(--black);
+            color: var(--white);
+            padding: 22px 6%;
+            border-bottom: 1px solid var(--grey);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .lab-name {
+            font-size: 14px;
+            color: #ccc;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* NAVIGATION */
+        nav {
+            background: var(--dark);
+            border-bottom: 1px solid #333;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 16px 22px;
+            display: block;
+            font-size: 14px;
+            transition: 0.25s ease;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        /* MOBILE MENU */
+        .menu-toggle {
+            display: none;
+            background: var(--white);
+            color: var(--black);
+            border: none;
+            padding: 9px 13px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        /* HERO */
+        .hero {
+            background: var(--white);
+            border-bottom: 1px solid #d5d5d5;
+            padding: 70px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(30px, 5vw, 48px);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            color: var(--grey);
+            font-size: 16px;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        /* MAIN */
+        main {
+            max-width: 1200px;
+            margin: auto;
+            padding: 55px 20px;
+        }
+
+        .section-title {
+            margin-bottom: 30px;
+        }
+
+        .section-title h2 {
+            font-size: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title p {
+            color: var(--grey);
+            margin-top: 5px;
+        }
+
+        /* EXPERIMENT GRID */
+        .experiment-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .experiment-card {
+            background: var(--white);
+            border: 1px solid #d4d4d4;
+            padding: 25px;
+            min-height: 185px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: 0.25s ease;
+        }
+
+        .experiment-card:hover {
+            border-color: var(--black);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .experiment-number {
+            font-size: 13px;
+            font-weight: bold;
+            color: var(--silver);
+            letter-spacing: 1px;
+        }
+
+        .experiment-card h3 {
+            font-size: 18px;
+            margin: 8px 0;
+        }
+
+        .experiment-card p {
+            color: var(--grey);
+            font-size: 14px;
+        }
+
+        .view-btn {
+            align-self: flex-end;
+            color: var(--black);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            margin-top: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .view-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* QUICK NAVIGATION */
+        .quick-nav {
+            margin-top: 55px;
+            background: var(--black);
+            color: var(--white);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .quick-nav h2 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .quick-links a {
+            color: var(--white);
+            border: 1px solid #555;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 13px;
+            transition: 0.25s;
+        }
+
+        .quick-links a:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 35px 20px;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+
+        footer h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        footer p {
+            color: #aaa;
+            font-size: 13px;
+            margin: 3px 0;
+        }
+
+        footer a {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+
+            .header-container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .lab-name {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                display: none;
+            }
+
+            nav.show {
+                display: block;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            nav a {
+                text-align: center;
+                border-bottom: 1px solid #333;
+            }
+
+            .hero {
+                padding: 50px 20px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            main {
+                padding: 40px 15px;
+            }
+
+            .experiment-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experiment-card {
+                min-height: 170px;
+            }
+
+            .quick-nav {
+                padding: 25px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .logo {
+                font-size: 16px;
+            }
+
+            .hero h1 {
+                font-size: 25px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .section-title h2 {
+                font-size: 21px;
+            }
+
+            .experiment-card {
+                padding: 20px;
+            }
+
+            .quick-links {
+                flex-direction: column;
+            }
+
+            .quick-links a {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <div class="logo">CHARANI VANKUDAVATH</div>
+
+            <div class="lab-name">
+                Practical Lab
+            </div>
+
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">
+                ☰
+            </button>
+        </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav id="mainNav">
+        <div class="nav-container">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML</a>
+            <a href="../../css/index.html">CSS</a>
+            <a href="../index.html" class="active">JavaScript</a>
+            <a href="../../nodejs/index.html">Node.js</a>
+            <a href="https://charanivankudavathu.github.io" target="_blank">Portfolio</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>DOM Manipulation</h1>
+
+        <p>
+            JavaScript practical experiments demonstrating dynamic
+            manipulation of HTML elements, styles, tables, forms and
+            interactive webpage components.
+        </p>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <div class="section-title">
+            <h2>DOM Manipulation Experiments</h2>
+            <p>15 practical programs using JavaScript DOM methods and techniques.</p>
+        </div>
+
+        <div class="experiment-grid">
+
+            <!-- 01 -->
+            <div class="experiment-card">
+                <div>
+                    <span class="experiment-number">01</span>
+                    <h3>Add Elements Dynamically</h3>
+                    <p>Create a webpage and use JavaScript to add new elements dynamically.</p>
+                </div>
+
+                <a href="01.html" class="view-btn">VIEW →</a>
+            </div>
+
+            <!-- 02 -->
+            <div class="experiment-card">
+                <div>
+                    <span class="experiment-number">02</span>
+                    <h3>Remove HTML Elements</h3>
+                    <p>Create a program to remove HTML elements dynamically.</p>
+                </div>
+
+                <a href="02.html" class="view-btn">VIEW →</a>
+            </div>
+
+            <!-- 03 -->
+            <div class="experiment-card">
+                <div>
+                    <span class="experiment-number">03</span>
+                    <h3>Change CSS Styles</h3>
+                    <p>Create a program to change CSS styles using JavaScript.</p>
+                </div>
+
+                <a href="03.html" class="view-btn">VIEW →</a>
+            </div>
+
+            <!-- 04 -->
+            <div class="experiment-card">
+                <div>
+                    <span class="experiment-number">04</span>
+                    <h3>Change Multiple Elements</h3>
+                    <p>Create a program to change multiple HTML elements simultaneously.</p>
+                </div>
+
+                <a href="04.html" class="view-btn">VIEW →</a>
+            </div>
+
+            <!-- 05 -->
+            <div class="experiment-card">
+                <div>
+                    <span class="experiment-number">05</span>
+                    <h3>getElementById & getElementsByClassName</h3>
+                    <p>Demonstrate getElementById() and getElementsByClassName().</p>
+                </div>
+
+                <a href="05.html" class="view-btn">VIEW →</a>
+            </div>
+
+            <!-- 06 -->
+            <div class="experiment-card">
+                <div>
+                    <span class="experiment-number">06</span>
+                    <h3>querySelector & querySelectorAll</h3>
+                    <p>Demonstrate querySelector() and querySelectorAll().</p>
+                </div>
+
+                <a href="06.html" class="view-btn">VIEW →</a>
+            </div>
+
+            <!-- 07 -->
+            <div class="experiment-card">
+                <div>
+                    <span class="experiment-number">07</span>
+                    <h3>Dynamic CSS Classes</h3>
+                    <p>Create and remove CSS classes dynamically using JavaScript.</p>
+                </div>
+
+                <a href="07.html" class="view-btn">VIEW →</a>
+            </div>
+
+            <!-- 08 -->
+            <div class="experiment-card">
+                <div>
+                    <span class="experiment-number">08</span>
+                    <h3>Dynamic Table</h3>
+                    <p>Create a dynamic table using JavaScript.</p>
+                </div>
+
+                <a href="08.html" class="view-btn">VIEW →</a>
+            </div>
+
+            <!-- 09 -->
+            <div class="experiment-card">
+                <div>
+                    <span class="experiment-number">09</span>
+                    <h3>Add & Delete Table Rows</h3>
+                    <p>Create a program to add and delete rows from a table.</p>
+                </div>
+
+                <a href="09.html" class="view-btn">VIEW →</a>
+            </div>
+
+            <!-- 10 -->
+            <div class="experiment-card">
+                <div>
+                    <span class="experiment-number">10</span>
+                    <h3>Search & Filter Table Records</h3>
+                    <p>Create a program to search and filter table records.</p>
+                </div>
+
+                <a href="10.html" class="view-btn">VIEW →</a>
+            </div>
+
+            <!-- 11 -->
+            <div class="experiment-card">
+                <div>
+                    <span class="experiment-number">11</span>
+                    <h3>Live Character Counter</h3>
+                    <p>Create a live character counter for a textarea.</p>
+                </div>
+
+                <a href="11.html" class="view-btn">VIEW →</a>
+            </div>
+
+            <!-- 12 -->
+            <div class="experiment-card">
+                <div>
+                    <span class="experiment-number">12</span>
+                    <h3>Password Show / Hide</h3>
+                    <p>Create a password show/hide feature using JavaScript.</p>
+                </div>
+
+                <a href="12.html" class="view-btn">VIEW →</a>
+            </div>
+
+            <!-- 13 -->
+            <div class="experiment-card">
+                <div>
+                    <span class="experiment-number">13</span>
+                    <h3>Dynamic Dropdown List</h3>
+                    <p>Create a dynamic dropdown list using JavaScript.</p>
+                </div>
+
+                <a href="13.html" class="view-btn">VIEW →</a>
+            </div>
+
+            <!-- 14 -->
+            <div class="experiment-card">
+                <div>
+                    <span class="experiment-number">14</span>
+                    <h3>Dependent Dropdown</h3>
+                    <p>Create a dependent dropdown such as Country → State → City.</p>
+                </div>
+
+                <a href="14.html" class="view-btn">VIEW →</a>
+            </div>
+
+            <!-- 15 -->
+            <div class="experiment-card">
+                <div>
+                    <span class="experiment-number">15</span>
+                    <h3>Image Slideshow / Carousel</h3>
+                    <p>Create an image slideshow/carousel using JavaScript.</p>
+                </div>
+
+                <a href="15.html" class="view-btn">VIEW →</a>
+            </div>
+
+        </div>
+
+        <!-- QUICK NAVIGATION -->
+        <section class="quick-nav">
+
+            <h2>QUICK NAVIGATION</h2>
+
+            <div class="quick-links">
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html">JAVASCRIPT</a>
+                <a href="../../nodejs/index.html">NODE.JS</a>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+
+        <h3>CHARANI VANKUDAVATH</h3>
+
+        <p>Sai University • Practical Programs</p>
+
+        <p>
+            Portfolio:
+            <a href="https://charanivankudavathu.github.io" target="_blank">
+                charanivankudavathu.github.io
+            </a>
+        </p>
+
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById("mainNav");
+            nav.classList.toggle("show");
+        }
+    </script>
+
+</body>
+</html>

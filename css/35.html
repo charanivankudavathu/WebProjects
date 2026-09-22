@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Experiment 35</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .overflow-demo {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .overflow-card {
+            padding: 20px;
+            border: 2px solid #111111;
+            border-radius: 10px;
+            background: #eeeeee;
+        }
+
+        .overflow-box {
+            height: 120px;
+            padding: 15px;
+            background: #ffffff;
+            border: 1px solid #777777;
+        }
+
+        .visible {
+            overflow: visible;
+        }
+
+        .hidden {
+            overflow: hidden;
+        }
+
+        .scroll {
+            overflow: scroll;
+        }
+
+        .auto {
+            overflow: auto;
+        }
+
+        .long-content {
+            width: 650px;
+            line-height: 1.7;
+        }
+
+        .overflow-info {
+            grid-column: 1 / -1;
+            padding: 20px;
+            background: #111111;
+            color: #ffffff;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 650px) {
+            .overflow-demo {
+                grid-template-columns: 1fr;
+            }
+
+            .overflow-info {
+                grid-column: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 35</span>
+
+            <h1>CSS Overflow Properties</h1>
+
+            <p>
+                Demonstration of overflow: visible, hidden,
+                scroll and auto.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="overflow-demo">
+
+                <div class="overflow-card">
+
+                    <h3>overflow: visible</h3>
+
+                    <div class="overflow-box visible">
+
+                        <div class="long-content">
+                            This content is intentionally wider than
+                            its container. With overflow set to visible,
+                            the content can extend outside the box.
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="overflow-card">
+
+                    <h3>overflow: hidden</h3>
+
+                    <div class="overflow-box hidden">
+
+                        <div class="long-content">
+                            This content is intentionally wider than
+                            its container. The hidden value clips the
+                            content that goes outside the box.
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="overflow-card">
+
+                    <h3>overflow: scroll</h3>
+
+                    <div class="overflow-box scroll">
+
+                        <div class="long-content">
+                            This content is wider than the container.
+                            Scrollbars are always available with the
+                            scroll value.
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="overflow-card">
+
+                    <h3>overflow: auto</h3>
+
+                    <div class="overflow-box auto">
+
+                        <div class="long-content">
+                            This content is wider than the container.
+                            The browser displays scrollbars when
+                            necessary.
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="overflow-info">
+
+                    <h3>Overflow Properties</h3>
+
+                    <p>
+                        <strong>visible:</strong>
+                        Content can extend outside the box.
+                    </p>
+
+                    <p>
+                        <strong>hidden:</strong>
+                        Extra content is clipped.
+                    </p>
+
+                    <p>
+                        <strong>scroll:</strong>
+                        Scrollbars are provided.
+                    </p>
+
+                    <p>
+                        <strong>auto:</strong>
+                        Scrollbars appear when required.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Experiment 08</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .float-demo {
+            border: 2px solid #111111;
+            padding: 20px;
+        }
+
+        .float-image {
+            float: left;
+            width: 150px;
+            height: 150px;
+            margin: 0 20px 15px 0;
+            background: #111111;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .clear-section {
+            clear: both;
+            margin-top: 30px;
+            padding: 20px;
+            border-top: 2px solid #555555;
+            background: #eeeeee;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 08</span>
+
+            <h1>Float and Clear Properties</h1>
+
+            <p>
+                Demonstration of floating elements and clearing
+                the float using CSS.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="float-demo">
+
+                <div class="float-image">
+                    FLOAT
+                </div>
+
+                <p>
+                    The float property moves an element to the
+                    left or right side of its container. Other
+                    content can flow around the floated element.
+                </p>
+
+                <p>
+                    In this example, the black box is floated to
+                    the left and the paragraph text flows around it.
+                </p>
+
+                <div class="clear-section">
+
+                    <h3>Clear Property</h3>
+
+                    <p>
+                        The clear property prevents an element
+                        from appearing beside a floated element.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT-05 | To-Do List</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .todo-demo {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .todo-input {
+            display: flex;
+            gap: 10px;
+        }
+
+        .todo-input input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #999999;
+            border-radius: 6px;
+        }
+
+        .todo-input button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            background: #111111;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        #taskList {
+            margin-top: 25px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .task {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+        }
+
+        .task.completed span {
+            text-decoration: line-through;
+        }
+
+        .task button {
+            border: none;
+            padding: 7px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            .todo-input {
+                flex-direction: column;
+            }
+
+            .task {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">PROJECT-05</span>
+            <h1>To-Do List Application</h1>
+            <p>Add, complete, and delete tasks using JavaScript.</p>
+        </div>
+
+        <div class="todo-demo">
+
+            <div class="todo-input">
+
+                <input
+                    type="text"
+                    id="taskInput"
+                    placeholder="Enter a task"
+                >
+
+                <button id="addButton">
+                    Add Task
+                </button>
+
+            </div>
+
+            <ul id="taskList"></ul>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+
+const taskInput = document.getElementById("taskInput");
+const taskList = document.getElementById("taskList");
+
+function addTask() {
+
+    const text = taskInput.value.trim();
+
+    if (text === "") {
+        alert("Please enter a task.");
+        return;
+    }
+
+    const li = document.createElement("li");
+    li.className = "task";
+
+    const span = document.createElement("span");
+    span.textContent = text;
+
+    const completeButton = document.createElement("button");
+    completeButton.textContent = "Complete";
+
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+
+    completeButton.addEventListener("click", function () {
+        li.classList.toggle("completed");
+    });
+
+    deleteButton.addEventListener("click", function () {
+        li.remove();
+    });
+
+    li.appendChild(span);
+    li.appendChild(completeButton);
+    li.appendChild(deleteButton);
+
+    taskList.appendChild(li);
+
+    taskInput.value = "";
+    taskInput.focus();
+}
+
+document.getElementById("addButton").addEventListener("click", addTask);
+
+taskInput.addEventListener("keydown", function (event) {
+
+    if (event.key === "Enter") {
+        addTask();
+    }
+
+});
+</script>
+
+</body>
+</html>

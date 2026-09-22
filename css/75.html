@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS-75 | Complete Responsive Website</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .website {
+            background: #eeeeee;
+            color: #111111;
+        }
+
+        .hero {
+            min-height: 520px;
+            background: #111111;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 7vw, 80px);
+            margin: 0 0 20px;
+            line-height: 1;
+        }
+
+        .hero p {
+            font-size: clamp(17px, 2vw, 22px);
+            line-height: 1.7;
+            color: #dddddd;
+        }
+
+        .hero-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 14px 28px;
+            background: #ffffff;
+            color: #111111;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .hero-button:hover {
+            transform: translateY(-4px);
+            background: #dddddd;
+        }
+
+        .website-section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 70px 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: clamp(28px, 5vw, 48px);
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #555555;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border: 1px solid #cccccc;
+            border-radius: 14px;
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .feature-card h3 {
+            margin-top: 0;
+        }
+
+        .feature-card p {
+            line-height: 1.7;
+            color: #555555;
+        }
+
+        .about-section {
+            background: #ffffff;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: clamp(30px, 5vw, 50px);
+            margin-top: 0;
+        }
+
+        .about-content p {
+            line-height: 1.8;
+            color: #555555;
+        }
+
+        .about-box {
+            min-height: 300px;
+            background: #222222;
+            color: #ffffff;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+            font-size: clamp(25px, 5vw, 50px);
+            font-weight: 800;
+        }
+
+        .contact-box {
+            background: #111111;
+            color: #ffffff;
+            border-radius: 16px;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .contact-box p {
+            color: #dddddd;
+            line-height: 1.7;
+        }
+
+        .contact-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 13px 25px;
+            background: #ffffff;
+            color: #111111;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        .website-footer {
+            background: #000000;
+            color: #ffffff;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .website-footer p {
+            margin: 0;
+            color: #cccccc;
+        }
+
+        @media (max-width: 850px) {
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .hero {
+                min-height: 450px;
+            }
+
+            .website-section {
+                padding: 50px 20px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-box {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">
+                        HTML • CSS • JavaScript
+                    </span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 75</span>
+
+            <h1>Complete Responsive Website</h1>
+
+            <p>
+                A complete responsive webpage using HTML5, CSS3,
+                Flexbox, Grid and media queries.
+            </p>
+        </div>
+
+
+        <div class="output-box">
+
+            <div class="website">
+
+
+                <!-- HERO SECTION -->
+
+                <section class="hero">
+
+                    <div class="hero-content">
+
+                        <h1>Modern Web Design</h1>
+
+                        <p>
+                            A responsive website demonstrating
+                            HTML5, CSS3, Flexbox, Grid and
+                            responsive media queries.
+                        </p>
+
+                        <a href="#features" class="hero-button">
+                            Explore Features
+                        </a>
+
+                    </div>
+
+                </section>
+
+
+                <!-- FEATURES -->
+
+                <section class="website-section" id="features">
+
+                    <div class="section-title">
+
+                        <h2>Features</h2>
+
+                        <p>
+                            Technologies used to build this webpage.
+                        </p>
+
+                    </div>
+
+
+                    <div class="feature-grid">
+
+                        <div class="feature-card">
+
+                            <h3>HTML5</h3>
+
+                            <p>
+                                Semantic HTML5 elements are used
+                                to create the structure of the
+                                website.
+                            </p>
+
+                        </div>
+
+
+                        <div class="feature-card">
+
+                            <h3>CSS3</h3>
+
+                            <p>
+                                CSS3 properties provide styling,
+                                animations, transitions and
+                                responsive layouts.
+                            </p>
+
+                        </div>
+
+
+                        <div class="feature-card">
+
+                            <h3>Flexbox</h3>
+
+                            <p>
+                                Flexbox is used to align and
+                                arrange elements efficiently.
+                            </p>
+
+                        </div>
+
+
+                        <div class="feature-card">
+
+                            <h3>CSS Grid</h3>
+
+                            <p>
+                                CSS Grid creates structured
+                                two-dimensional layouts.
+                            </p>
+
+                        </div>
+
+
+                        <div class="feature-card">
+
+                            <h3>Media Queries</h3>
+
+                            <p>
+                                Media queries make the website
+                                responsive on different screens.
+                            </p>
+
+                        </div>
+
+
+                        <div class="feature-card">
+
+                            <h3>Responsive Design</h3>
+
+                            <p>
+                                The layout adapts to desktops,
+                                tablets and mobile devices.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ABOUT -->
+
+                <section class="about-section">
+
+                    <div class="website-section">
+
+                        <div class="about-grid">
+
+                            <div class="about-content">
+
+                                <h2>About This Website</h2>
+
+                                <p>
+                                    This practical demonstrates
+                                    how multiple modern CSS
+                                    techniques can be combined
+                                    to create a professional
+                                    responsive website.
+                                </p>
+
+                                <p>
+                                    Resize the browser window to
+                                    observe the layout changes.
+                                </p>
+
+                            </div>
+
+
+                            <div class="about-box">
+
+                                RESPONSIVE
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- CONTACT -->
+
+                <section class="website-section">
+
+                    <div class="contact-box">
+
+                        <h2>Get In Touch</h2>
+
+                        <p>
+                            This section demonstrates a responsive
+                            call-to-action component.
+                        </p>
+
+                        <a href="#features" class="contact-button">
+                            Learn More
+                        </a>
+
+                    </div>
+
+                </section>
+
+
+                <!-- FOOTER -->
+
+                <footer class="website-footer">
+
+                    <p>
+                        © 2026 Responsive Website Demo
+                    </p>
+
+                </footer>
+
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const mobileNav = document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+        mobileNav.classList.toggle("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            mobileNav.classList.contains("active")
+        );
+    });
+</script>
+
+</body>
+</html>

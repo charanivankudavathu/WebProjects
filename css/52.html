@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS 52 - Responsive Footer</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .footer-demo {
+            margin-top: 25px;
+        }
+
+        .demo-page {
+            min-height: 400px;
+            padding: 35px;
+            background: #eeeeee;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .demo-page h2 {
+            margin-bottom: 15px;
+        }
+
+        .demo-page p {
+            line-height: 1.7;
+        }
+
+        .responsive-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+
+            margin-top: 25px;
+            padding: 35px;
+
+            background: #111111;
+            color: #ffffff;
+
+            border-radius: 12px;
+        }
+
+        .footer-column {
+            flex: 1;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 15px;
+        }
+
+        .footer-column p {
+            line-height: 1.7;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-column li {
+            margin-bottom: 8px;
+        }
+
+        .footer-column a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            margin-top: 25px;
+            padding-top: 18px;
+            border-top: 1px solid #555555;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            .responsive-footer {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+
+            .footer-column {
+                width: 100%;
+            }
+
+            .footer-column ul {
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 52</span>
+
+            <h1>Responsive Footer</h1>
+
+            <p>
+                A footer that changes from multiple columns
+                to a single-column layout on smaller screens.
+            </p>
+        </div>
+
+        <div class="output-box footer-demo">
+
+            <div class="demo-page">
+                <h2>Website Content</h2>
+
+                <p>
+                    The footer below is responsive.
+                    Resize the browser window to see
+                    the layout change.
+                </p>
+            </div>
+
+            <footer class="responsive-footer">
+
+                <div class="footer-column">
+                    <h3>Practical Lab</h3>
+
+                    <p>
+                        A collection of HTML, CSS, and
+                        JavaScript practical programs.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Programs</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact</h3>
+
+                    <p>
+                        Email: example@email.com
+                    </p>
+
+                    <p>
+                        Phone: +91 98765 43210
+                    </p>
+                </div>
+
+            </footer>
+
+            <div class="responsive-footer footer-bottom">
+                © 2026 Practical Lab
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+</script>
+
+</body>
+</html>

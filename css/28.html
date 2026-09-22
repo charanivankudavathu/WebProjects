@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Experiment 28</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .combinator-demo {
+            display: grid;
+            gap: 20px;
+        }
+
+        .combinator-box {
+            padding: 20px;
+            border: 2px solid #111111;
+            border-radius: 10px;
+            background: #eeeeee;
+        }
+
+        .descendant-demo p {
+            background: #ffffff;
+            padding: 10px;
+        }
+
+        .child-demo > p {
+            background: #dddddd;
+            padding: 10px;
+        }
+
+        .sibling-demo h3 + p {
+            background: #cccccc;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        .general-sibling-demo h3 ~ p {
+            border-left: 5px solid #111111;
+            padding: 10px;
+            background: #ffffff;
+        }
+
+        .nested {
+            padding: 15px;
+            border: 1px dashed #555555;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+
+            <span class="eyebrow">CSS • Experiment 28</span>
+
+            <h1>CSS Combinator Selectors</h1>
+
+            <p>
+                Demonstration of descendant, child, adjacent sibling
+                and general sibling selectors.
+            </p>
+
+        </div>
+
+        <div class="output-box">
+
+            <div class="combinator-demo">
+
+                <div class="combinator-box">
+
+                    <h3>Descendant Selector</h3>
+
+                    <div class="descendant-demo">
+
+                        <p>
+                            This paragraph is inside the container.
+                        </p>
+
+                        <div class="nested">
+
+                            <p>
+                                This paragraph is nested deeper.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="combinator-box">
+
+                    <h3>Child Selector &gt;</h3>
+
+                    <div class="child-demo">
+
+                        <p>
+                            Direct child paragraph.
+                        </p>
+
+                        <div class="nested">
+
+                            <p>
+                                Nested paragraph.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="combinator-box">
+
+                    <h3>Adjacent Sibling +</h3>
+
+                    <div class="sibling-demo">
+
+                        <h3>Heading</h3>
+
+                        <p>
+                            This paragraph immediately follows
+                            the heading.
+                        </p>
+
+                        <p>
+                            This is another paragraph.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="combinator-box">
+
+                    <h3>General Sibling ~</h3>
+
+                    <div class="general-sibling-demo">
+
+                        <h3>Heading</h3>
+
+                        <p>
+                            General sibling paragraph one.
+                        </p>
+
+                        <p>
+                            General sibling paragraph two.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+
+});
+</script>
+
+</body>
+</html>

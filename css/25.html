@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Experiment 25</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .website-demo {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .website-hero {
+            min-height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+            background: #111111;
+            color: #ffffff;
+            border-radius: 12px;
+        }
+
+        .website-hero-content {
+            max-width: 700px;
+        }
+
+        .website-hero h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .website-hero p {
+            color: #dddddd;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .hero-button {
+            display: inline-block;
+            padding: 13px 25px;
+            background: #ffffff;
+            color: #111111;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .website-section {
+            margin-top: 25px;
+            padding: 30px;
+            background: #eeeeee;
+            border: 2px solid #111111;
+            border-radius: 12px;
+        }
+
+        .website-section h3 {
+            margin-bottom: 20px;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .service-card {
+            padding: 25px;
+            background: #ffffff;
+            border: 1px solid #777777;
+            border-radius: 10px;
+        }
+
+        .service-card h4 {
+            margin-bottom: 10px;
+        }
+
+        .website-footer-demo {
+            margin-top: 25px;
+            padding: 25px;
+            background: #111111;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .website-footer-demo p {
+            color: #dddddd;
+        }
+
+        @media (max-width: 700px) {
+
+            .website-hero h2 {
+                font-size: 32px;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+
+            <span class="eyebrow">CSS • Experiment 25</span>
+
+            <h1>Complete Website Homepage</h1>
+
+            <p>
+                A complete responsive homepage demonstrating
+                multiple HTML and CSS concepts.
+            </p>
+
+        </div>
+
+        <div class="output-box">
+
+            <div class="website-demo">
+
+                <section class="website-hero">
+
+                    <div class="website-hero-content">
+
+                        <h2>Build Your Future</h2>
+
+                        <p>
+                            Welcome to our modern website homepage.
+                            This layout demonstrates professional
+                            sections, cards, buttons and responsive
+                            design using HTML and CSS.
+                        </p>
+
+                        <a href="#" class="hero-button">
+                            Get Started
+                        </a>
+
+                    </div>
+
+                </section>
+
+                <section class="website-section">
+
+                    <h3>Our Services</h3>
+
+                    <div class="service-grid">
+
+                        <div class="service-card">
+
+                            <h4>Web Design</h4>
+
+                            <p>
+                                Modern and responsive website
+                                interfaces.
+                            </p>
+
+                        </div>
+
+                        <div class="service-card">
+
+                            <h4>Development</h4>
+
+                            <p>
+                                Functional websites using modern
+                                development techniques.
+                            </p>
+
+                        </div>
+
+                        <div class="service-card">
+
+                            <h4>Responsive Design</h4>
+
+                            <p>
+                                Websites that work across laptops,
+                                tablets and mobile devices.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <section class="website-section">
+
+                    <h3>About Our Website</h3>
+
+                    <p>
+                        This example combines a hero section,
+                        service cards, content sections and a
+                        footer into one complete homepage.
+                    </p>
+
+                </section>
+
+                <div class="website-footer-demo">
+
+                    <h3>Contact Us</h3>
+
+                    <p>
+                        Email: example@email.com
+                    </p>
+
+                    <p>
+                        © 2026 My Website
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+
+});
+</script>
+
+</body>
+</html>

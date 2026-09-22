@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS 36 - Z-Index</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .stack-area {
+            position: relative;
+            height: 350px;
+            margin-top: 25px;
+            background: #eeeeee;
+            border: 2px solid #333333;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .layer {
+            position: absolute;
+            width: 180px;
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #111111;
+            border-radius: 12px;
+            font-weight: 700;
+        }
+
+        .layer-one {
+            background: #ffffff;
+            left: 40px;
+            top: 40px;
+            z-index: 1;
+        }
+
+        .layer-two {
+            background: #cccccc;
+            left: 120px;
+            top: 100px;
+            z-index: 2;
+        }
+
+        .layer-three {
+            background: #888888;
+            color: #ffffff;
+            left: 200px;
+            top: 160px;
+            z-index: 3;
+        }
+
+        .z-note {
+            margin-top: 20px;
+            padding: 15px;
+            background: #111111;
+            color: #ffffff;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 36</span>
+
+            <h1>Z-Index and Stacking Order</h1>
+
+            <p>
+                Demonstration of how the CSS z-index property controls
+                the stacking order of overlapping elements.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <h2>Stacking Demonstration</h2>
+
+            <div class="stack-area">
+
+                <div class="layer layer-one">
+                    Layer 1<br>Z-Index: 1
+                </div>
+
+                <div class="layer layer-two">
+                    Layer 2<br>Z-Index: 2
+                </div>
+
+                <div class="layer layer-three">
+                    Layer 3<br>Z-Index: 3
+                </div>
+
+            </div>
+
+            <div class="z-note">
+                The element with the higher z-index appears above
+                elements with lower z-index values.
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+</script>
+
+</body>
+</html>

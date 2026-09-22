@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JS-60 | Common Array Elements</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .program-box {
+            max-width: 700px;
+            margin: 25px auto;
+            padding: 25px;
+            background: #111;
+            color: #fff;
+            border: 1px solid #444;
+            border-radius: 10px;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            border: 1px solid #555;
+            border-radius: 6px;
+        }
+
+        button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 6px;
+            background: #fff;
+            color: #111;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background: #ddd;
+        }
+
+        .output {
+            margin-top: 20px;
+            padding: 18px;
+            background: #222;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">J</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="../css/index.html">CSS</a>
+                <a href="index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="../css/index.html">CSS Programs</a>
+            <a href="index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">JavaScript • Experiment 60</span>
+
+            <h1>Common Elements in Two Arrays</h1>
+
+            <p>
+                Find the elements that are present in both arrays.
+            </p>
+        </div>
+
+
+        <div class="program-box">
+
+            <div class="input-group">
+
+                <label for="array1">
+                    First Array
+                </label>
+
+                <input
+                    type="text"
+                    id="array1"
+                    placeholder="Example: 1, 2, 3, 4, 5"
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="array2">
+                    Second Array
+                </label>
+
+                <input
+                    type="text"
+                    id="array2"
+                    placeholder="Example: 3, 4, 5, 6, 7"
+                >
+
+            </div>
+
+
+            <button onclick="findCommonElements()">
+                Find Common Elements
+            </button>
+
+
+            <div class="output" id="output">
+                Enter both arrays and click the button.
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+
+<script>
+
+    function findCommonElements() {
+
+        const input1 =
+            document.getElementById("array1").value.trim();
+
+        const input2 =
+            document.getElementById("array2").value.trim();
+
+        const output =
+            document.getElementById("output");
+
+
+        if (input1 === "" || input2 === "") {
+
+            output.textContent =
+                "Please enter both arrays.";
+
+            return;
+
+        }
+
+
+        const array1 =
+            input1.split(",").map(function(item) {
+                return item.trim();
+            });
+
+
+        const array2 =
+            input2.split(",").map(function(item) {
+                return item.trim();
+            });
+
+
+        const commonElements =
+            [...new Set(
+                array1.filter(function(element) {
+                    return array2.includes(element);
+                })
+            )];
+
+
+        let result;
+
+
+        if (commonElements.length === 0) {
+
+            result = "No common elements found.";
+
+        } else {
+
+            result =
+                commonElements.join(", ");
+
+        }
+
+
+        output.innerHTML =
+            "<strong>First Array:</strong><br>" +
+            array1.join(", ") +
+            "<br><br>" +
+
+            "<strong>Second Array:</strong><br>" +
+            array2.join(", ") +
+            "<br><br>" +
+
+            "<strong>Common Elements:</strong><br>" +
+            result;
+
+    }
+
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+
+    menuButton.addEventListener("click", function() {
+
+        mobileNav.classList.toggle("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            mobileNav.classList.contains("active")
+        );
+
+    });
+
+</script>
+
+</body>
+</html>

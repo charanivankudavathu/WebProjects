@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 - Callbacks Promises Async Await</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .code-box {
+            background: #111111;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../../javascript/index.html">JavaScript</a>
+                <a href="../index.html" class="active">Node.js</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../../javascript/index.html">JavaScript Programs</a>
+            <a href="../index.html">Node.js</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">SERVER-10</span>
+            <h1>Demonstrate Callbacks, Promises, and Async/Await in Node.js</h1>
+            <p>Demonstrate three approaches for handling asynchronous operations.</p>
+        </div>
+
+        <section>
+            <h2>Objective</h2>
+
+            <p>
+                To understand callbacks, Promises, and async/await for
+                asynchronous programming in Node.js.
+            </p>
+        </section>
+
+        <section>
+            <h2>Node.js Code</h2>
+
+            <div class="code-box">
+<pre>function callbackExample(callback) {
+    setTimeout(() => {
+        callback("Callback completed");
+    }, 1000);
+}
+
+function promiseExample() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("Promise completed");
+        }, 1000);
+    });
+}
+
+async function asyncAwaitExample() {
+    const result = await promiseExample();
+    console.log(result);
+}
+
+callbackExample((message) => {
+    console.log(message);
+});
+
+promiseExample()
+    .then((message) => {
+        console.log(message);
+    });
+
+asyncAwaitExample();</pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>How to Run</h2>
+
+            <div class="code-box">
+<pre>node 10.js</pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>Expected Output</h2>
+
+            <div class="output-box">
+                Callback completed<br>
+                Promise completed<br>
+                Promise completed
+            </div>
+        </section>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-text">© 2026 Practical Lab. Node.js</div>
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="index.html">Server Programs</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT-07 | Quiz Application</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .quiz-demo {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .question {
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+        }
+
+        .option {
+            display: block;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .quiz-demo button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            background: #111111;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">PROJECT-07</span>
+            <h1>Quiz Application</h1>
+            <p>Answer questions and calculate your score.</p>
+        </div>
+
+        <div class="quiz-demo" id="quiz"></div>
+
+        <div style="text-align:center;">
+            <button id="submitButton">Submit Quiz</button>
+            <div id="result"></div>
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+
+const questions = [
+    {
+        question: "Which language is used to style web pages?",
+        options: ["HTML", "CSS", "JavaScript", "Python"],
+        answer: "CSS"
+    },
+    {
+        question: "Which language is used to add interactivity to web pages?",
+        options: ["HTML", "CSS", "JavaScript", "SQL"],
+        answer: "JavaScript"
+    },
+    {
+        question: "Which method selects an element by ID?",
+        options: [
+            "getElementById()",
+            "getElementsByClassName()",
+            "queryAll()",
+            "selectId()"
+        ],
+        answer: "getElementById()"
+    }
+];
+
+const quiz = document.getElementById("quiz");
+
+questions.forEach(function (item, index) {
+
+    const questionDiv = document.createElement("div");
+    questionDiv.className = "question";
+
+    questionDiv.innerHTML = `<h3>${index + 1}. ${item.question}</h3>`;
+
+    item.options.forEach(function (option) {
+
+        questionDiv.innerHTML += `
+            <label class="option">
+                <input
+                    type="radio"
+                    name="question${index}"
+                    value="${option}"
+                >
+                ${option}
+            </label>
+        `;
+
+    });
+
+    quiz.appendChild(questionDiv);
+
+});
+
+document.getElementById("submitButton").addEventListener("click", function () {
+
+    let score = 0;
+
+    questions.forEach(function (item, index) {
+
+        const selected = document.querySelector(
+            `input[name="question${index}"]:checked`
+        );
+
+        if (selected && selected.value === item.answer) {
+            score++;
+        }
+
+    });
+
+    document.getElementById("result").textContent =
+        `Your Score: ${score} / ${questions.length}`;
+
+});
+</script>
+
+</body>
+</html>

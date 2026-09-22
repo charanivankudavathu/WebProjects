@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS 40 - Image Hover Effect</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .hover-demo {
+            margin-top: 25px;
+        }
+
+        .image-card {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 15px;
+            border: 2px solid #222222;
+            background: #111111;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 400px;
+            display: block;
+            object-fit: cover;
+
+            transition:
+                transform 0.5s ease,
+                filter 0.5s ease;
+        }
+
+        .image-overlay {
+            position: absolute;
+            inset: 0;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            background: rgba(0, 0, 0, 0.65);
+            color: #ffffff;
+
+            opacity: 0;
+
+            transition: opacity 0.5s ease;
+        }
+
+        .image-overlay h2 {
+            margin: 0 0 10px;
+            font-size: 30px;
+        }
+
+        .image-overlay p {
+            margin: 0;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .image-card:hover img {
+            transform: scale(1.1);
+            filter: grayscale(100%);
+        }
+
+        .image-card:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .effect-info {
+            margin-top: 25px;
+            padding: 20px;
+            background: #eeeeee;
+            border-radius: 10px;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 600px) {
+            .image-card img {
+                height: 280px;
+            }
+
+            .image-overlay h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 40</span>
+
+            <h1>Image Hover Effect</h1>
+
+            <p>
+                Demonstration of CSS hover effects using
+                transform, filter, opacity, and transition.
+            </p>
+        </div>
+
+        <div class="output-box hover-demo">
+
+            <div class="image-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
+                    alt="Laptop and workspace"
+                >
+
+                <div class="image-overlay">
+                    <h2>Explore</h2>
+                    <p>
+                        Move your mouse over the image
+                        to see the CSS hover effect.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="effect-info">
+                <strong>Hover effects used:</strong>
+
+                <ul>
+                    <li>Image zoom using <strong>transform: scale()</strong></li>
+                    <li>Grayscale using <strong>filter</strong></li>
+                    <li>Overlay using <strong>opacity</strong></li>
+                    <li>Smooth animation using <strong>transition</strong></li>
+                </ul>
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+</script>
+
+</body>
+</html>

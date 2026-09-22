@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HTML Experiment 11</title>
+
+<!-- Main Professional CSS -->
+<link rel="stylesheet" href="../styles/main.css">
+
+<!-- Experiment 11 External CSS -->
+<link rel="stylesheet" href="../assets/html-11.css">
+
+<!-- Internal CSS -->
+<style>
+    .internal-demo {
+        padding: 25px;
+        border: 2px solid #111111;
+        margin-bottom: 25px;
+        border-radius: 12px;
+        background: #ffffff;
+    }
+
+    .internal-demo h2 {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+</style>
+
+
+</head>
+
+<body>
+
+
+<!-- PROFESSIONAL HEADER -->
+
+<header class="site-header">
+
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+
+                <div class="logo-mark">
+                    C
+                </div>
+
+                <div class="logo-text">
+
+                    <span class="logo-title">
+                        PRACTICAL LAB
+                    </span>
+
+                    <span class="logo-subtitle">
+                        HTML • CSS • JavaScript
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <!-- Desktop Navigation -->
+
+            <nav class="desktop-nav">
+
+                <a href="../index.html">
+                    Home
+                </a>
+
+                <a href="index.html" class="active">
+                    HTML
+                </a>
+
+                <a href="../css/index.html">
+                    CSS
+                </a>
+
+                <a href="../javascript/index.html">
+                    JavaScript
+                </a>
+
+            </nav>
+
+
+            <!-- Mobile Menu Button -->
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+
+        <!-- Mobile Navigation -->
+
+        <nav class="mobile-nav" id="mobileNav">
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="index.html">
+                HTML Programs
+            </a>
+
+            <a href="../css/index.html">
+                CSS Programs
+            </a>
+
+            <a href="../javascript/index.html">
+                JavaScript Programs
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- EXPERIMENT -->
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+
+            <span class="eyebrow">
+                HTML • Experiment 11
+            </span>
+
+            <h1>
+                Internal and External CSS
+            </h1>
+
+            <p>
+                Demonstration of internal and external CSS styling.
+            </p>
+
+        </div>
+
+
+        <div class="output-box">
+
+
+            <!-- INTERNAL CSS -->
+
+            <div class="internal-demo">
+
+                <h2>
+                    Internal CSS
+                </h2>
+
+                <p>
+                    This section is styled using CSS written
+                    inside the HTML document.
+                </p>
+
+            </div>
+
+
+            <!-- EXTERNAL CSS -->
+
+            <div class="external-demo">
+
+                <h2>
+                    External CSS
+                </h2>
+
+                <p>
+                    This section is styled using an external
+                    CSS file.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </article>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+
+                <a href="../index.html">
+                    Home
+                </a>
+
+                <a href="index.html">
+                    HTML Programs
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- MOBILE MENU JAVASCRIPT -->
+
+<script>
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+
+    menuButton.addEventListener("click", function () {
+
+        mobileNav.classList.toggle("active");
+
+        const isOpen =
+            mobileNav.classList.contains("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            isOpen
+        );
+
+    });
+
+</script>
+
+
+</body>
+
+</html>

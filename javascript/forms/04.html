@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM-04 | Signup Form</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .form-demo {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #999999;
+            border-radius: 6px;
+        }
+
+        .error {
+            display: block;
+            margin-top: 5px;
+            color: #cc0000;
+            font-size: 14px;
+        }
+
+        .success {
+            margin-top: 20px;
+            padding: 15px;
+            background: #eeeeee;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .form-button {
+            padding: 12px 25px;
+            background: #111111;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">FORM-04</span>
+            <h1>Signup Form</h1>
+            <p>Create a signup form with password confirmation.</p>
+        </div>
+
+        <div class="form-demo">
+
+            <form id="signupForm">
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Enter full name">
+                    <span class="error" id="nameError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter email">
+                    <span class="error" id="emailError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter password">
+                    <span class="error" id="passwordError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm password"
+                    >
+                    <span class="error" id="confirmError"></span>
+                </div>
+
+                <button type="submit" class="form-button">
+                    Create Account
+                </button>
+
+                <div id="successMessage"></div>
+
+            </form>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+
+const signupForm = document.getElementById("signupForm");
+
+signupForm.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    const confirmPassword =
+        document.getElementById("confirmPassword").value;
+
+    document.getElementById("nameError").textContent = "";
+    document.getElementById("emailError").textContent = "";
+    document.getElementById("passwordError").textContent = "";
+    document.getElementById("confirmError").textContent = "";
+    document.getElementById("successMessage").textContent = "";
+
+    let valid = true;
+
+    if (name === "") {
+        document.getElementById("nameError").textContent =
+            "Name is required.";
+        valid = false;
+    }
+
+    if (email === "") {
+        document.getElementById("emailError").textContent =
+            "Email is required.";
+        valid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById("emailError").textContent =
+            "Enter a valid email address.";
+        valid = false;
+    }
+
+    if (password.length < 8) {
+        document.getElementById("passwordError").textContent =
+            "Password must contain at least 8 characters.";
+        valid = false;
+    }
+
+    if (confirmPassword === "") {
+        document.getElementById("confirmError").textContent =
+            "Please confirm your password.";
+        valid = false;
+    } else if (password !== confirmPassword) {
+        document.getElementById("confirmError").textContent =
+            "Passwords do not match.";
+        valid = false;
+    }
+
+    if (valid) {
+        document.getElementById("successMessage").textContent =
+            "Account created successfully!";
+        document.getElementById("successMessage").className = "success";
+    }
+});
+</script>
+
+</body>
+</html>

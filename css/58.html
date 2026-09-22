@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS 58 - Travel Website</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .travel-page {
+            margin-top: 25px;
+        }
+
+        .travel-hero {
+            padding: 80px 25px;
+            background: #111111;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 12px;
+        }
+
+        .travel-hero h2 {
+            font-size: clamp(34px, 6vw, 58px);
+            margin-bottom: 15px;
+        }
+
+        .travel-hero p {
+            max-width: 700px;
+            margin: 0 auto 25px;
+            line-height: 1.8;
+        }
+
+        .travel-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #ffffff;
+            color: #111111;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 700;
+        }
+
+        .travel-section {
+            margin-top: 30px;
+        }
+
+        .travel-section h2 {
+            margin-bottom: 20px;
+        }
+
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .destination-card {
+            overflow: hidden;
+            border: 2px solid #222222;
+            border-radius: 12px;
+            background: #eeeeee;
+        }
+
+        .destination-image {
+            height: 190px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #cccccc;
+            font-size: 70px;
+        }
+
+        .destination-content {
+            padding: 20px;
+        }
+
+        .destination-content h3 {
+            margin-bottom: 8px;
+        }
+
+        .destination-content p {
+            line-height: 1.7;
+        }
+
+        .travel-features {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            flex: 1 1 200px;
+            padding: 25px;
+            background: #eeeeee;
+            border: 2px solid #222222;
+            border-radius: 10px;
+        }
+
+        .feature h3 {
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            line-height: 1.6;
+        }
+
+        @media (max-width: 800px) {
+            .destination-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .destination-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .travel-hero {
+                padding: 55px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+
+                <div class="logo-text">
+                    <span class="logo-title">
+                        PRACTICAL LAB
+                    </span>
+
+                    <span class="logo-subtitle">
+                        HTML • CSS • JavaScript
+                    </span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">
+                    JavaScript
+                </a>
+            </nav>
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                aria-expanded="false"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">
+                JavaScript Programs
+            </a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+
+            <span class="eyebrow">
+                CSS • Experiment 58
+            </span>
+
+            <h1>Travel Website Homepage</h1>
+
+            <p>
+                A responsive travel homepage using CSS Grid,
+                Flexbox, responsive typography, and cards.
+            </p>
+
+        </div>
+
+        <div class="output-box travel-page">
+
+            <section class="travel-hero">
+
+                <h2>Explore the World</h2>
+
+                <p>
+                    Discover beautiful destinations,
+                    exciting experiences, and unforgettable
+                    journeys.
+                </p>
+
+                <a href="#destinations" class="travel-button">
+                    Explore Destinations
+                </a>
+
+            </section>
+
+            <section
+                class="travel-section"
+                id="destinations"
+            >
+
+                <h2>Popular Destinations</h2>
+
+                <div class="destination-grid">
+
+                    <div class="destination-card">
+
+                        <div class="destination-image">
+                            🏝️
+                        </div>
+
+                        <div class="destination-content">
+
+                            <h3>Maldives</h3>
+
+                            <p>
+                                Enjoy beautiful beaches,
+                                clear water, and relaxing
+                                island experiences.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="destination-card">
+
+                        <div class="destination-image">
+                            🏔️
+                        </div>
+
+                        <div class="destination-content">
+
+                            <h3>Himalayas</h3>
+
+                            <p>
+                                Experience mountain views,
+                                adventure, and peaceful landscapes.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="destination-card">
+
+                        <div class="destination-image">
+                            🏛️
+                        </div>
+
+                        <div class="destination-content">
+
+                            <h3>Rome</h3>
+
+                            <p>
+                                Explore historic architecture,
+                                culture, and famous landmarks.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="travel-section">
+
+                <h2>Why Travel With Us?</h2>
+
+                <div class="travel-features">
+
+                    <div class="feature">
+
+                        <h3>Easy Planning</h3>
+
+                        <p>
+                            Plan your journey with simple
+                            and organized travel options.
+                        </p>
+
+                    </div>
+
+                    <div class="feature">
+
+                        <h3>Best Experiences</h3>
+
+                        <p>
+                            Discover destinations and
+                            activities suited to your trip.
+                        </p>
+
+                    </div>
+
+                    <div class="feature">
+
+                        <h3>24/7 Support</h3>
+
+                        <p>
+                            Get assistance throughout
+                            your travel journey.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab.
+                HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<script>
+const menuButton =
+    document.getElementById("menuButton");
+
+const mobileNav =
+    document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+
+});
+</script>
+
+</body>
+</html>

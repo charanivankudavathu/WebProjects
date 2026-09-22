@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EVENT-08 | Drag and Drop</title>
+
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .event-demo {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .drag-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .drag-box,
+        .drop-box {
+            min-height: 220px;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .drag-box {
+            background: #eeeeee;
+            border: 2px dashed #111;
+        }
+
+        .drop-box {
+            background: #ddd;
+            border: 2px dashed #555;
+        }
+
+        .draggable {
+            display: inline-block;
+            padding: 20px 30px;
+            margin-top: 50px;
+            background: #111;
+            color: white;
+            border-radius: 8px;
+            cursor: grab;
+        }
+
+        .drop-box.over {
+            background: #111;
+            color: white;
+        }
+
+        .status {
+            padding: 15px;
+            background: #111;
+            color: white;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        @media (max-width: 650px) {
+            .drag-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">Events • Experiment 08</span>
+
+            <h1>Drag-and-Drop Application</h1>
+
+            <p>
+                Drag the element and drop it into the target area.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="event-demo">
+
+                <div class="drag-container">
+
+                    <div class="drag-box">
+
+                        <h2>Drag From Here</h2>
+
+                        <div
+                            id="draggable"
+                            class="draggable"
+                            draggable="true"
+                        >
+                            Drag Me
+                        </div>
+
+                    </div>
+
+                    <div
+                        id="dropBox"
+                        class="drop-box"
+                    >
+
+                        <h2>Drop Here</h2>
+
+                        <p>
+                            Release the element here.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div id="status" class="status">
+                    Drag the box to the drop area.
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+    const draggable =
+        document.getElementById("draggable");
+
+    const dropBox =
+        document.getElementById("dropBox");
+
+    const status =
+        document.getElementById("status");
+
+    draggable.addEventListener("dragstart", function () {
+
+        status.textContent =
+            "Drag started.";
+
+    });
+
+    draggable.addEventListener("dragend", function () {
+
+        status.textContent =
+            "Drag ended.";
+
+    });
+
+    dropBox.addEventListener("dragover", function (event) {
+
+        event.preventDefault();
+
+        dropBox.classList.add("over");
+
+        status.textContent =
+            "Release the mouse to drop.";
+
+    });
+
+    dropBox.addEventListener("dragleave", function () {
+
+        dropBox.classList.remove("over");
+
+        status.textContent =
+            "Move the box over the drop area.";
+
+    });
+
+    dropBox.addEventListener("drop", function (event) {
+
+        event.preventDefault();
+
+        dropBox.classList.remove("over");
+
+        dropBox.appendChild(draggable);
+
+        status.textContent =
+            "Element dropped successfully!";
+
+    });
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+
+        mobileNav.classList.toggle("active");
+
+    });
+</script>
+
+</body>
+</html>

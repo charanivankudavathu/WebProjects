@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS 39 - Dropdown Menu</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        .dropdown-demo {
+            margin-top: 25px;
+            min-height: 280px;
+        }
+
+        .demo-nav {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            padding: 10px;
+            background: #111111;
+            border-radius: 10px;
+        }
+
+        .demo-nav a,
+        .drop-button {
+            display: block;
+            padding: 12px 18px;
+            color: #ffffff;
+            text-decoration: none;
+            border: none;
+            background: transparent;
+            font: inherit;
+            cursor: pointer;
+        }
+
+        .demo-nav a:hover,
+        .drop-button:hover {
+            background: #444444;
+            border-radius: 6px;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 190px;
+            background: #ffffff;
+            border: 1px solid #bbbbbb;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+
+            transition:
+                opacity 0.25s ease,
+                visibility 0.25s ease,
+                transform 0.25s ease;
+
+            z-index: 10;
+        }
+
+        .dropdown-content a {
+            color: #111111;
+            padding: 12px 15px;
+            display: block;
+            border-radius: 0;
+        }
+
+        .dropdown-content a:hover {
+            background: #eeeeee;
+        }
+
+        .dropdown:hover .dropdown-content,
+        .dropdown:focus-within .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .instruction {
+            margin-top: 100px;
+            padding: 20px;
+            background: #eeeeee;
+            border-radius: 10px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            .demo-nav {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .dropdown-content {
+                position: static;
+                width: 100%;
+                box-shadow: none;
+            }
+
+            .dropdown:hover .dropdown-content,
+            .dropdown:focus-within .dropdown-content {
+                position: static;
+            }
+
+            .instruction {
+                margin-top: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../index.html" class="logo">
+                <div class="logo-mark">C</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../html/index.html">HTML</a>
+                <a href="index.html" class="active">CSS</a>
+                <a href="../javascript/index.html">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="../html/index.html">HTML Programs</a>
+            <a href="index.html">CSS Programs</a>
+            <a href="../javascript/index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">CSS • Experiment 39</span>
+
+            <h1>CSS Dropdown Menu</h1>
+
+            <p>
+                A dropdown menu created using HTML and CSS
+                without JavaScript.
+            </p>
+        </div>
+
+        <div class="output-box dropdown-demo">
+
+            <nav class="demo-nav">
+
+                <a href="#">Home</a>
+
+                <div class="dropdown">
+
+                    <button class="drop-button">
+                        Courses ▾
+                    </button>
+
+                    <div class="dropdown-content">
+                        <a href="#">HTML</a>
+                        <a href="#">CSS</a>
+                        <a href="#">JavaScript</a>
+                        <a href="#">Python</a>
+                    </div>
+
+                </div>
+
+                <div class="dropdown">
+
+                    <button class="drop-button">
+                        Projects ▾
+                    </button>
+
+                    <div class="dropdown-content">
+                        <a href="#">Web Design</a>
+                        <a href="#">Portfolio</a>
+                        <a href="#">DSA Visualizer</a>
+                    </div>
+
+                </div>
+
+                <a href="#">Contact</a>
+
+            </nav>
+
+            <div class="instruction">
+                <strong>How it works:</strong>
+                Move the mouse over <strong>Courses</strong> or
+                <strong>Projects</strong> to display the dropdown.
+                The menu also responds to keyboard focus.
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">CSS Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
+
+menuButton.addEventListener("click", function () {
+    mobileNav.classList.toggle("active");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        mobileNav.classList.contains("active")
+    );
+});
+</script>
+
+</body>
+</html>

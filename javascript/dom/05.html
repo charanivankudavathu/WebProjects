@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DOM-05 | DOM Selection Methods</title>
+
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        .dom-demo {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .item {
+            padding: 14px;
+            margin: 10px 0;
+            background: #eeeeee;
+            border-left: 4px solid #111;
+            border-radius: 6px;
+        }
+
+        .demo-button {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 6px;
+            background: #111;
+            color: white;
+            cursor: pointer;
+        }
+
+        .demo-button:hover {
+            background: #333;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="header-inner">
+
+            <a href="../../index.html" class="logo">
+                <div class="logo-mark">J</div>
+                <div class="logo-text">
+                    <span class="logo-title">PRACTICAL LAB</span>
+                    <span class="logo-subtitle">HTML • CSS • JavaScript</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../../index.html">Home</a>
+                <a href="../../html/index.html">HTML</a>
+                <a href="../../css/index.html">CSS</a>
+                <a href="../index.html" class="active">JavaScript</a>
+            </nav>
+
+            <button class="menu-button" id="menuButton">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../../index.html">Home</a>
+            <a href="../../html/index.html">HTML Programs</a>
+            <a href="../../css/index.html">CSS Programs</a>
+            <a href="../index.html">JavaScript Programs</a>
+        </nav>
+    </div>
+</header>
+
+<main class="experiment-wrapper">
+
+    <article class="experiment-card">
+
+        <div class="experiment-header">
+            <span class="eyebrow">DOM Manipulation • Experiment 05</span>
+
+            <h1>getElementById() and getElementsByClassName()</h1>
+
+            <p>
+                Demonstrate two methods used to select HTML elements.
+            </p>
+        </div>
+
+        <div class="output-box">
+
+            <div class="dom-demo">
+
+                <h2 id="mainHeading">
+                    DOM Selection
+                </h2>
+
+                <div class="item">Item One</div>
+                <div class="item">Item Two</div>
+                <div class="item">Item Three</div>
+
+                <button class="demo-button" id="selectButton">
+                    Select Elements
+                </button>
+
+                <div id="result"></div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+
+            <div class="footer-text">
+                © 2026 Practical Lab. HTML • CSS • JavaScript
+            </div>
+
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">JavaScript Programs</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+    const selectButton =
+        document.getElementById("selectButton");
+
+    selectButton.addEventListener("click", function () {
+
+        const heading =
+            document.getElementById("mainHeading");
+
+        const items =
+            document.getElementsByClassName("item");
+
+        heading.textContent = "Elements Selected";
+
+        for (let i = 0; i < items.length; i++) {
+            items[i].style.backgroundColor = "#111";
+            items[i].style.color = "#fff";
+        }
+
+        document.getElementById("result").textContent =
+            "getElementsByClassName() found " +
+            items.length +
+            " elements.";
+
+    });
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileNav =
+        document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function () {
+
+        mobileNav.classList.toggle("active");
+
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Forms & Validation | Practical Lab</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #0a0a0a;
+            --dark: #151515;
+            --charcoal: #222222;
+            --grey: #555555;
+            --silver: #999999;
+            --light: #e8e8e8;
+            --soft: #f4f4f4;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--soft);
+            color: var(--black);
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            background: var(--black);
+            color: var(--white);
+            padding: 22px 6%;
+            border-bottom: 1px solid var(--grey);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .lab-name {
+            font-size: 14px;
+            color: #cccccc;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* NAVIGATION */
+        nav {
+            background: var(--dark);
+            border-bottom: 1px solid #333333;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 16px 22px;
+            display: block;
+            font-size: 14px;
+            transition: 0.25s ease;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        /* MOBILE MENU */
+        .menu-toggle {
+            display: none;
+            background: var(--white);
+            color: var(--black);
+            border: none;
+            padding: 9px 13px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        /* HERO */
+        .hero {
+            background: var(--white);
+            border-bottom: 1px solid #d5d5d5;
+            padding: 70px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(30px, 5vw, 48px);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            color: var(--grey);
+            font-size: 16px;
+            max-width: 720px;
+            margin: auto;
+        }
+
+        /* MAIN */
+        main {
+            max-width: 1200px;
+            margin: auto;
+            padding: 55px 20px;
+        }
+
+        .section-title {
+            margin-bottom: 30px;
+        }
+
+        .section-title h2 {
+            font-size: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title p {
+            color: var(--grey);
+            margin-top: 5px;
+        }
+
+        /* EXPERIMENT GRID */
+        .experiment-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .experiment-card {
+            background: var(--white);
+            border: 1px solid #d4d4d4;
+            padding: 25px;
+            min-height: 185px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: 0.25s ease;
+        }
+
+        .experiment-card:hover {
+            border-color: var(--black);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .experiment-number {
+            font-size: 13px;
+            font-weight: bold;
+            color: var(--silver);
+            letter-spacing: 1px;
+        }
+
+        .experiment-card h3 {
+            font-size: 18px;
+            margin: 8px 0;
+        }
+
+        .experiment-card p {
+            color: var(--grey);
+            font-size: 14px;
+        }
+
+        .view-btn {
+            align-self: flex-end;
+            color: var(--black);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            margin-top: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .view-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* QUICK NAVIGATION */
+        .quick-nav {
+            margin-top: 55px;
+            background: var(--black);
+            color: var(--white);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .quick-nav h2 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .quick-links a {
+            color: var(--white);
+            border: 1px solid #555555;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 13px;
+            transition: 0.25s;
+        }
+
+        .quick-links a:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 35px 20px;
+            text-align: center;
+            border-top: 1px solid #333333;
+        }
+
+        footer h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        footer p {
+            color: #aaaaaa;
+            font-size: 13px;
+            margin: 3px 0;
+        }
+
+        footer a {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+
+            .header-container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .lab-name {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                display: none;
+            }
+
+            nav.show {
+                display: block;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            nav a {
+                text-align: center;
+                border-bottom: 1px solid #333333;
+            }
+
+            .hero {
+                padding: 50px 20px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            main {
+                padding: 40px 15px;
+            }
+
+            .experiment-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experiment-card {
+                min-height: 170px;
+            }
+
+            .quick-nav {
+                padding: 25px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .logo {
+                font-size: 16px;
+            }
+
+            .hero h1 {
+                font-size: 25px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .section-title h2 {
+                font-size: 21px;
+            }
+
+            .experiment-card {
+                padding: 20px;
+            }
+
+            .quick-links {
+                flex-direction: column;
+            }
+
+            .quick-links a {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+
+            <div class="logo">
+                CHARANI VANKUDAVATH
+            </div>
+
+            <div class="lab-name">
+                Practical Lab
+            </div>
+
+            <button
+                class="menu-toggle"
+                onclick="toggleMenu()"
+                aria-label="Open menu">
+                ☰
+            </button>
+
+        </div>
+    </header>
+
+
+    <!-- NAVIGATION -->
+    <nav id="mainNav">
+
+        <div class="nav-container">
+
+            <a href="../../index.html">
+                Home
+            </a>
+
+            <a href="../../html/index.html">
+                HTML
+            </a>
+
+            <a href="../../css/index.html">
+                CSS
+            </a>
+
+            <a href="../index.html" class="active">
+                JavaScript
+            </a>
+
+            <a href="../../nodejs/index.html">
+                Node.js
+            </a>
+
+            <a
+                href="https://charanivankudavathu.github.io"
+                target="_blank">
+                Portfolio
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <h1>
+            Forms & Validation
+        </h1>
+
+        <p>
+            JavaScript practical experiments demonstrating
+            HTML forms, user input, validation techniques
+            and interactive form handling.
+        </p>
+
+    </section>
+
+
+    <!-- MAIN -->
+    <main>
+
+        <div class="section-title">
+
+            <h2>
+                Forms & Validation Experiments
+            </h2>
+
+            <p>
+                7 practical programs demonstrating form
+                handling and JavaScript validation techniques.
+            </p>
+
+        </div>
+
+
+        <!-- EXPERIMENT GRID -->
+        <div class="experiment-grid">
+
+
+            <!-- 01 -->
+            <div class="experiment-card">
+
+                <div>
+
+                    <span class="experiment-number">
+                        01
+                    </span>
+
+                    <h3>
+                        Basic Form Handling
+                    </h3>
+
+                    <p>
+                        Create and handle a basic HTML form
+                        using JavaScript.
+                    </p>
+
+                </div>
+
+                <a href="01.html" class="view-btn">
+                    VIEW →
+                </a>
+
+            </div>
+
+
+            <!-- 02 -->
+            <div class="experiment-card">
+
+                <div>
+
+                    <span class="experiment-number">
+                        02
+                    </span>
+
+                    <h3>
+                        Required Field Validation
+                    </h3>
+
+                    <p>
+                        Validate required form fields before
+                        accepting user input.
+                    </p>
+
+                </div>
+
+                <a href="02.html" class="view-btn">
+                    VIEW →
+                </a>
+
+            </div>
+
+
+            <!-- 03 -->
+            <div class="experiment-card">
+
+                <div>
+
+                    <span class="experiment-number">
+                        03
+                    </span>
+
+                    <h3>
+                        Email Validation
+                    </h3>
+
+                    <p>
+                        Validate email addresses entered
+                        into a form.
+                    </p>
+
+                </div>
+
+                <a href="03.html" class="view-btn">
+                    VIEW →
+                </a>
+
+            </div>
+
+
+            <!-- 04 -->
+            <div class="experiment-card">
+
+                <div>
+
+                    <span class="experiment-number">
+                        04
+                    </span>
+
+                    <h3>
+                        Password Validation
+                    </h3>
+
+                    <p>
+                        Validate password requirements and
+                        display appropriate messages.
+                    </p>
+
+                </div>
+
+                <a href="04.html" class="view-btn">
+                    VIEW →
+                </a>
+
+            </div>
+
+
+            <!-- 05 -->
+            <div class="experiment-card">
+
+                <div>
+
+                    <span class="experiment-number">
+                        05
+                    </span>
+
+                    <h3>
+                        Form Validation
+                    </h3>
+
+                    <p>
+                        Validate multiple form fields using
+                        JavaScript conditions.
+                    </p>
+
+                </div>
+
+                <a href="05.html" class="view-btn">
+                    VIEW →
+                </a>
+
+            </div>
+
+
+            <!-- 06 -->
+            <div class="experiment-card">
+
+                <div>
+
+                    <span class="experiment-number">
+                        06
+                    </span>
+
+                    <h3>
+                        Regular Expression Validation
+                    </h3>
+
+                    <p>
+                        Validate user input using JavaScript
+                        regular expressions.
+                    </p>
+
+                </div>
+
+                <a href="06.html" class="view-btn">
+                    VIEW →
+                </a>
+
+            </div>
+
+
+            <!-- 07 -->
+            <div class="experiment-card">
+
+                <div>
+
+                    <span class="experiment-number">
+                        07
+                    </span>
+
+                    <h3>
+                        Registration Form Validation
+                    </h3>
+
+                    <p>
+                        Create a complete registration form
+                        with client-side validation.
+                    </p>
+
+                </div>
+
+                <a href="07.html" class="view-btn">
+                    VIEW →
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- QUICK NAVIGATION -->
+        <section class="quick-nav">
+
+            <h2>
+                QUICK NAVIGATION
+            </h2>
+
+            <div class="quick-links">
+
+                <a href="../../html/index.html">
+                    HTML
+                </a>
+
+                <a href="../../css/index.html">
+                    CSS
+                </a>
+
+                <a href="../index.html">
+                    JAVASCRIPT
+                </a>
+
+                <a href="../../nodejs/index.html">
+                    NODE.JS
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <h3>
+            CHARANI VANKUDAVATH
+        </h3>
+
+        <p>
+            Sai University • Practical Programs
+        </p>
+
+        <p>
+            Portfolio:
+            <a
+                href="https://charanivankudavathu.github.io"
+                target="_blank">
+                charanivankudavathu.github.io
+            </a>
+        </p>
+
+    </footer>
+
+
+    <!-- MOBILE MENU SCRIPT -->
+    <script>
+
+        function toggleMenu() {
+
+            const nav = document.getElementById("mainNav");
+
+            nav.classList.toggle("show");
+
+        }
+
+    </script>
+
+</body>
+</html>
